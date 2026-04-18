@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전주의 숨은 보물 50선</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="archive-shell">
+      <header class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Jeonju Hidden Gems Archive</p>
+          <h1>전주의 숨은 보물 50선</h1>
+          <p class="hero-text">
+            전주의 장소를 테마별로 묶고, 가나다순으로 쉽게 찾아볼 수 있도록 정리한 아카이브입니다.
+            각 장소의 소개, 주변 볼거리, 추천 코스를 한 화면에서 읽을 수 있게 구성했습니다.
+          </p>
+
+          <div class="guide-row">
+            <span class="guide-chip">1. 테마 선택</span>
+            <span class="guide-chip">2. 가나다 목록 확인</span>
+            <span class="guide-chip">3. 상세 페이지 읽기</span>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <article class="stat-card">
+            <span>현재 수록</span>
+            <strong id="statCurrent">36곳</strong>
+          </article>
+          <article class="stat-card">
+            <span>기획 타이틀</span>
+            <strong>50선 아카이브</strong>
+          </article>
+          <article class="stat-card">
+            <span>정렬 방식</span>
+            <strong>가나다순</strong>
+          </article>
+          <article class="stat-card accent">
+            <span>읽기 방식</span>
+            <strong>선택형 상세 페이지</strong>
+          </article>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <div class="toolbar-copy">
+          <p class="toolbar-label">탐색 안내</p>
+          <h2>보고 싶은 테마를 고르거나 검색해서, 원하는 장소를 바로 열어보세요.</h2>
+          <p class="toolbar-note">
+            왼쪽 목록은 가나다순으로 유지되고, 오른쪽에는 선택한 장소의 이미지형 표지와 소개 페이지가
+            함께 표시됩니다.
+          </p>
+        </div>
+
+        <div class="toolbar-controls">
+          <div class="theme-tabs" id="themeTabs"></div>
+          <label class="search-box">
+            <span>장소 검색</span>
+            <input id="searchInput" type="text" placeholder="예: 경기전, 덕진공원, 서학동 예술마을" />
+          </label>
+        </div>
+      </section>
+
+      <main class="content-grid">
+        <aside class="place-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">가나다순 목록</p>
+              <h2>장소 선택</h2>
+              <p class="panel-text">장소를 누르면 해당 장소의 소개, 주변 볼거리, 추천 코스가 바로 열립니다.</p>
+            </div>
+            <span class="panel-count" id="filteredCount">36곳</span>
+          </div>
+
+          <div class="place-list" id="placeList"></div>
+        </aside>
+
+        <section class="detail-panel">
+          <article class="detail-page">
+            <div class="detail-top">
+              <div class="detail-heading">
+                <p class="detail-label" id="detailThemeLabel">역사 · 기억</p>
+                <h2 id="detailTitle">경기전</h2>
+                <p class="detail-subtitle" id="detailSubtitle">
+                  전주 역사문화축의 중심에서 전주의 시간을 차분하게 보여주는 공간
+                </p>
+              </div>
+
+              <div class="detail-page-mark">
+                <span id="detailThemeBadge">역사 · 기억</span>
+                <strong id="detailOrder">01 / 09</strong>
+              </div>
+            </div>
+
+            <div class="detail-hero-wrap">
+              <div class="detail-hero" id="detailHero">
+                <div class="detail-hero-overlay">
+                  <strong id="detailHeroTitle">전주의 시간을 가장 선명하게 보여주는 장소</strong>
+                  <p id="detailHeroText">
+                    한옥 권역과 경기전, 풍남문, 전라감영을 함께 묶어 읽기 좋은 역사 코스의 중심점입니다.
+                  </p>
+                </div>
+              </div>
+
+              <aside class="hero-side-note">
+                <p class="story-label">읽는 순서</p>
+                <ol class="reading-steps">
+                  <li>장소가 어떤 분위기의 공간인지 먼저 확인합니다.</li>
+                  <li>주변에 함께 보기 좋은 장소를 이어서 살펴봅니다.</li>
+                  <li>추천 코스를 읽고 이동 흐름을 이해합니다.</li>
+                </ol>
+              </aside>
+            </div>
+
+            <div class="meta-grid">
+              <article class="meta-card">
+                <span>권역</span>
+                <strong id="detailDistrict">완산구 풍남동</strong>
+              </article>
+              <article class="meta-card">
+                <span>테마</span>
+                <strong id="detailTheme">역사 · 기억</strong>
+              </article>
+              <article class="meta-card">
+                <span>추천 분위기</span>
+                <strong id="detailMood">차분하게 머물며 읽는 코스</strong>
+              </article>
+              <article class="meta-card">
+                <span>선택 순서</span>
+                <strong id="detailSequence">가나다 01번</strong>
+              </article>
+            </div>
+
+            <div class="story-grid">
+              <article class="story-card">
+                <p class="story-label">장소 소개</p>
+                <p id="detailIntro">
+                  전주의 시간감을 가장 안정적으로 느낄 수 있는 대표 장소로, 풍남문과 전동성당, 한옥마을
+                  권역을 함께 묶었을 때 흐름이 자연스럽습니다.
+                </p>
+              </article>
+
+              <article class="story-card">
+                <p class="story-label">주변 볼거리</p>
+                <div class="nearby-list" id="nearbyList"></div>
+                <p id="detailNearbyText">
+                  가까운 권역에서 함께 보기 좋은 장소들을 같이 제안해 코스의 이해를 높였습니다.
+                </p>
+              </article>
+            </div>
+
+            <article class="story-card full">
+              <p class="story-label">코스 소개</p>
+              <p id="detailCourse">
+                이 장소는 전주 역사문화축의 초반 흐름을 잡아 주는 출발 지점으로, 풍남문에서 출발해
+                경기전과 전라감영으로 이어지는 도심 순환 코스의 중심입니다.
+              </p>
+            </article>
+
+            <article class="route-card">
+              <div class="route-head">
+                <div>
+                  <p class="story-label">추천 연결 흐름</p>
+                  <h3 id="routeTitle">역사 · 기억 테마 코스</h3>
+                </div>
+                <span class="route-chip" id="routeChip">현재 포인트</span>
+              </div>
+
+              <div class="route-map" id="routeMap"></div>
+              <div class="route-stops" id="routeStops"></div>
+            </article>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
