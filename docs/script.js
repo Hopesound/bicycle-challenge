@@ -4,7 +4,7 @@ const themeMeta = {
     color: '#2f8f57',
     deep: '#1f5d3a',
     soft: '#e5f5ea',
-    mood: '전주의 숨은 보물 36곳을 가나다순으로 살펴보는 아카이브'
+    mood: '전주의 숨은 보물을 가나다순으로 살펴보는 아카이브'
   },
   history: {
     label: '역사·기억',
@@ -140,14 +140,14 @@ const places = [
     theme: 'local',
     district: '덕진구 반월동',
     scene: 'scene-food',
-    tagline: '라이딩 뒤 허기를 편하게 채우는 동네 식당 포인트',
+    tagline: '안심돈까스와 생선까스, 유부우동 조합이 돋보이는 반월동 식사 포인트',
     intro:
-      '돈까스 현은 반월동 생활권에서 편하게 들를 수 있는 미식 포인트다. 한 끼 식사와 짧은 휴식을 해결하기 좋아 북서부 자전거 코스의 종착지나 재출발 지점으로 잘 맞는다.',
+      '돈까스 현은 반월동 생활권에서 든든하게 한 끼를 해결하기 좋은 돈까스 맛집이다. 방문 후기 기준으로 안심돈까스, 생선까스, 유부우동 조합의 만족도가 높았고, 안심까스는 핑크빛 육즙이 살아 있으면서도 겉은 바삭하고 속은 촉촉한 편으로 소개됐다. 생선까스 역시 소스가 올라가도 바삭함이 유지되고, 타르타르 소스가 과하지 않아 고소하게 어울린다는 평가가 있었다. 식전 크림스프와 셀프 반찬 구성까지 좋아 라이딩 뒤 편하게 쉬어 가기 좋다.',
     nearby: ['전주월드컵경기장', '전주수목원', '기지제'],
     nearbyText:
-      '반월동과 가까운 전주월드컵경기장, 전주수목원, 기지제를 함께 묶으면 넓은 도로와 녹지 풍경을 따라 여유롭게 둘러보는 코스로 연결하기 좋다.',
+      '블로그 후기에서도 전주월드컵경기장과 차로 5분 정도 거리라는 점이 강조됐다. 전주월드컵경기장, 전주수목원, 기지제를 함께 묶으면 넓은 도로와 녹지 풍경을 따라 여유롭게 둘러본 뒤 식사로 마무리하기 좋은 흐름이 만들어진다.',
     course:
-      '전주월드컵경기장과 전주수목원을 지나 기지제 쪽 풍경을 둘러본 뒤 돈까스 현에서 식사를 마무리하면 반월동 생활권 추천 코스로 안내하기 좋다.'
+      '전주월드컵경기장과 전주수목원을 지나 기지제 쪽 풍경을 둘러본 뒤 돈까스 현에서 식사를 마무리하는 흐름이 잘 어울린다. 오전이나 점심 라이딩 후 들르기 좋고, 영업시간은 11:00부터 20:30까지이며 15:00부터 17:00까지는 브레이크타임, 매달 3·5번째 일요일은 정기휴무라 일정 계획 때 함께 안내하기 좋다.'
   },
   {
     name: '동물원',
@@ -206,6 +206,21 @@ const places = [
       '한옥마을 외곽에서 오목대-서학동 예술마을-자만벽화마을로 이어 가면 짧고 강한 감상형 코스가 완성된다.'
   },
   {
+    name: '서학동 예술마을 27레코드',
+    aliases: ['27레코드'],
+    theme: 'art',
+    district: '완산구 서학동',
+    scene: 'scene-street',
+    tagline: '담쟁이덩굴과 레코드숍 외관이 인상적인 서학동 감성 촬영지',
+    intro:
+      '서학동 예술마을 27레코드는 작은 골목 안에서 영화 같은 장면을 만들어 주는 장소다. 레코드숍의 외관과 담쟁이덩굴 풍경이 인상적이며, 드라마 촬영지로 알려지면서 서학동 특유의 청춘 감성과 예술마을 분위기를 함께 보여 주는 포인트가 되었다.',
+    nearby: ['서학동 예술마을', '크로싱게스트하우스', '오목대'],
+    nearbyText:
+      '서학동 골목과 크로싱게스트하우스, 오목대 권역이 가까워 예술마을 산책과 전망, 촬영지 탐방을 한 흐름으로 묶을 수 있다.',
+    course:
+      '오목대에서 전망을 본 뒤 서학동 예술마을 골목으로 내려와 27레코드와 주변 작업실을 둘러보면 짧지만 분위기가 진한 감상형 코스가 된다.'
+  },
+  {
     name: '아중저수지',
     theme: 'nature',
     district: '덕진구 우아동',
@@ -246,6 +261,21 @@ const places = [
       '이목대와 자만벽화마을, 서학동 예술마을이 가까워 걸으며 또는 천천히 자전거를 끌며 둘러보는 복합 동선이 가능하다.',
     course:
       '한옥마을 외곽에서 오목대로 올라 전망을 본 뒤 이목대와 서학동 권역으로 이어 가면 짧고 인상적인 언덕 코스가 된다.'
+  },
+  {
+    name: '완산 벙커 더 스페이스',
+    aliases: ['완산벙커 더 스페이스'],
+    theme: 'art',
+    district: '완산구 동완산동',
+    scene: 'scene-modern',
+    tagline: '옛 방공호를 미디어아트 공간으로 바꿔낸 전주의 감각적 실내 명소',
+    intro:
+      '완산 벙커 더 스페이스는 1973년 조성된 땅굴형 방공호를 리모델링해 만든 문화관광시설이다. 길게 이어지는 벙커 구조 안에서 우주와 다중우주를 탐험하는 듯한 미디어아트를 체험할 수 있어, 전주의 전통 이미지와는 또 다른 현대적 인상을 남긴다. 비 오는 날이나 한낮 더위를 피하기 좋은 실내형 방문지라는 점도 장점이다.',
+    nearby: ['완산공원', '남고사', '다가공원(호국 영렬탑)'],
+    nearbyText:
+      '완산공원과 남고사, 다가공원 권역이 가까워 완산칠봉 자락의 숲길과 구도심 기억 공간을 함께 엮기 좋다.',
+    course:
+      '완산공원 산책로를 따라 남고사와 다가공원을 둘러본 뒤 완산 벙커 더 스페이스에서 미디어아트 체험으로 마무리하면 남부권의 조용한 숲과 현대 전시를 함께 소개하는 코스가 된다.'
   },
   {
     name: '완산공원',
@@ -501,6 +531,20 @@ const places = [
       '팔복예술공장을 목적지로 두고 서부 자전거길을 따라 접근하면 산업 재생과 현대 예술을 체감하는 코스가 된다.'
   },
   {
+    name: '플뢰르',
+    theme: 'local',
+    district: '완산구 경원동3가',
+    scene: 'scene-food',
+    tagline: '낮에는 카페, 저녁에는 와인 바로 머물기 좋은 전주 감성 공간',
+    intro:
+      '플뢰르는 아기자기한 정원과 실내 분위기가 돋보이는 전주의 감성 카페 겸 와인 바다. 드라마 촬영지로 알려지며 더 많은 이들이 찾게 됐고, 낮에는 차와 디저트로, 저녁에는 맥주와 와인으로 분위기를 즐길 수 있어 도심 산책 코스의 쉼표로 잘 어울린다.',
+    nearby: ['전주시민기록관', '전라감영', '남부시장'],
+    nearbyText:
+      '중앙동과 경원동의 도심 감성 공간, 전라감영, 남부시장 권역이 가까워 기록과 미식, 야간 산책 코스를 함께 설계하기 좋다.',
+    course:
+      '전라감영과 전주시민기록관을 둘러본 뒤 플뢰르에서 잠시 쉬어 가면 구도심 도보형 라이딩 코스가 한층 부드럽게 마무리된다.'
+  },
+  {
     name: '풍남문',
     theme: 'history',
     district: '완산구 전동',
@@ -515,6 +559,21 @@ const places = [
       '풍남문에서 출발해 경기전과 남부시장, 전라감영으로 연결하면 가장 이해하기 쉬운 구도심 역사 코스가 된다.'
   },
   {
+    name: '크로싱게스트하우스',
+    aliases: ['크로싱 게스트하우스'],
+    theme: 'art',
+    district: '완산구 교동',
+    scene: 'scene-hanok',
+    tagline: '장미 덩굴과 한옥 지붕선이 함께 남는 전주 촬영지 포인트',
+    intro:
+      '크로싱게스트하우스는 드라마 촬영지로 널리 알려진 한옥마을 끝자락의 장소다. 붉은 장미 덩굴과 고즈넉한 외관이 인상적이며, 한옥마을 지붕선과 골목 풍경이 한 프레임에 들어와 사진 포인트로 자주 언급된다. 현재는 사유지 성격이 강해 외부에서 조용히 바라보는 방식의 탐방이 어울린다.',
+    nearby: ['오목대', '서학동 예술마을 27레코드', '자만벽화마을'],
+    nearbyText:
+      '오목대와 자만벽화마을, 서학동 예술마을이 가까워 한옥마을 동쪽 끝 골목과 촬영지 분위기를 이어서 보기 좋다.',
+    course:
+      '오목대에서 한옥 지붕선을 내려다본 뒤 크로싱게스트하우스와 자만벽화마을, 서학동 골목으로 이어 가면 전주의 청춘 드라마 같은 풍경을 체감하는 코스가 된다.'
+  },
+  {
     name: '하얀양옥집(도지사관사)',
     theme: 'history',
     district: '완산구 서완산동',
@@ -527,6 +586,35 @@ const places = [
       '치명자산과 박물관, 완산 남부 공원권이 가까워 근대 건축과 자연, 역사 해설을 한 흐름으로 묶을 수 있다.',
     course:
       '박물관에서 하얀양옥집을 거쳐 치명자산으로 이동하면 남부권 근대·역사 코스로 자연스럽게 이어진다.'
+  },
+  {
+    name: '한옥마을 학인당',
+    aliases: ['학인당'],
+    theme: 'history',
+    district: '완산구 교동',
+    scene: 'scene-hanok',
+    tagline: '판소리와 고택 문화의 깊이를 품은 한옥마을 대표 고가',
+    intro:
+      '한옥마을 학인당은 100년이 넘는 역사를 지닌 전주의 대표 고택으로, 한옥마을 안에서도 격식과 규모가 돋보이는 장소다. 전통 한옥의 구조미를 보여 줄 뿐 아니라 판소리 공연이 이루어졌던 역사적 공간으로도 알려져 있어, 단순한 숙박 공간을 넘어 전주의 소리와 건축 문화를 함께 읽게 만든다.',
+    nearby: ['경기전', '오목대', '이목대'],
+    nearbyText:
+      '경기전과 오목대, 이목대가 가까워 한옥마을의 대표 역사 포인트를 하나의 밀도 높은 코스로 묶기 좋다.',
+    course:
+      '경기전에서 시작해 학인당과 오목대, 이목대를 잇는 흐름은 전주의 한옥 문화와 조망 포인트를 함께 보여 주는 정통 한옥마을 코스로 설명하기 좋다.'
+  },
+  {
+    name: '혼불문학공원',
+    theme: 'art',
+    district: '덕진구 덕진동',
+    scene: 'scene-forest',
+    tagline: '건지산 자락에서 최명희 작가의 문학 세계를 떠올리게 하는 숲속 공원',
+    intro:
+      '혼불문학공원은 소설 『혼불』의 작가 최명희를 기리는 조용한 숲속 문학 공간이다. 건지산 자락에 자리해 일반 공원보다 더 숨은 장소 같은 느낌이 강하고, 산길을 따라 도착했을 때의 고요함이 인상적이다. 작가의 흔적과 문학 어록을 되새기며 천천히 머무는 방식이 잘 어울린다.',
+    nearby: ['건지산 편백나무숲', '동물원', '전북대학교 자연사박물관'],
+    nearbyText:
+      '건지산 편백나무숲과 동물원, 전북대학교 자연사박물관이 가까워 숲길과 생태, 문학 산책을 한 번에 묶을 수 있다.',
+    course:
+      '덕진공원과 건지산 편백나무숲을 거쳐 혼불문학공원까지 올라간 뒤 자연사박물관으로 내려오면 생태와 문학을 함께 담는 북부 감성 코스가 된다.'
   },
   {
     name: '효자공원묘지',
@@ -607,15 +695,20 @@ const placeImages = {
   '아중저수지': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/173225466963822.jpg',
   '팔복예술공장': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175066192675612.jpg',
   '오목대': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175317831898777.jpg',
+  '완산 벙커 더 스페이스': 'https://image.thum.io/get/width/1200/crop/800/https://ontrip.kr/travel-guides/details/3492135',
   '이목대': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175317831898777.jpg',
   '전라감영': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/169925393272395.jpg',
   '건지산 편백나무숲': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000022/172491260329284.jpg',
   '서학동 예술마을': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/177217586697779.jpg',
+  '서학동 예술마을 27레코드': 'https://image.thum.io/get/width/1200/crop/800/https://dukplace.com/ko/spot/celeb/718/958',
   '하얀양옥집(도지사관사)': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176465121839708.jpg',
+  '한옥마을 학인당': 'https://image.thum.io/get/width/1200/crop/800/https://encykorea.aks.ac.kr/Article/E0060909',
+  '혼불문학공원': 'https://image.thum.io/get/width/1200/crop/800/https://www.jjan.kr/article/20190517674755',
   '치명자산': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176353381757141.jpg',
   '아태무형문화유산전당': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/172428853775507.jpg',
   '남고사': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171516222089096.jpg',
   '삼천동막걸리골목': 'https://image.fnnews.com/resource/media/image/2020/10/20/202010201659218330_l.jpg',
+  '플뢰르': 'https://image.thum.io/get/width/1200/crop/800/https://www.siksinhot.com/P/1394080',
   '전주공동체라디오 전주FM': 'https://contents.sixshop.com/uploadedFiles/207956/default/image_1690505965557.jpg',
   '전주시립도서관꽃심': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/164394227638520.jpg',
   '전북대학교 자연사박물관': 'https://nhm.jbnu.ac.kr/sites/nhm/atchmnfl_mngr/imageSlide/850/temp_1533024189384100.jpg',
@@ -628,7 +721,8 @@ const placeImages = {
   '전주의료생활협동조합': 'https://cdn.jjan.kr/data2/content/image/2004/08/11/.cache/512/20040811003590.jpg',
   '우석대학교 부속 전주한방병원': 'https://image.fnnews.com/resource/media/image/2025/02/26/202502261339217097_l.jpg',
   '바이크박스': 'https://image.thum.io/get/width/1200/crop/800/https://www.daangn.com/kr/local-profile/%EB%B0%94%EC%9D%B4%ED%81%AC%EB%B0%95%EC%8A%A4-vtfb9fam7fso/',
-  '돈까스 현': 'https://d12zq4w4guyljn.cloudfront.net/750_750_20241106104058_photo1_XwBUxFtiFlIY.webp'
+  '돈까스 현': 'https://blogthumb.pstatic.net/MjAyNjAyMjdfMTg0/MDAxNzcyMTcyNjc5NzM4.CnLT_pY5EjlOhGLT0Po0o73ao6u99oZztKm2s-DH5bcg.wBergryvlkHaVOZcZ3_D0kq9TivUICCStNmpNGJGNJog.JPEG/900%A3%DF20260225%A3%DF121000.jpg?type=w2',
+  '크로싱게스트하우스': 'https://image.thum.io/get/width/1200/crop/800/https://kr.trip.com/moments/detail/kunming-29-14691936/'
 };
 
 const placePositions = {
@@ -646,15 +740,20 @@ const placePositions = {
   '아중저수지': [248, 102],
   '팔복예술공장': [92, 120],
   '오목대': [188, 128],
+  '완산 벙커 더 스페이스': [122, 120],
   '이목대': [196, 120],
   '전라감영': [176, 144],
   '건지산 편백나무숲': [158, 58],
   '서학동 예술마을': [192, 164],
+  '서학동 예술마을 27레코드': [198, 170],
   '하얀양옥집(도지사관사)': [118, 146],
+  '한옥마을 학인당': [182, 136],
+  '혼불문학공원': [154, 66],
   '치명자산': [84, 132],
   '아태무형문화유산전당': [206, 148],
   '남고사': [118, 100],
   '삼천동막걸리골목': [86, 194],
+  '플뢰르': [170, 154],
   '전주공동체라디오 전주FM': [192, 152],
   '전주시립도서관꽃심': [108, 174],
   '전북대학교 자연사박물관': [150, 80],
@@ -667,7 +766,8 @@ const placePositions = {
   '전주의료생활협동조합': [78, 164],
   '우석대학교 부속 전주한방병원': [98, 168],
   '바이크박스': [104, 160],
-  '돈까스 현': [62, 70]
+  '돈까스 현': [62, 70],
+  '크로싱게스트하우스': [208, 136]
 };
 
 const mapGeoBounds = {
@@ -1027,8 +1127,52 @@ function createRouteMap(themeKey, stepIndex, totalCount) {
 function buildRouteStops(place) {
   return buildFlowPlaces(place).map((item) => ({
     label: item.flowLabel,
-    name: item.name
+    name: item.name,
+    district: item.district || '',
+    tagline: item.tagline || '',
+    imageUrl: item.imageUrl || ''
   }));
+}
+
+function enhanceRouteStopImages() {
+  if (!elements.routeStops) {
+    return;
+  }
+
+  elements.routeStops.querySelectorAll('.route-stop-image').forEach((image) => {
+    image.onerror = () => {
+      image.closest('.route-stop')?.classList.add('is-fallback');
+      image.removeAttribute('src');
+      image.alt = '';
+      image.onerror = null;
+    };
+  });
+}
+
+function renderRouteStops(place) {
+  elements.routeStops.innerHTML = buildRouteStops(place)
+    .map(
+      (stop) => `
+        <article class="route-stop${stop.label === '현재' ? ' active' : ''}">
+          <div class="route-stop-media">
+            ${
+              stop.imageUrl
+                ? `<img class="route-stop-image" src="${stop.imageUrl}" alt="${stop.name} 대표 이미지" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`
+                : ''
+            }
+            <span class="route-stop-label">${stop.label}</span>
+          </div>
+          <div class="route-stop-body">
+            <strong>${stop.name}</strong>
+            <span class="route-stop-district">${stop.district}</span>
+            <p>${stop.tagline}</p>
+          </div>
+        </article>
+      `
+    )
+    .join('');
+
+  enhanceRouteStopImages();
 }
 
 function getNaverMapsKeyId() {
@@ -1371,7 +1515,7 @@ function renderEmptyDetail() {
   elements.detailOrder.textContent = '0 / 0';
   elements.detailHero.className = 'detail-hero scene-park';
   renderHeroPhoto(null);
-  elements.detailHeroTitle.textContent = '전주의 숨은 보물 36곳';
+  elements.detailHeroTitle.textContent = `전주의 숨은 보물 ${allPlaces.length}곳`;
   elements.detailHeroText.textContent = '각 장소의 소개, 주변 볼거리, 추천 코스를 한 화면에서 볼 수 있도록 구성했습니다.';
   elements.detailDistrict.textContent = '-';
   elements.detailTheme.textContent = '-';
@@ -1415,16 +1559,7 @@ function renderDetail(place) {
     ? `실제 항공지도 준비 중 · ${flowPlaces.length}곳`
     : `API 키 필요 · ${flowPlaces.length}곳`;
   renderNaverMap(place, flowPlaces);
-  elements.routeStops.innerHTML = buildRouteStops(place)
-    .map(
-      (stop) => `
-        <article class="route-stop${stop.label === '현재' ? ' active' : ''}">
-          <strong>${stop.name}</strong>
-          <span>${stop.label}</span>
-        </article>
-      `
-    )
-    .join('');
+  renderRouteStops(place);
 }
 
 function syncHash() {
