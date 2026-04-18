@@ -785,7 +785,7 @@ const state = {
   selected: allPlaces[0]?.name || ''
 };
 
-const naverMapState = {
+const kakaoMapState = {
   loadPromise: null,
   renderToken: 0,
   map: null,
@@ -1175,8 +1175,8 @@ function renderRouteStops(place) {
   enhanceRouteStopImages();
 }
 
-function getNaverMapsKeyId() {
-  return String(window.NAVER_MAPS_KEY_ID || '').trim();
+function getKakaoMapsAppKey() {
+  return String(window.KAKAO_MAPS_APP_KEY || '').trim();
 }
 
 function getFlowLatLng(item) {
@@ -1194,97 +1194,116 @@ function createMapPinSvg(fill, innerFill) {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-function createMapMarkerIcon(isCurrent, color) {
+function createMapMarkerImage(isCurrent, color) {
   const fill = isCurrent ? '#ff8c42' : color;
   const innerFill = isCurrent ? '#fff4e8' : '#ffffff';
 
-  return {
-    url: createMapPinSvg(fill, innerFill),
-    size: new naver.maps.Size(34, 44),
-    scaledSize: new naver.maps.Size(34, 44),
-    anchor: new naver.maps.Point(17, 42)
-  };
+  return new kakao.maps.MarkerImage(
+    createMapPinSvg(fill, innerFill),
+    new kakao.maps.Size(34, 44),
+    {
+      offset: new kakao.maps.Point(17, 42)
+    }
+  );
 }
 
 function createInfoWindowContent(item) {
   return `
-    <div class="naver-info-window">
+    <div class="kakao-info-window">
       <strong>${item.name}</strong>
       <span>${item.flowLabel}</span>
     </div>
   `;
 }
 
-function createNaverMapShell(statusText = '') {
+function createKakaoMapShell(statusText = '') {
   return `
-    <div class="naver-map-shell">
-      <div class="naver-map-canvas" id="naverMapCanvas"></div>
+    <div class="kakao-map-shell">
+      <div class="kakao-map-canvas" id="kakaoMapCanvas"></div>
       ${
         statusText
-          ? `<div class="naver-map-status" id="naverMapStatus">${statusText}</div>`
+          ? `<div class="kakao-map-status" id="kakaoMapStatus">${statusText}</div>`
           : ''
       }
     </div>
   `;
 }
 
-function clearNaverMapObjects() {
-  naverMapState.markers.forEach((marker) => marker.setMap(null));
-  naverMapState.infoWindows.forEach((infoWindow) => infoWindow.close());
+function clearKakaoMapObjects() {
+  kakaoMapState.markers.forEach((marker) => marker.setMap(null));
+  kakaoMapState.infoWindows.forEach((infoWindow) => infoWindow.close());
 
-  if (naverMapState.polyline) {
-    naverMapState.polyline.setMap(null);
+  if (kakaoMapState.polyline) {
+    kakaoMapState.polyline.setMap(null);
   }
 
-  naverMapState.markers = [];
-  naverMapState.infoWindows = [];
-  naverMapState.polyline = null;
+  kakaoMapState.markers = [];
+  kakaoMapState.infoWindows = [];
+  kakaoMapState.polyline = null;
 }
 
-function loadNaverMapsApi() {
-  if (window.naver?.maps) {
-    return Promise.resolve(window.naver.maps);
+function loadKakaoMapsApi() {
+  if (window.kakao?.maps?.load) {
+    return new Promise((resolve) => {
+      window.kakao.maps.load(() => resolve(window.kakao.maps));
+    });
   }
 
-  if (naverMapState.loadPromise) {
-    return naverMapState.loadPromise;
+  if (kakaoMapState.loadPromise) {
+    return kakaoMapState.loadPromise;
   }
 
-  const keyId = getNaverMapsKeyId();
+  const appKey = getKakaoMapsAppKey();
 
-  if (!keyId) {
-    return Promise.reject(new Error('NAVER_MAPS_KEY_ID_MISSING'));
+  if (!appKey) {
+    return Promise.reject(new Error('KAKAO_MAPS_APP_KEY_MISSING'));
   }
 
-  naverMapState.loadPromise = new Promise((resolve, reject) => {
-    const existingScript = document.getElementById('naverMapsApiScript');
+  kakaoMapState.loadPromise = new Promise((resolve, reject) => {
+    const finishLoading = () => {
+      if (!window.kakao?.maps?.load) {
+        kakaoMapState.loadPromise = null;
+        reject(new Error('KAKAO_MAPS_SDK_UNAVAILABLE'));
+        return;
+      }
+
+      window.kakao.maps.load(() => resolve(window.kakao.maps));
+    };
+
+    const existingScript = document.getElementById('kakaoMapsApiScript');
 
     if (existingScript) {
-      existingScript.addEventListener('load', () => resolve(window.naver.maps), { once: true });
-      existingScript.addEventListener('error', () => reject(new Error('NAVER_MAPS_SCRIPT_ERROR')), {
-        once: true
-      });
+      if (window.kakao?.maps) {
+        finishLoading();
+        return;
+      }
+
+      existingScript.addEventListener('load', finishLoading, { once: true });
+      existingScript.addEventListener(
+        'error',
+        () => {
+          kakaoMapState.loadPromise = null;
+          reject(new Error('KAKAO_MAPS_SCRIPT_ERROR'));
+        },
+        { once: true }
+      );
       return;
     }
 
-    window.__onNaverMapsLoaded = () => {
-      resolve(window.naver.maps);
-      delete window.__onNaverMapsLoaded;
-    };
-
     const script = document.createElement('script');
-    script.id = 'naverMapsApiScript';
-    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(keyId)}&callback=__onNaverMapsLoaded`;
+    script.id = 'kakaoMapsApiScript';
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(appKey)}&autoload=false`;
     script.async = true;
     script.defer = true;
+    script.onload = finishLoading;
     script.onerror = () => {
-      naverMapState.loadPromise = null;
-      reject(new Error('NAVER_MAPS_SCRIPT_ERROR'));
+      kakaoMapState.loadPromise = null;
+      reject(new Error('KAKAO_MAPS_SCRIPT_ERROR'));
     };
     document.head.appendChild(script);
   });
 
-  return naverMapState.loadPromise;
+  return kakaoMapState.loadPromise;
 }
 
 function renderMapFallback(place, flowPlaces, reason = '') {
@@ -1294,7 +1313,7 @@ function renderMapFallback(place, flowPlaces, reason = '') {
     return;
   }
 
-  if (!getNaverMapsKeyId()) {
+  if (!getKakaoMapsAppKey()) {
     elements.routeChip.textContent = `API 키 필요 · ${flowPlaces.length}곳`;
     return;
   }
@@ -1304,69 +1323,65 @@ function renderMapFallback(place, flowPlaces, reason = '') {
   }
 }
 
-function renderNaverMap(place, flowPlaces) {
-  const renderToken = ++naverMapState.renderToken;
-  const waitingText = getNaverMapsKeyId()
-    ? '네이버 항공지도를 불러오는 중입니다.'
-    : 'NAVER_MAPS_KEY_ID를 넣으면 실제 항공지도가 표시됩니다.';
+function renderKakaoMap(place, flowPlaces) {
+  const renderToken = ++kakaoMapState.renderToken;
+  const waitingText = getKakaoMapsAppKey()
+    ? '카카오 하이브리드 지도를 불러오는 중입니다.'
+    : 'KAKAO_MAPS_APP_KEY를 넣으면 실제 카카오 지도가 표시됩니다.';
 
-  if (!getNaverMapsKeyId()) {
+  if (!getKakaoMapsAppKey()) {
     renderMapFallback(place, flowPlaces, 'missing-key');
     return;
   }
 
-  elements.routeMap.innerHTML = createNaverMapShell(waitingText);
+  elements.routeMap.innerHTML = createKakaoMapShell(waitingText);
 
-  loadNaverMapsApi()
+  loadKakaoMapsApi()
     .then(() => {
-      if (renderToken !== naverMapState.renderToken) {
+      if (renderToken !== kakaoMapState.renderToken) {
         return;
       }
 
-      const canvas = document.getElementById('naverMapCanvas');
+      const canvas = document.getElementById('kakaoMapCanvas');
       if (!canvas) {
         return;
       }
 
-      clearNaverMapObjects();
+      clearKakaoMapObjects();
 
       const center = place ? getFlowLatLng(place) : { lat: 35.824, lng: 127.148 };
-      const map = new naver.maps.Map(canvas, {
-        center: new naver.maps.LatLng(center.lat, center.lng),
-        zoom: 13,
-        minZoom: 11,
-        mapTypeId: naver.maps.MapTypeId.HYBRID,
-        logoControl: true,
-        scaleControl: false,
-        mapDataControl: false,
-        zoomControl: true,
-        zoomControlOptions: {
-          position: naver.maps.Position.TOP_RIGHT
-        }
+      const map = new kakao.maps.Map(canvas, {
+        center: new kakao.maps.LatLng(center.lat, center.lng),
+        level: 5
       });
 
-      naverMapState.map = map;
+      map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
 
-      const bounds = new naver.maps.LatLngBounds();
+      const mapTypeControl = new kakao.maps.MapTypeControl();
+      const zoomControl = new kakao.maps.ZoomControl();
+      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+      kakaoMapState.map = map;
+
+      const bounds = new kakao.maps.LatLngBounds();
 
       flowPlaces.forEach((item) => {
         const point = getFlowLatLng(item);
-        const position = new naver.maps.LatLng(point.lat, point.lng);
-        const marker = new naver.maps.Marker({
+        const position = new kakao.maps.LatLng(point.lat, point.lng);
+        const marker = new kakao.maps.Marker({
           map,
           position,
           title: `${item.flowLabel} · ${item.name}`,
-          icon: createMapMarkerIcon(item.flowLabel === '현재', themeMeta[place.theme].color)
+          image: createMapMarkerImage(item.flowLabel === '현재', themeMeta[place.theme].color)
         });
-        const infoWindow = new naver.maps.InfoWindow({
+        const infoWindow = new kakao.maps.InfoWindow({
           content: createInfoWindowContent(item),
-          borderWidth: 0,
-          disableAnchor: false,
-          backgroundColor: 'transparent'
+          removable: false
         });
 
-        naver.maps.Event.addListener(marker, 'click', () => {
-          naverMapState.infoWindows.forEach((windowRef) => windowRef.close());
+        kakao.maps.event.addListener(marker, 'click', () => {
+          kakaoMapState.infoWindows.forEach((windowRef) => windowRef.close());
           infoWindow.open(map, marker);
         });
 
@@ -1374,44 +1389,38 @@ function renderNaverMap(place, flowPlaces) {
           infoWindow.open(map, marker);
         }
 
-        naverMapState.markers.push(marker);
-        naverMapState.infoWindows.push(infoWindow);
+        kakaoMapState.markers.push(marker);
+        kakaoMapState.infoWindows.push(infoWindow);
         bounds.extend(position);
       });
 
       if (flowPlaces.length > 1) {
-        naverMapState.polyline = new naver.maps.Polyline({
+        kakaoMapState.polyline = new kakao.maps.Polyline({
           map,
           path: flowPlaces.map((item) => {
             const point = getFlowLatLng(item);
-            return new naver.maps.LatLng(point.lat, point.lng);
+            return new kakao.maps.LatLng(point.lat, point.lng);
           }),
           strokeColor: themeMeta[place.theme].color,
           strokeOpacity: 0.85,
           strokeWeight: 5,
-          strokeLineCap: 'round',
-          strokeLineJoin: 'round'
+          strokeStyle: 'solid'
         });
+
+        map.setBounds(bounds);
+      } else {
+        map.setCenter(new kakao.maps.LatLng(center.lat, center.lng));
       }
 
-      if (flowPlaces.length > 1) {
-        map.fitBounds(bounds, {
-          top: 48,
-          right: 48,
-          bottom: 48,
-          left: 48
-        });
-      }
-
-      const status = document.getElementById('naverMapStatus');
+      const status = document.getElementById('kakaoMapStatus');
       if (status) {
         status.remove();
       }
 
-      elements.routeChip.textContent = `실제 항공지도 · ${flowPlaces.length}곳`;
+      elements.routeChip.textContent = `실제 카카오 지도 · ${flowPlaces.length}곳`;
     })
     .catch(() => {
-      if (renderToken !== naverMapState.renderToken) {
+      if (renderToken !== kakaoMapState.renderToken) {
         return;
       }
 
@@ -1524,9 +1533,9 @@ function renderEmptyDetail() {
   elements.nearbyList.innerHTML = '';
   elements.detailNearbyText.textContent = '주변 권역 정보가 여기에 표시됩니다.';
   elements.detailCourse.textContent = '추천 코스 설명이 여기에 표시됩니다.';
-  elements.routeTitle.textContent = '네이버 항공지도 위치 흐름';
+  elements.routeTitle.textContent = '카카오 하이브리드 지도 위치 흐름';
   elements.routeChip.textContent = '장소 선택 대기';
-  renderNaverMap(null, []);
+  renderKakaoMap(null, []);
   elements.routeStops.innerHTML = '';
 }
 
@@ -1554,11 +1563,11 @@ function renderDetail(place) {
   elements.detailCourse.textContent = place.course;
   const flowPlaces = buildFlowPlaces(place);
 
-  elements.routeTitle.textContent = `${theme.label} 네이버 항공지도 위치 흐름`;
-  elements.routeChip.textContent = getNaverMapsKeyId()
-    ? `실제 항공지도 준비 중 · ${flowPlaces.length}곳`
+  elements.routeTitle.textContent = `${theme.label} 카카오 하이브리드 지도 위치 흐름`;
+  elements.routeChip.textContent = getKakaoMapsAppKey()
+    ? `실제 카카오 지도 준비 중 · ${flowPlaces.length}곳`
     : `API 키 필요 · ${flowPlaces.length}곳`;
-  renderNaverMap(place, flowPlaces);
+  renderKakaoMap(place, flowPlaces);
   renderRouteStops(place);
 }
 

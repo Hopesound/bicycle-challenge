@@ -771,19 +771,19 @@ body::after {
   background: #f5f1e6;
 }
 
-.naver-map-shell,
-.naver-map-canvas {
+.kakao-map-shell,
+.kakao-map-canvas {
   width: 100%;
   height: 100%;
   min-height: 260px;
 }
 
-.naver-map-shell {
+.kakao-map-shell {
   position: relative;
   overflow: hidden;
 }
 
-.naver-map-status {
+.kakao-map-status {
   position: absolute;
   left: 16px;
   bottom: 16px;
@@ -797,7 +797,7 @@ body::after {
   backdrop-filter: blur(10px);
 }
 
-.naver-info-window {
+.kakao-info-window {
   display: grid;
   gap: 4px;
   min-width: 144px;
@@ -808,13 +808,13 @@ body::after {
   box-shadow: 0 14px 28px rgba(28, 54, 33, 0.16);
 }
 
-.naver-info-window strong {
+.kakao-info-window strong {
   color: #173120;
   font-size: 0.92rem;
   line-height: 1.35;
 }
 
-.naver-info-window span {
+.kakao-info-window span {
   color: var(--text-sub);
   font-size: 0.78rem;
   line-height: 1.3;
