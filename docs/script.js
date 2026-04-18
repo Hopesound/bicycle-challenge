@@ -631,12 +631,67 @@ const placeImages = {
   '돈까스 현': 'https://d12zq4w4guyljn.cloudfront.net/750_750_20241106104058_photo1_XwBUxFtiFlIY.webp'
 };
 
+const placePositions = {
+  '풍남문': [152, 148],
+  '경기전': [164, 136],
+  '남부시장': [144, 156],
+  '동물원': [204, 74],
+  '덕진공원': [176, 92],
+  '전주수목원': [54, 82],
+  '전주국립박물관': [92, 142],
+  '완산공원': [112, 116],
+  '전주월드컵경기장': [72, 64],
+  '기지제': [36, 92],
+  '자만벽화마을': [214, 126],
+  '아중저수지': [248, 102],
+  '팔복예술공장': [92, 120],
+  '오목대': [188, 128],
+  '이목대': [196, 120],
+  '전라감영': [176, 144],
+  '건지산 편백나무숲': [158, 58],
+  '서학동 예술마을': [192, 164],
+  '하얀양옥집(도지사관사)': [118, 146],
+  '치명자산': [84, 132],
+  '아태무형문화유산전당': [206, 148],
+  '남고사': [118, 100],
+  '삼천동막걸리골목': [86, 194],
+  '전주공동체라디오 전주FM': [192, 152],
+  '전주시립도서관꽃심': [108, 174],
+  '전북대학교 자연사박물관': [150, 80],
+  '전주시민기록관': [186, 146],
+  '전주3.1운동 발상지': [168, 150],
+  '다가공원(호국 영렬탑)': [154, 124],
+  '전북지역독립운동추념탑': [148, 116],
+  '효자공원묘지': [58, 204],
+  '전북환경운동연합': [62, 158],
+  '전주의료생활협동조합': [78, 164],
+  '우석대학교 부속 전주한방병원': [98, 168],
+  '바이크박스': [104, 160],
+  '돈까스 현': [92, 182]
+};
+
+const mapGeoBounds = {
+  north: 35.91,
+  south: 35.74,
+  west: 126.88,
+  east: 127.23
+};
+
 const allPlaces = derivePlaces();
 
 const state = {
   theme: 'all',
   search: '',
   selected: allPlaces[0]?.name || ''
+};
+
+const naverMapState = {
+  loadPromise: null,
+  renderToken: 0,
+  map: null,
+  markers: [],
+  infoWindows: [],
+  polyline: null
 };
 
 const elements = {
@@ -668,6 +723,16 @@ const elements = {
   routeStops: document.getElementById('routeStops')
 };
 
+function projectPositionToLatLng(position) {
+  const [x, y] = position;
+  const lng =
+    mapGeoBounds.west + (x / 320) * (mapGeoBounds.east - mapGeoBounds.west);
+  const lat =
+    mapGeoBounds.north - (y / 220) * (mapGeoBounds.north - mapGeoBounds.south);
+
+  return { lat, lng };
+}
+
 function focusDetailOnMobile() {
   if (!elements.detailPanel) {
     return;
@@ -696,6 +761,8 @@ function derivePlaces() {
   sorted.forEach((place, index) => {
     place.alphaOrder = index + 1;
     place.imageUrl = placeImages[place.name] || '';
+    place.position = placePositions[place.name] || [160, 110];
+    place.latLng = projectPositionToLatLng(place.position);
     place.searchText = [
       place.name,
       ...(place.aliases || []),
@@ -768,6 +835,159 @@ function buildPolyline(points) {
   return points.map(([x, y]) => `${x},${y}`).join(' ');
 }
 
+function findPlaceByName(name) {
+  return allPlaces.find((place) => {
+    if (place.name === name) {
+      return true;
+    }
+
+    return (place.aliases || []).includes(name);
+  });
+}
+
+function shortenPlaceLabel(name) {
+  const compact = name
+    .replace(/\(.*?\)/g, '')
+    .replace('우석대학교 부속 ', '')
+    .replace('전주공동체라디오 ', '')
+    .replace('전주시립도서관', '')
+    .trim();
+
+  if (compact.length <= 8) {
+    return compact;
+  }
+
+  return `${compact.slice(0, 8)}…`;
+}
+
+function buildFlowPlaces(place) {
+  const themePlaces = getThemePlaces(place.theme);
+  const currentIndex = themePlaces.findIndex((item) => item.name === place.name);
+  const flowPlaces = [];
+
+  const pushPlace = (target, label) => {
+    if (!target || flowPlaces.some((item) => item.name === target.name)) {
+      return;
+    }
+
+    flowPlaces.push({
+      ...target,
+      flowLabel: label,
+      position: target.position || placePositions[target.name] || [160, 110]
+    });
+  };
+
+  pushPlace(themePlaces[currentIndex - 1], '이전');
+  pushPlace(place, '현재');
+  pushPlace(themePlaces[currentIndex + 1], '다음');
+
+  place.nearby
+    .map((name) => findPlaceByName(name))
+    .forEach((target) => pushPlace(target, '연결'));
+
+  if (flowPlaces.length < 3) {
+    themePlaces.forEach((target) => pushPlace(target, '테마'));
+  }
+
+  return flowPlaces.slice(0, 5);
+}
+
+function createAerialMap(place, flowPlaces = []) {
+  const route = flowPlaces.length > 1 ? buildPolyline(flowPlaces.map((item) => item.position)) : '';
+  const markers = flowPlaces
+    .map((item) => {
+      const [x, y] = item.position;
+      const label = shortenPlaceLabel(item.name);
+      const width = Math.max(64, label.length * 9 + 18);
+      const alignRight = x > 182;
+      const labelX = alignRight ? -width - 14 : 14;
+      const labelY = y < 68 ? 16 : -40;
+      const labelRectX = alignRight ? -width : 0;
+      const labelTextX = alignRight ? -(width / 2) : width / 2;
+
+      return `
+        <g class="aerial-point${item.flowLabel === '현재' ? ' current' : ''}" transform="translate(${x} ${y})">
+          <circle class="point-halo" r="${item.flowLabel === '현재' ? 18 : 13}"></circle>
+          <path class="point-pin" d="M0 -12 C6.6 -12 12 -6.6 12 0 C12 8.8 0 20 0 20 C0 20 -12 8.8 -12 0 C-12 -6.6 -6.6 -12 0 -12 Z"></path>
+          <circle class="point-core" r="${item.flowLabel === '현재' ? 4.8 : 3.8}"></circle>
+          <g class="point-label" transform="translate(${labelX} ${labelY})">
+            <rect x="${labelRectX}" y="0" width="${width}" height="26" rx="13"></rect>
+            <text x="${labelTextX}" y="17">${label}</text>
+          </g>
+        </g>
+      `;
+    })
+    .join('');
+
+  const focusCard = place
+    ? `
+        <g class="aerial-focus-card" transform="translate(18 16)">
+          <rect x="0" y="0" width="116" height="44" rx="16"></rect>
+          <text class="focus-kicker" x="16" y="18">전주 항공사진형 오버뷰</text>
+          <text class="focus-name" x="16" y="34">${shortenPlaceLabel(place.name)}</text>
+        </g>
+      `
+    : '';
+
+  return `
+    <svg class="aerial-svg" viewBox="0 0 320 220" aria-hidden="true" role="img">
+      <defs>
+        <linearGradient id="aerialBase" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5f7f61"></stop>
+          <stop offset="34%" stop-color="#8e9c72"></stop>
+          <stop offset="66%" stop-color="#6f8774"></stop>
+          <stop offset="100%" stop-color="#536a57"></stop>
+        </linearGradient>
+        <filter id="aerialSoft">
+          <feGaussianBlur stdDeviation="10"></feGaussianBlur>
+        </filter>
+      </defs>
+      <rect class="aerial-base" x="0" y="0" width="320" height="220" rx="26"></rect>
+      <g class="aerial-terrain" filter="url(#aerialSoft)">
+        <ellipse cx="74" cy="72" rx="72" ry="48"></ellipse>
+        <ellipse cx="238" cy="62" rx="70" ry="38"></ellipse>
+        <ellipse cx="92" cy="176" rx="86" ry="36"></ellipse>
+        <ellipse cx="262" cy="162" rx="92" ry="42"></ellipse>
+      </g>
+      <path class="aerial-river" d="M18 170 C54 158, 88 166, 116 150 S172 114, 212 126 S278 166, 304 156"></path>
+      <path class="aerial-water-shadow" d="M18 176 C54 164, 88 172, 116 156 S172 120, 212 132 S278 172, 304 162"></path>
+      <g class="aerial-roads">
+        <path d="M20 38 C78 44, 114 62, 176 58 S264 36, 300 44"></path>
+        <path d="M54 18 C70 52, 86 88, 106 126 S136 184, 154 206"></path>
+        <path d="M132 18 C140 44, 150 70, 168 100 S194 162, 214 200"></path>
+        <path d="M226 18 C230 42, 238 70, 254 100 S282 154, 300 188"></path>
+        <path d="M18 122 C60 114, 94 108, 134 110 S224 118, 300 108"></path>
+      </g>
+      <g class="aerial-blocks">
+        <rect x="34" y="42" width="30" height="18" rx="5"></rect>
+        <rect x="74" y="48" width="40" height="20" rx="5"></rect>
+        <rect x="128" y="38" width="46" height="22" rx="5"></rect>
+        <rect x="194" y="44" width="44" height="20" rx="5"></rect>
+        <rect x="246" y="46" width="36" height="18" rx="5"></rect>
+        <rect x="32" y="92" width="34" height="22" rx="5"></rect>
+        <rect x="78" y="88" width="42" height="24" rx="5"></rect>
+        <rect x="132" y="84" width="56" height="26" rx="6"></rect>
+        <rect x="204" y="84" width="50" height="24" rx="6"></rect>
+        <rect x="264" y="88" width="26" height="20" rx="5"></rect>
+        <rect x="34" y="142" width="40" height="22" rx="6"></rect>
+        <rect x="92" y="136" width="48" height="24" rx="6"></rect>
+        <rect x="156" y="142" width="46" height="22" rx="6"></rect>
+        <rect x="220" y="138" width="54" height="26" rx="6"></rect>
+      </g>
+      ${
+        route
+          ? `
+            <polyline class="aerial-flow-base" points="${route}"></polyline>
+            <polyline class="aerial-flow-main" points="${route}"></polyline>
+          `
+          : ''
+      }
+      ${focusCard}
+      ${markers}
+    </svg>
+  `;
+}
+
 function createRouteMap(themeKey, stepIndex, totalCount) {
   const points = routeShapes[themeKey] || routeShapes.all || routeShapes.history;
   const currentIndex =
@@ -805,27 +1025,254 @@ function createRouteMap(themeKey, stepIndex, totalCount) {
 }
 
 function buildRouteStops(place) {
-  const themePlaces = getThemePlaces(place.theme);
-  const currentIndex = themePlaces.findIndex((item) => item.name === place.name);
-  const stops = [];
+  return buildFlowPlaces(place).map((item) => ({
+    label: item.flowLabel,
+    name: item.name
+  }));
+}
 
-  if (themePlaces[currentIndex - 1]) {
-    stops.push({ label: '이전', name: themePlaces[currentIndex - 1].name });
+function getNaverMapsKeyId() {
+  return String(window.NAVER_MAPS_KEY_ID || '').trim();
+}
+
+function getFlowLatLng(item) {
+  return item.latLng || projectPositionToLatLng(item.position || [160, 110]);
+}
+
+function createMapPinSvg(fill, innerFill) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" viewBox="0 0 34 44">
+      <path fill="${fill}" d="M17 0C7.61 0 0 7.61 0 17c0 11.92 14.79 25.55 15.42 26.12a2.3 2.3 0 0 0 3.16 0C19.21 42.55 34 28.92 34 17 34 7.61 26.39 0 17 0z"/>
+      <circle cx="17" cy="17" r="7.3" fill="${innerFill}"/>
+    </svg>
+  `;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function createMapMarkerIcon(isCurrent, color) {
+  const fill = isCurrent ? '#ff8c42' : color;
+  const innerFill = isCurrent ? '#fff4e8' : '#ffffff';
+
+  return {
+    url: createMapPinSvg(fill, innerFill),
+    size: new naver.maps.Size(34, 44),
+    scaledSize: new naver.maps.Size(34, 44),
+    anchor: new naver.maps.Point(17, 42)
+  };
+}
+
+function createInfoWindowContent(item) {
+  return `
+    <div class="naver-info-window">
+      <strong>${item.name}</strong>
+      <span>${item.flowLabel}</span>
+    </div>
+  `;
+}
+
+function createNaverMapShell(statusText = '') {
+  return `
+    <div class="naver-map-shell">
+      <div class="naver-map-canvas" id="naverMapCanvas"></div>
+      ${
+        statusText
+          ? `<div class="naver-map-status" id="naverMapStatus">${statusText}</div>`
+          : ''
+      }
+    </div>
+  `;
+}
+
+function clearNaverMapObjects() {
+  naverMapState.markers.forEach((marker) => marker.setMap(null));
+  naverMapState.infoWindows.forEach((infoWindow) => infoWindow.close());
+
+  if (naverMapState.polyline) {
+    naverMapState.polyline.setMap(null);
   }
 
-  stops.push({ label: '현재', name: place.name });
+  naverMapState.markers = [];
+  naverMapState.infoWindows = [];
+  naverMapState.polyline = null;
+}
 
-  if (themePlaces[currentIndex + 1]) {
-    stops.push({ label: '다음', name: themePlaces[currentIndex + 1].name });
+function loadNaverMapsApi() {
+  if (window.naver?.maps) {
+    return Promise.resolve(window.naver.maps);
   }
 
-  place.nearby.forEach((name) => {
-    if (stops.length < 4 && !stops.some((stop) => stop.name === name)) {
-      stops.push({ label: '주변', name });
+  if (naverMapState.loadPromise) {
+    return naverMapState.loadPromise;
+  }
+
+  const keyId = getNaverMapsKeyId();
+
+  if (!keyId) {
+    return Promise.reject(new Error('NAVER_MAPS_KEY_ID_MISSING'));
+  }
+
+  naverMapState.loadPromise = new Promise((resolve, reject) => {
+    const existingScript = document.getElementById('naverMapsApiScript');
+
+    if (existingScript) {
+      existingScript.addEventListener('load', () => resolve(window.naver.maps), { once: true });
+      existingScript.addEventListener('error', () => reject(new Error('NAVER_MAPS_SCRIPT_ERROR')), {
+        once: true
+      });
+      return;
     }
+
+    window.__onNaverMapsLoaded = () => {
+      resolve(window.naver.maps);
+      delete window.__onNaverMapsLoaded;
+    };
+
+    const script = document.createElement('script');
+    script.id = 'naverMapsApiScript';
+    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(keyId)}&callback=__onNaverMapsLoaded`;
+    script.async = true;
+    script.defer = true;
+    script.onerror = () => {
+      naverMapState.loadPromise = null;
+      reject(new Error('NAVER_MAPS_SCRIPT_ERROR'));
+    };
+    document.head.appendChild(script);
   });
 
-  return stops.slice(0, 4);
+  return naverMapState.loadPromise;
+}
+
+function renderMapFallback(place, flowPlaces, reason = '') {
+  elements.routeMap.innerHTML = createAerialMap(place, flowPlaces);
+
+  if (!place) {
+    return;
+  }
+
+  if (!getNaverMapsKeyId()) {
+    elements.routeChip.textContent = `API 키 필요 · ${flowPlaces.length}곳`;
+    return;
+  }
+
+  if (reason) {
+    elements.routeChip.textContent = `지도 대체 보기 · ${flowPlaces.length}곳`;
+  }
+}
+
+function renderNaverMap(place, flowPlaces) {
+  const renderToken = ++naverMapState.renderToken;
+  const waitingText = getNaverMapsKeyId()
+    ? '네이버 항공지도를 불러오는 중입니다.'
+    : 'NAVER_MAPS_KEY_ID를 넣으면 실제 항공지도가 표시됩니다.';
+
+  if (!getNaverMapsKeyId()) {
+    renderMapFallback(place, flowPlaces, 'missing-key');
+    return;
+  }
+
+  elements.routeMap.innerHTML = createNaverMapShell(waitingText);
+
+  loadNaverMapsApi()
+    .then(() => {
+      if (renderToken !== naverMapState.renderToken) {
+        return;
+      }
+
+      const canvas = document.getElementById('naverMapCanvas');
+      if (!canvas) {
+        return;
+      }
+
+      clearNaverMapObjects();
+
+      const center = place ? getFlowLatLng(place) : { lat: 35.824, lng: 127.148 };
+      const map = new naver.maps.Map(canvas, {
+        center: new naver.maps.LatLng(center.lat, center.lng),
+        zoom: 13,
+        minZoom: 11,
+        mapTypeId: naver.maps.MapTypeId.HYBRID,
+        logoControl: true,
+        scaleControl: false,
+        mapDataControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: naver.maps.Position.TOP_RIGHT
+        }
+      });
+
+      naverMapState.map = map;
+
+      const bounds = new naver.maps.LatLngBounds();
+
+      flowPlaces.forEach((item) => {
+        const point = getFlowLatLng(item);
+        const position = new naver.maps.LatLng(point.lat, point.lng);
+        const marker = new naver.maps.Marker({
+          map,
+          position,
+          title: `${item.flowLabel} · ${item.name}`,
+          icon: createMapMarkerIcon(item.flowLabel === '현재', themeMeta[place.theme].color)
+        });
+        const infoWindow = new naver.maps.InfoWindow({
+          content: createInfoWindowContent(item),
+          borderWidth: 0,
+          disableAnchor: false,
+          backgroundColor: 'transparent'
+        });
+
+        naver.maps.Event.addListener(marker, 'click', () => {
+          naverMapState.infoWindows.forEach((windowRef) => windowRef.close());
+          infoWindow.open(map, marker);
+        });
+
+        if (item.flowLabel === '현재') {
+          infoWindow.open(map, marker);
+        }
+
+        naverMapState.markers.push(marker);
+        naverMapState.infoWindows.push(infoWindow);
+        bounds.extend(position);
+      });
+
+      if (flowPlaces.length > 1) {
+        naverMapState.polyline = new naver.maps.Polyline({
+          map,
+          path: flowPlaces.map((item) => {
+            const point = getFlowLatLng(item);
+            return new naver.maps.LatLng(point.lat, point.lng);
+          }),
+          strokeColor: themeMeta[place.theme].color,
+          strokeOpacity: 0.85,
+          strokeWeight: 5,
+          strokeLineCap: 'round',
+          strokeLineJoin: 'round'
+        });
+      }
+
+      if (flowPlaces.length > 1) {
+        map.fitBounds(bounds, {
+          top: 48,
+          right: 48,
+          bottom: 48,
+          left: 48
+        });
+      }
+
+      const status = document.getElementById('naverMapStatus');
+      if (status) {
+        status.remove();
+      }
+
+      elements.routeChip.textContent = `실제 항공지도 · ${flowPlaces.length}곳`;
+    })
+    .catch(() => {
+      if (renderToken !== naverMapState.renderToken) {
+        return;
+      }
+
+      renderMapFallback(place, flowPlaces, 'load-error');
+    });
 }
 
 function renderHeroPhoto(place) {
@@ -933,9 +1380,9 @@ function renderEmptyDetail() {
   elements.nearbyList.innerHTML = '';
   elements.detailNearbyText.textContent = '주변 권역 정보가 여기에 표시됩니다.';
   elements.detailCourse.textContent = '추천 코스 설명이 여기에 표시됩니다.';
-  elements.routeTitle.textContent = '추천 연결 흐름';
-  elements.routeChip.textContent = '0단계';
-  elements.routeMap.innerHTML = createRouteMap('all', 0, 1);
+  elements.routeTitle.textContent = '네이버 항공지도 위치 흐름';
+  elements.routeChip.textContent = '장소 선택 대기';
+  renderNaverMap(null, []);
   elements.routeStops.innerHTML = '';
 }
 
@@ -961,9 +1408,13 @@ function renderDetail(place) {
     .join('');
   elements.detailNearbyText.textContent = place.nearbyText;
   elements.detailCourse.textContent = place.course;
-  elements.routeTitle.textContent = `${theme.label} 추천 연결 흐름`;
-  elements.routeChip.textContent = `${place.themeOrder}번째 포인트`;
-  elements.routeMap.innerHTML = createRouteMap(place.theme, place.themeOrder - 1, place.themeCount);
+  const flowPlaces = buildFlowPlaces(place);
+
+  elements.routeTitle.textContent = `${theme.label} 네이버 항공지도 위치 흐름`;
+  elements.routeChip.textContent = getNaverMapsKeyId()
+    ? `실제 항공지도 준비 중 · ${flowPlaces.length}곳`
+    : `API 키 필요 · ${flowPlaces.length}곳`;
+  renderNaverMap(place, flowPlaces);
   elements.routeStops.innerHTML = buildRouteStops(place)
     .map(
       (stop) => `

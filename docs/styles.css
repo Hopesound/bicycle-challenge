@@ -643,22 +643,32 @@ body::after {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 22px;
-  background: linear-gradient(180deg, rgba(20, 46, 26, 0.04) 32%, rgba(20, 46, 26, 0.56) 100%);
+  align-items: center;
+  padding: 22px 22px 18px;
+  background: linear-gradient(180deg, rgba(20, 46, 26, 0.02) 34%, rgba(20, 46, 26, 0.18) 62%, rgba(20, 46, 26, 0.42) 100%);
   color: #ffffff;
 }
 
+.detail-hero-copy {
+  width: min(78%, 560px);
+  padding: 0 18px 14px;
+  text-align: center;
+}
+
 .detail-hero-overlay strong {
+  display: block;
   font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   line-height: 1.28;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 14px rgba(10, 24, 15, 0.34);
 }
 
 .detail-hero-overlay p {
   margin: 10px 0 0;
-  max-width: 46ch;
-  color: rgba(255, 255, 255, 0.92);
-  line-height: 1.7;
+  max-width: none;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.65;
+  text-shadow: 0 2px 14px rgba(10, 24, 15, 0.28);
 }
 
 .meta-grid {
@@ -754,11 +764,173 @@ body::after {
 
 .route-map {
   margin-top: 14px;
-  min-height: 168px;
+  min-height: 260px;
   overflow: hidden;
   border-radius: 20px;
   border: 1px solid rgba(36, 67, 43, 0.08);
   background: #f5f1e6;
+}
+
+.naver-map-shell,
+.naver-map-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+}
+
+.naver-map-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.naver-map-status {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(16, 36, 21, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.82rem;
+  line-height: 1.3;
+  backdrop-filter: blur(10px);
+}
+
+.naver-info-window {
+  display: grid;
+  gap: 4px;
+  min-width: 144px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(28, 54, 33, 0.1);
+  box-shadow: 0 14px 28px rgba(28, 54, 33, 0.16);
+}
+
+.naver-info-window strong {
+  color: #173120;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.naver-info-window span {
+  color: var(--text-sub);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.aerial-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.aerial-base {
+  fill: url(#aerialBase);
+}
+
+.aerial-terrain ellipse {
+  fill: rgba(47, 89, 51, 0.34);
+}
+
+.aerial-river {
+  fill: none;
+  stroke: rgba(117, 197, 216, 0.92);
+  stroke-width: 26;
+  stroke-linecap: round;
+}
+
+.aerial-water-shadow {
+  fill: none;
+  stroke: rgba(45, 105, 128, 0.18);
+  stroke-width: 34;
+  stroke-linecap: round;
+}
+
+.aerial-roads path {
+  fill: none;
+  stroke: rgba(234, 226, 210, 0.82);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.aerial-blocks rect {
+  fill: rgba(249, 243, 232, 0.2);
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1;
+}
+
+.aerial-flow-base {
+  fill: none;
+  stroke: rgba(18, 40, 24, 0.26);
+  stroke-width: 13;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.aerial-flow-main {
+  fill: none;
+  stroke: var(--theme-main);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 0;
+}
+
+.aerial-point .point-halo {
+  fill: rgba(255, 255, 255, 0.16);
+}
+
+.aerial-point .point-pin {
+  fill: rgba(255, 255, 255, 0.92);
+  stroke: rgba(24, 48, 32, 0.18);
+  stroke-width: 1.5;
+}
+
+.aerial-point .point-core {
+  fill: var(--theme-main);
+}
+
+.aerial-point.current .point-pin {
+  fill: #fffcf8;
+}
+
+.aerial-point.current .point-core {
+  fill: #ff8c42;
+}
+
+.aerial-point .point-label rect {
+  fill: rgba(255, 255, 255, 0.92);
+  stroke: rgba(29, 58, 35, 0.14);
+  stroke-width: 1;
+}
+
+.aerial-point .point-label text {
+  fill: #16321f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-anchor: middle;
+}
+
+.aerial-focus-card rect {
+  fill: rgba(15, 32, 19, 0.76);
+}
+
+.aerial-focus-card text {
+  fill: #ffffff;
+}
+
+.aerial-focus-card .focus-kicker {
+  font-size: 11px;
+  opacity: 0.74;
+}
+
+.aerial-focus-card .focus-name {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .route-svg {
@@ -895,6 +1067,15 @@ body::after {
 
   .place-list {
     max-height: none;
+  }
+
+  .detail-hero-overlay {
+    padding: 16px 14px 14px;
+  }
+
+  .detail-hero-copy {
+    width: min(92%, 100%);
+    padding: 0 8px 10px;
   }
 
   .place-item-top {
