@@ -592,6 +592,45 @@ const routeShapes = {
   ]
 };
 
+const placeImages = {
+  '풍남문': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/163599143544279.jpg',
+  '경기전': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176352730702312.jpg',
+  '남부시장': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176345145441142.jpg',
+  '동물원': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/173225353559003.jpg',
+  '덕진공원': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/173165947742003.jpg',
+  '전주수목원': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000022/177207349358436.jpg',
+  '전주국립박물관': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176094585179723.jpg',
+  '완산공원': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/172351329982410.jpg',
+  '전주월드컵경기장': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176345942496080.jpg',
+  '기지제': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171521521467123.jpg',
+  '자만벽화마을': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176214832141895.jpg',
+  '아중저수지': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/173225466963822.jpg',
+  '팔복예술공장': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175066192675612.jpg',
+  '오목대': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175317831898777.jpg',
+  '이목대': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175317831898777.jpg',
+  '전라감영': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/169925393272395.jpg',
+  '건지산 편백나무숲': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000022/172491260329284.jpg',
+  '서학동 예술마을': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/177217586697779.jpg',
+  '하얀양옥집(도지사관사)': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176465121839708.jpg',
+  '치명자산': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176353381757141.jpg',
+  '아태무형문화유산전당': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/172428853775507.jpg',
+  '남고사': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171516222089096.jpg',
+  '삼천동막걸리골목': 'https://image.fnnews.com/resource/media/image/2020/10/20/202010201659218330_l.jpg',
+  '전주공동체라디오 전주FM': 'https://contents.sixshop.com/uploadedFiles/207956/default/image_1690505965557.jpg',
+  '전주시립도서관꽃심': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/164394227638520.jpg',
+  '전북대학교 자연사박물관': 'https://nhm.jbnu.ac.kr/sites/nhm/atchmnfl_mngr/imageSlide/850/temp_1533024189384100.jpg',
+  '전주시민기록관': 'https://cdn.pressian.com/data/photos/cdn/20191249/art_1575251410.jpg',
+  '전주3.1운동 발상지': 'https://cdn.jjan.kr/data2/content/image/2018/12/09/.cache/512/20181209238239.jpg',
+  '다가공원(호국 영렬탑)': 'https://cdn.jjan.kr/data2/content/image/2025/06/16/.cache/512/20250616580272.jpg',
+  '전북지역독립운동추념탑': 'https://www.domin.co.kr/news/thumbnail/201908/1259224_377673_345_v150.jpg',
+  '효자공원묘지': 'https://image.fnnews.com/resource/media/image/2025/09/22/202509221411137820_l.jpg',
+  '전북환경운동연합': 'https://image.thum.io/get/width/1200/crop/800/https://greenjeonbuk.org/',
+  '전주의료생활협동조합': 'https://cdn.jjan.kr/data2/content/image/2004/08/11/.cache/512/20040811003590.jpg',
+  '우석대학교 부속 전주한방병원': 'https://image.fnnews.com/resource/media/image/2025/02/26/202502261339217097_l.jpg',
+  '바이크박스': 'https://image.thum.io/get/width/1200/crop/800/https://www.daangn.com/kr/local-profile/%EB%B0%94%EC%9D%B4%ED%81%AC%EB%B0%95%EC%8A%A4-vtfb9fam7fso/',
+  '돈까스 현': 'https://d12zq4w4guyljn.cloudfront.net/750_750_20241106104058_photo1_XwBUxFtiFlIY.webp'
+};
+
 const allPlaces = derivePlaces();
 
 const state = {
@@ -606,18 +645,19 @@ const elements = {
   searchInput: document.getElementById('searchInput'),
   filteredCount: document.getElementById('filteredCount'),
   placeList: document.getElementById('placeList'),
+  detailPanel: document.querySelector('.detail-panel'),
   detailThemeLabel: document.getElementById('detailThemeLabel'),
   detailTitle: document.getElementById('detailTitle'),
   detailSubtitle: document.getElementById('detailSubtitle'),
   detailThemeBadge: document.getElementById('detailThemeBadge'),
   detailOrder: document.getElementById('detailOrder'),
   detailHero: document.getElementById('detailHero'),
+  detailPhoto: document.getElementById('detailPhoto'),
   detailHeroTitle: document.getElementById('detailHeroTitle'),
   detailHeroText: document.getElementById('detailHeroText'),
   detailDistrict: document.getElementById('detailDistrict'),
   detailTheme: document.getElementById('detailTheme'),
   detailMood: document.getElementById('detailMood'),
-  detailSequence: document.getElementById('detailSequence'),
   detailIntro: document.getElementById('detailIntro'),
   nearbyList: document.getElementById('nearbyList'),
   detailNearbyText: document.getElementById('detailNearbyText'),
@@ -628,11 +668,34 @@ const elements = {
   routeStops: document.getElementById('routeStops')
 };
 
+function focusDetailOnMobile() {
+  if (!elements.detailPanel) {
+    return;
+  }
+
+  if (!window.matchMedia('(max-width: 1240px)').matches) {
+    return;
+  }
+
+  elements.detailPanel.classList.add('mobile-focus');
+  window.setTimeout(() => {
+    elements.detailPanel.classList.remove('mobile-focus');
+  }, 1600);
+
+  window.requestAnimationFrame(() => {
+    elements.detailPanel.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+}
+
 function derivePlaces() {
   const sorted = [...places].sort((a, b) => collator.compare(a.name, b.name));
 
   sorted.forEach((place, index) => {
     place.alphaOrder = index + 1;
+    place.imageUrl = placeImages[place.name] || '';
     place.searchText = [
       place.name,
       ...(place.aliases || []),
@@ -765,6 +828,30 @@ function buildRouteStops(place) {
   return stops.slice(0, 4);
 }
 
+function renderHeroPhoto(place) {
+  if (!elements.detailPhoto) {
+    return;
+  }
+
+  if (!place || !place.imageUrl) {
+    elements.detailPhoto.classList.add('is-hidden');
+    elements.detailPhoto.removeAttribute('src');
+    elements.detailPhoto.alt = '';
+    elements.detailPhoto.onerror = null;
+    return;
+  }
+
+  elements.detailPhoto.onerror = () => {
+    elements.detailPhoto.classList.add('is-hidden');
+    elements.detailPhoto.removeAttribute('src');
+    elements.detailPhoto.alt = '';
+    elements.detailPhoto.onerror = null;
+  };
+  elements.detailPhoto.src = place.imageUrl;
+  elements.detailPhoto.alt = `${place.name} 대표 이미지`;
+  elements.detailPhoto.classList.remove('is-hidden');
+}
+
 function renderThemeTabs() {
   const tabs = Object.keys(themeMeta).map((themeKey) => {
     const count =
@@ -836,12 +923,12 @@ function renderEmptyDetail() {
   elements.detailThemeBadge.textContent = '선택 대기';
   elements.detailOrder.textContent = '0 / 0';
   elements.detailHero.className = 'detail-hero scene-park';
+  renderHeroPhoto(null);
   elements.detailHeroTitle.textContent = '전주의 숨은 보물 36곳';
   elements.detailHeroText.textContent = '각 장소의 소개, 주변 볼거리, 추천 코스를 한 화면에서 볼 수 있도록 구성했습니다.';
   elements.detailDistrict.textContent = '-';
   elements.detailTheme.textContent = '-';
   elements.detailMood.textContent = themeMeta.all.mood;
-  elements.detailSequence.textContent = '가나다 선택 대기';
   elements.detailIntro.textContent = '왼쪽 목록에서 장소를 선택하면 상세 소개가 표시됩니다.';
   elements.nearbyList.innerHTML = '';
   elements.detailNearbyText.textContent = '주변 권역 정보가 여기에 표시됩니다.';
@@ -862,12 +949,12 @@ function renderDetail(place) {
   elements.detailThemeBadge.textContent = theme.label;
   elements.detailOrder.textContent = `${place.themeOrder} / ${place.themeCount}`;
   elements.detailHero.className = `detail-hero ${place.scene}`;
+  renderHeroPhoto(place);
   elements.detailHeroTitle.textContent = place.name;
   elements.detailHeroText.textContent = place.tagline;
   elements.detailDistrict.textContent = place.district;
   elements.detailTheme.textContent = `${theme.label} 테마`;
   elements.detailMood.textContent = theme.mood;
-  elements.detailSequence.textContent = `가나다 ${String(place.alphaOrder).padStart(2, '0')}번`;
   elements.detailIntro.textContent = place.intro;
   elements.nearbyList.innerHTML = place.nearby
     .map((item) => `<span class="nearby-chip">${item}</span>`)
@@ -904,7 +991,9 @@ function render() {
   const filtered = getFilteredPlaces();
   const selectedPlace = ensureSelectedPlace(filtered);
 
-  elements.statCurrent.textContent = `${allPlaces.length}곳`;
+  if (elements.statCurrent) {
+    elements.statCurrent.textContent = `${allPlaces.length}곳`;
+  }
   elements.filteredCount.textContent = `${filtered.length}곳`;
   renderThemeTabs();
   renderPlaceList(filtered);
@@ -949,6 +1038,7 @@ elements.placeList.addEventListener('click', (event) => {
 
   state.selected = button.dataset.name;
   render();
+  focusDetailOnMobile();
 });
 
 elements.searchInput.addEventListener('input', (event) => {

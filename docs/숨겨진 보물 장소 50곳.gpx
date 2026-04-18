@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" creator="ROUTEEDITOR1" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <desc>Created/Modified by using GPS Route Editor.</desc>
+    <link href="http://www.gpsnote.net">
+      <text>GpsNote.NET</text>
+    </link>
+  </metadata>
+  <wpt lat="35.8135153317097" lon="127.147602438927">
+    <name>풍남문</name>
+  </wpt>
+  <wpt lat="35.8148682152945" lon="127.150145173073">
+    <name>경기전</name>
+  </wpt>
+  <wpt lat="35.8124669398318" lon="127.147505879402">
+    <name>남부시장</name>
+  </wpt>
+  <wpt lat="35.8551179131216" lon="127.144303321838">
+    <name>동물원</name>
+  </wpt>
+  <wpt lat="35.8489784905044" lon="127.122995853424">
+    <name>덕진공원</name>
+  </wpt>
+  <wpt lat="35.8705165540249" lon="127.054073810577">
+    <name>전주수목원</name>
+  </wpt>
+  <wpt lat="35.8006074024011" lon="127.092150449753">
+    <name>전주국립박물관</name>
+  </wpt>
+  <wpt lat="35.8041880729844" lon="127.142972946167">
+    <name>완산공원</name>
+  </wpt>
+  <wpt lat="35.8681604341289" lon="127.064588069916">
+    <name>전주월드컵경기장</name>
+  </wpt>
+  <wpt lat="35.8424167832261" lon="127.069708406925">
+    <name>기지제</name>
+  </wpt>
+  <wpt lat="35.8137980906344" lon="127.15723156929">
+    <name>자만벽화마을</name>
+  </wpt>
+  <wpt lat="35.8256447845595" lon="127.174612283707">
+    <name>아중저수지</name>
+  </wpt>
+  <wpt lat="35.8605308198508" lon="127.101028561592">
+    <name>팔복예술공장</name>
+  </wpt>
+  <wpt lat="35.8143549052655" lon="127.154584228992">
+    <name>오목대</name>
+  </wpt>
+  <wpt lat="35.8143744807088" lon="127.156276702881">
+    <name>이목대</name>
+  </wpt>
+  <wpt lat="35.8161449508471" lon="127.146036028862">
+    <name>전라감영</name>
+  </wpt>
+  <wpt lat="35.8517960749185" lon="127.138316631317">
+    <name>건지산 편백나무숲</name>
+  </wpt>
+  <wpt lat="35.8084907552148" lon="127.151687443256">
+    <name>서학동예술마을</name>
+  </wpt>
+  <wpt lat="35.8164320503927" lon="127.150821089745">
+    <name>하얀양옥집(도지사관사)</name>
+  </wpt>
+  <wpt lat="35.8036790446024" lon="127.166364490986">
+    <name>치명자산</name>
+  </wpt>
+  <wpt lat="35.8100742924188" lon="127.159404158592">
+    <name>아태무형문화유산전당</name>
+  </wpt>
+  <wpt lat="35.7996023492066" lon="127.158937454224">
+    <name>남고사</name>
+  </wpt>
+  <wpt lat="35.7987626196883" lon="127.117974758148">
+    <name>삼천동막걸리골목</name>
+  </wpt>
+  <wpt lat="35.8489045710471" lon="127.15834736824">
+    <name>전주공동체라디오 전주FM</name>
+  </wpt>
+  <wpt lat="35.8203077926444" lon="127.123744189739">
+    <name>전주시립도서관꽃심</name>
+  </wpt>
+  <wpt lat="35.8459216460436" lon="127.127542197704">
+    <name>전북대학교 자연사박물관</name>
+  </wpt>
+  <wpt lat="35.8350543276081" lon="127.157590985298">
+    <name>전주시민기록관</name>
+  </wpt>
+  <wpt lat="35.8123059821767" lon="127.14560687542">
+    <name>전주3.1운동발상지</name>
+  </wpt>
+  <wpt lat="35.8138024407639" lon="127.137648761272">
+    <name>다가공원(호국 영렬탑)</name>
+  </wpt>
+  <wpt lat="35.8559418291973" lon="127.129535079002">
+    <name>전북지역독립운동추념탑</name>
+  </wpt>
+  <wpt lat="35.8253381455966" lon="127.092987298965">
+    <name>효자공원묘지</name>
+  </wpt>
+</gpx>
