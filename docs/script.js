@@ -4,7 +4,7 @@ const themeMeta = {
     color: '#2f8f57',
     deep: '#1f5d3a',
     soft: '#e5f5ea',
-    mood: '전주의 숨은 보물을 가나다순으로 살펴보는 아카이브'
+    mood: '역사, 생태, 예술, 생활이 함께 읽히는 전주의 도시 아카이브'
   },
   history: {
     label: '역사·기억',
@@ -632,6 +632,478 @@ const places = [
   }
 ];
 
+const placeContentOverrides = {
+  '건지산 편백나무숲': {
+    intro: `건지산 편백나무숲은 전주 북부 녹지축을 대표하는 도시 숲입니다. 건지산 일대는 전북대학교·전주동물원·덕진공원과 가까워, 단독 산행지라기보다 전주 북부의 생활형 자연공간으로 이해하는 것이 좋습니다. 편백나무숲은 피톤치드 산책, 짧은 회복형 걷기, 조용한 휴식에 적합합니다.
+
+역사적으로는 전통 유적이라기보다 현대 도시가 시민 건강과 녹지 접근성을 위해 조성하고 가꿔온 공간입니다. 최근에는 무장애 산책로와 산림 치유 기능이 강조되며, 도심 속 산림복지 공간으로 의미가 커지고 있습니다.
+
+교육적으로는 도시숲의 기능, 생물다양성, 산림치유, 보행 약자 접근성 등을 설명하기 좋은 장소입니다. 자전거 코스에서는 덕진공원이나 전주동물원과 묶어 북부 생태·치유 코스의 핵심 지점으로 활용할 수 있습니다.
+
+방문해야 하는 이유는 분명합니다. 한옥마을 중심 관광에서는 잘 느끼기 어려운 전주의 북부 생활권 자연을 체험할 수 있고, 짧은 시간에도 숲의 향과 조용한 분위기를 느낄 수 있기 때문입니다.`,
+    nearbyText:
+      '전북대학교 자연사박물관, 덕진공원, 전주동물원과 함께 묶으면 전주 북부 생활권의 숲·호수·교육공간을 한 흐름으로 읽을 수 있습니다.'
+  },
+  경기전: {
+    intro: `경기전은 전주가 조선 왕조의 발상지라는 정체성을 가장 선명하게 보여주는 장소입니다. 1410년 태조 이성계의 어진을 모시기 위해 세워졌고, 임진왜란 때 소실된 뒤 1614년에 다시 세워졌습니다. 전주는 이성계의 본향으로 여겨졌기 때문에, 경기전은 단순한 사당이 아니라 조선 왕조의 정통성과 전주의 도시 위상을 상징하는 공간입니다.
+
+공간적으로는 정전, 전주사고, 대나무숲, 돌담길, 어진박물관 등이 한 권역 안에 모여 있습니다. 걷는 동선이 길지 않지만, 왕실 제례·어진 봉안·기록 보존의 의미가 압축되어 있어 해설 가치가 매우 높습니다.
+
+교육적으로는 조선 건국, 어진 문화, 왕실 의례, 조선왕조실록 보존, 전주사고의 의미를 함께 설명할 수 있습니다. 학생 대상 역사교육이나 도시해설 프로그램에서 가장 먼저 넣어야 할 장소입니다.
+
+현재 방문해야 하는 이유는 경기전이 전주 한옥마을 관광의 중심이면서도, 단순 사진 명소를 넘어 전주의 역사적 정체성을 이해하는 핵심 열쇠이기 때문입니다. 자전거 여행에서는 경기전 앞에 자전거를 세워두고 도보로 관람하는 방식이 적합합니다.`,
+    nearbyText:
+      '풍남문, 전라감영, 오목대, 한옥마을 학인당을 함께 보면 왕실·행정·조망·한옥문화가 이어지는 전주의 중심 역사축이 선명해집니다.'
+  },
+  기지제: {
+    intro: `기지제는 1934년에 만들어진 농업용 저수지였지만, 지금은 전북혁신도시와 만성지구의 대표 수변공원으로 기능합니다. 과거 농업용수를 공급하던 기반시설이 도시 개발 이후 시민 휴식과 생태 관찰의 공간으로 전환된 사례입니다.
+
+기지제의 핵심은 순환형 수변 산책로와 수상 데크입니다. 물 위를 걷는 듯한 데크길, 갈대와 습지, 탁 트인 수면, 혁신도시의 건축 경관이 함께 나타납니다. 특히 해질 무렵에는 노을과 도시 야경이 호수에 비쳐 전주 구도심과는 다른 현대적 풍경을 만듭니다.
+
+교육적으로는 농업 기반시설의 도시공원화, 습지 보전, 수변 생태계, 도시 확장과 녹지계획을 설명하기 좋습니다. 혁신도시의 개발이 단순한 아파트·공공기관 이전이 아니라, 새로운 생활권과 공공공간을 만들어가는 과정임을 보여줍니다.
+
+방문해야 하는 이유는 한옥마을 중심의 전주 이미지에서 벗어나, 전주의 서부·혁신도시권이 가진 현대적 자연경관을 경험할 수 있기 때문입니다. 자전거로 접근하기 좋고, 짧은 순환 라이딩이나 저녁 산책 코스로 매우 적합합니다.`,
+    nearbyText:
+      '전주수목원, 전주월드컵경기장, 돈까스 현과 연결하면 혁신도시·만성지구를 중심으로 한 서부 수변 코스를 만들기 좋습니다.'
+  },
+  남고사: {
+    intro: `남고사는 남고산성 권역과 함께 이해해야 하는 산지 사찰입니다. 이 일대는 후백제와 조선의 방어 역사, 산성 유적, 종교 공간이 겹쳐 있는 곳입니다. 전주 구도심 남동쪽 산지에 위치해 있어 오르막이 있지만, 그만큼 도시를 내려다보는 전망과 고요한 분위기를 제공합니다.
+
+역사적으로 남고산성은 전주를 방어하던 산성체계와 관련이 있고, 남고사는 산성 안팎의 신앙 공간으로 기능해 왔습니다. 전주가 평야의 도시인 동시에 산지 방어선과 연결된 도시였음을 보여주는 장소입니다.
+
+교육적으로는 사찰 건축, 산성 방어 체계, 후백제와 조선의 지역사, 도시와 산지의 관계를 설명할 수 있습니다. 역사와 지형을 함께 읽을 수 있다는 점에서 공간정보 연구나 도시답사에 적합합니다.
+
+방문해야 하는 이유는 전주를 “한옥마을과 시장의 도시”로만 보지 않고, 산성과 사찰, 방어와 신앙이 중첩된 도시로 이해하게 해주기 때문입니다. 자전거로 접근하되 마지막 구간은 도보를 권장합니다.`,
+    nearbyText:
+      '완산공원, 다가공원, 치명자산과 함께 보면 전주 남부 산지권에서 사찰·공원·순교 기억이 서로 어떻게 맞물리는지 읽을 수 있습니다.'
+  },
+  남부시장: {
+    intro: `남부시장은 전주의 대표 전통시장입니다. 풍남문과 가까워 조선시대 성문 밖 상업공간의 흐름을 오늘날까지 이어주는 장소로 볼 수 있습니다. 전주 음식문화, 시장경제, 서민 생활, 청년 창업, 야시장 문화가 모두 겹쳐 있습니다.
+
+역사적으로 남부시장은 오래된 상업공간으로, 전주 구도심의 경제적 중심 역할을 해왔습니다. 또한 전주 3·1운동 발상지와 가까워, 시장이 단지 물건을 사고파는 곳이 아니라 시민이 모이고 시대적 사건이 일어난 공공장소였음을 알 수 있습니다.
+
+교육적으로는 전통시장, 지역경제, 소상공인, 청년몰, 도시재생, 공공공간과 사회운동을 설명하기 좋습니다. 특히 학생들에게는 “역사는 기념관 안에만 있는 것이 아니라 시장 골목에도 있다”는 점을 보여줄 수 있습니다.
+
+방문해야 하는 이유는 전주의 맛과 생활을 동시에 느낄 수 있기 때문입니다. 비빔밥, 콩나물국밥, 피순대, 야시장 음식, 청년몰 카페까지 폭넓은 체험이 가능합니다. 자전거는 시장 외곽에 세우고 도보 관람하는 것이 좋습니다.`,
+    nearbyText:
+      '풍남문, 전주 3·1운동 발상지, 전라감영, 경기전과 함께 보면 구도심의 상업·기억·행정·왕실 유산이 하나의 생활권 안에서 만나는 구조가 드러납니다.'
+  },
+  '다가공원(호국 영렬탑)': {
+    name: '다가공원',
+    aliases: ['다가공원(호국 영렬탑)', '호국 영렬탑'],
+    intro: `다가공원은 전주천을 따라 형성된 절벽과 숲, 기념비가 어우러진 조용한 공원입니다. 전주를 대표하는 대형 관광지는 아니지만, 전주천의 물길과 오래된 도시 풍경을 느낄 수 있는 장소입니다.
+
+역사적으로 다가공원 일대는 전주팔경 가운데 하나로 언급될 만큼 경관적 가치가 있었습니다. 공원 안에는 오래된 비석과 기념물이 남아 있어 전주의 근현대 기억을 조용히 보여줍니다.
+
+교육적으로는 도시 하천 경관, 지역 기념비 문화, 생활권 공원의 역할을 설명할 수 있습니다. 큰 관광지와 달리 주민의 일상 속에서 유지되는 공원이기 때문에, 전주의 실제 생활환경을 이해하는 데 도움이 됩니다.
+
+방문해야 하는 이유는 짧은 시간 안에 전주천의 경관과 구도심의 차분한 분위기를 느낄 수 있기 때문입니다. 자전거로 전주천을 따라 이동하다 잠시 쉬어가기 좋습니다.`,
+    nearbyText:
+      '전주 3·1운동 발상지, 전북지역독립운동추념탑, 남고사와 연결하면 전주천 물길과 구도심 기억 장소를 함께 읽는 조용한 역사 코스가 됩니다.'
+  },
+  덕진공원: {
+    intro: `덕진공원은 전주의 대표적인 호수공원이며, 여름철 연꽃으로 유명합니다. 연화교와 연화정 도서관, 수변 산책로가 어우러져 전주 시민에게 오래 사랑받아온 여가 공간입니다.
+
+시대적으로 덕진공원은 전주의 근현대 도시공원 문화를 보여줍니다. 전통 유산 중심의 전주 이미지와 달리, 덕진공원은 시민의 산책, 데이트, 가족 나들이, 야간 경관 감상 같은 일상적 도시문화를 담고 있습니다.
+
+교육적으로는 도시공원, 수생식물, 연꽃 생태, 수변공간 관리, 공공도서관과 공원의 결합을 설명하기 좋습니다. 특히 연화정 도서관은 자연 속 독서 공간이라는 점에서 문화와 생태가 결합된 사례입니다.
+
+방문해야 하는 이유는 전주 시민들이 실제로 쉬고 걷는 대표 공원이기 때문입니다. 자전거로 접근하기 쉽고, 전주동물원·건지산과 함께 북부 녹지축을 구성하기 좋습니다.`,
+    nearbyText:
+      '건지산 편백나무숲, 전주동물원, 전북대학교 자연사박물관과 이어 보면 북부 생활권의 생태·교육·여가가 한 축으로 연결됩니다.'
+  },
+  '돈까스 현': {
+    intro: `돈까스 현은 전주 서부 생활권에서 쉬어가기 좋은 식당으로, 전통 관광지 중심 식당이 아니라 지역 주민과 직장인의 일상 식사 공간에 가깝습니다. 이런 장소는 자전거 여행에서 매우 중요합니다. 라이딩 코스는 명소만으로 완성되지 않고, 중간에 쉬고 먹을 수 있는 생활권 식당이 있어야 실제 이용성이 높아지기 때문입니다.
+
+시대적으로는 혁신도시와 여의동·반월동 일대 생활권이 확장되면서 형성된 현대적 외식 상권의 일부로 볼 수 있습니다. 전주 음식문화가 비빔밥과 한정식만으로 구성되지 않고, 주민의 일상 식사와 동네 맛집으로 확장되고 있음을 보여줍니다.
+
+교육적 의미는 크지 않아 보일 수 있지만, 도시공간 연구 관점에서는 생활권 상권, 점심 수요, 혁신도시 직장인 문화, 자동차·자전거 접근성을 살펴보는 지점이 됩니다.
+
+방문해야 하는 이유는 기지제와 서부 생활권 라이딩 중 부담 없이 식사할 수 있는 동네형 거점이기 때문입니다. 단, 민간 업소이므로 영업시간과 휴무는 방문 전 확인하는 것이 좋습니다.`,
+    nearbyText:
+      '기지제, 전주수목원, 전주월드컵경기장과 함께 안내하면 전주 서북부의 수변·녹지·생활형 식사 거점이 자연스럽게 연결됩니다.'
+  },
+  동물원: {
+    name: '전주동물원',
+    aliases: ['동물원'],
+    intro: `전주동물원은 1978년에 개원한 전북의 대표 동물원입니다. 오랫동안 전주 시민의 가족 나들이 장소였고, 최근에는 동물복지와 생태형 전시 방향으로 변화하고 있습니다.
+
+역사적으로는 도시 외곽의 가족 여가시설에서 출발했지만, 지금은 단순 관람보다 교육과 복지, 생태적 서식환경 개선이 강조되는 시대적 변화를 반영하고 있습니다. 전주동물원은 전주의 여가문화와 생태교육이 어떻게 바뀌고 있는지 보여주는 장소입니다.
+
+교육적으로는 동물 생태, 멸종위기종, 동물복지, 생명윤리, 도시 속 자연교육을 설명하기 좋습니다. 어린이와 가족 단위 방문객에게 특히 교육 효과가 큽니다.
+
+방문해야 하는 이유는 덕진공원·건지산과 가까워 북부 녹지축 라이딩의 핵심 거점이 되기 때문입니다. 영화 촬영지로 알려진 이력도 있어, 문화 콘텐츠와 가족형 체험을 함께 연결할 수 있습니다.`,
+    nearbyText:
+      '덕진공원, 건지산 편백나무숲, 전북대학교 자연사박물관과 함께 보면 전주 북부의 가족형 생태·교육 축이 또렷해집니다.'
+  },
+  바이크박스: {
+    intro: `바이크박스는 관광지가 아니라 자전거 이용자를 위한 실용 거점입니다. 자전거 정비, 장비 구매, 부품 교체, 라이딩 관련 상담이 가능한 장소로, 전주를 자전거 도시로 해석할 때 중요한 역할을 합니다.
+
+시대적으로는 친환경 이동수단과 생활형 라이딩 문화가 확대되면서 이런 자전거 전문점의 의미가 커졌습니다. 전주가 자전거 관광을 발전시키려면 명소뿐 아니라 정비·보급·안전 지원 거점이 필요합니다.
+
+교육적으로는 자전거 안전, 정비, 친환경 교통, 생활 속 이동권을 이야기할 수 있습니다. 청소년이나 초보 라이더에게는 자전거를 단순 취미가 아니라 도시 이동수단으로 이해하게 하는 공간입니다.
+
+방문해야 하는 이유는 실제 자전거 코스 운영에서 매우 실용적이기 때문입니다. 장거리 코스 출발 전 점검, 타이어 공기압 확인, 간단한 수리 등이 필요한 경우 유용합니다.`,
+    nearbyText:
+      '아중저수지와 덕진권 자전거길로 이어지는 생활권에 있어 장거리 출발 전 점검 지점이나 회복형 정비 거점으로 설명하기 좋습니다.'
+  },
+  삼천동막걸리골목: {
+    intro: `삼천동막걸리골목은 전주식 술자리 문화를 대표하는 장소입니다. 막걸리를 주문하면 다양한 안주가 함께 나오는 전주의 독특한 상차림 문화가 남아 있습니다.
+
+역사적으로는 1980년대 이후 지역 주민의 회식과 모임 문화 속에서 성장한 골목 상권으로 볼 수 있습니다. 전주의 음식문화가 관광객용 비빔밥에만 머무르지 않고, 지역민의 저녁 생활과 술자리 문화로 이어지고 있음을 보여줍니다.
+
+교육적으로는 전통주, 공동 식사문화, 골목상권, 지역 음식경제를 설명할 수 있습니다. 다만 주류 소비 공간이므로 청소년 교육보다는 성인 대상 음식문화 해설에 적합합니다.
+
+방문해야 하는 이유는 전주의 밤 문화를 가장 지역적으로 느낄 수 있는 장소이기 때문입니다. 단, 자전거 이용자는 음주 후 라이딩을 피해야 하므로, 대중교통이나 도보 귀가와 연계하는 운영 방식이 필요합니다.`,
+    nearbyText:
+      '효자공원묘지, 전주시립도서관꽃심, 완산공원과 이어 설명하면 남서부 생활권의 낮과 밤, 휴식과 식문화가 함께 보입니다.'
+  },
+  '서학동 예술마을': {
+    intro: `서학동 예술마을은 전주 한옥마을 남쪽에 자리한 예술가·주민 공존형 도시재생 공간입니다. 쇠퇴한 주거지와 오래된 골목에 예술가들이 들어오면서 작업실, 갤러리, 카페, 소규모 문화공간이 생겨났습니다.
+
+시대적으로는 대규모 철거형 개발이 아니라 기존 동네의 형태를 유지하면서 문화적 활력을 불어넣은 도시재생 사례입니다. 이는 전주가 관광도시를 넘어 생활문화도시로 나아가는 방향을 보여줍니다.
+
+교육적으로는 공공미술, 골목 재생, 주민 참여, 예술가 정착, 지역 상권 변화를 설명하기 좋습니다. 관광객이 방문할 때 주민 생활공간을 존중해야 한다는 시민교육도 중요합니다.
+
+방문해야 하는 이유는 한옥마을보다 조용하고, 전주의 예술적 감수성과 생활 골목의 분위기를 함께 느낄 수 있기 때문입니다. 자전거로 접근한 뒤 골목은 도보로 둘러보는 방식이 좋습니다.`,
+    nearbyText:
+      '오목대, 이목대, 자만벽화마을, 27레코드, 크로싱게스트하우스와 함께 보면 전주 동남부의 골목 예술과 언덕 전망, 생활 재생이 하나의 흐름으로 이어집니다.'
+  },
+  '서학동 예술마을 27레코드': {
+    intro: `27레코드는 서학동 예술마을 안에 있는 작은 레코드숍입니다. 음반, 음악, 아날로그 감성, 촬영지 이미지가 겹쳐 서학동의 창작 분위기를 잘 보여줍니다.
+
+시대적으로는 디지털 음악 시대에 오히려 LP와 레코드숍이 새로운 문화적 장소성을 갖게 된 흐름을 보여줍니다. 작은 상점 하나가 동네 이미지를 만드는 사례입니다.
+
+교육적으로는 대중음악, 아날로그 매체, 문화소비, 로컬 창업, 촬영지 관광을 설명할 수 있습니다.
+
+방문해야 하는 이유는 서학동 예술마을의 분위기를 가장 작고 밀도 있게 느낄 수 있는 장소 중 하나이기 때문입니다. 긴 체류보다는 짧은 감성 정차 지점으로 적합합니다.`,
+    nearbyText:
+      '서학동 예술마을의 골목 갤러리, 크로싱게스트하우스, 오목대와 함께 엮으면 감성 상점과 언덕 조망, 촬영지 분위기를 한 번에 읽을 수 있습니다.'
+  },
+  아중저수지: {
+    intro: `아중저수지는 전주 동부권의 대표 수변공간입니다. 과거 농업용 저수지였으나, 도시 확장과 함께 산책·야경·수변 휴식 공간으로 바뀌었습니다. 지금은 아중호수라는 이름으로 더 많이 불립니다.
+
+공간적으로는 수변 데크, 산책길, 조용한 물가 경관이 특징입니다. 구도심 관광지와 달리 지역 주민의 산책과 운동이 중심이 되는 생활형 자연공간입니다.
+
+교육적으로는 저수지의 도시공원화, 수변공간 재생, 동부 생활권의 변화, 물 환경 보전 등을 설명할 수 있습니다. 기지제와 비교하면 서부 혁신도시권 수변공간과 동부 생활권 수변공간의 차이를 읽을 수 있습니다.
+
+방문해야 하는 이유는 전주의 동쪽 분위기를 느끼기에 좋기 때문입니다. 야경이 좋고, 자전거로 접근하기 쉬우며, 한옥마을의 붐비는 분위기와 다른 차분함을 제공합니다.`,
+    nearbyText:
+      '자만벽화마을, 오목대, 전주천 자전거길과 묶으면 동부 생활권의 수변·언덕·골목이 서로 다른 리듬으로 이어집니다.'
+  },
+  아태무형문화유산전당: {
+    intro: `아태무형문화유산전당은 현재 국립무형유산원 권역과 함께 이해하는 것이 적절합니다. 전주는 무형문화유산의 보존과 전승, 공연, 전시, 교육이 이루어지는 중요한 도시입니다.
+
+역사적으로 무형유산에 대한 관심은 유형문화재 중심의 보존정책을 넘어, 노래·춤·공예·의례·생활기술처럼 사람을 통해 이어지는 문화의 가치를 인정하는 흐름 속에서 커졌습니다. 전주의 무형유산 관련 시설은 이러한 시대적 변화를 반영합니다.
+
+교육적으로는 무형문화유산이 단순히 “옛것”이 아니라 지금도 배우고 실천하고 전승해야 하는 살아 있는 문화라는 점을 설명하기 좋습니다. 공연과 체험 프로그램을 통해 학생과 시민에게 높은 교육 효과를 줄 수 있습니다.
+
+방문해야 하는 이유는 전주를 한옥과 음식의 도시로만 보지 않고, 살아 있는 전통문화의 도시로 이해하게 해주기 때문입니다. 서학동 예술마을, 전주국립박물관, 한옥마을과 함께 문화학습 코스로 연결할 수 있습니다.`,
+    nearbyText:
+      '전주국립박물관, 전주시민기록관, 전라감영과 이어 읽으면 전주의 전통문화가 보존·전시·기록을 통해 현재형 자산으로 이어지는 구조가 보입니다.'
+  },
+  오목대: {
+    intro: `오목대는 이성계가 황산대첩 이후 전주에서 승전을 기념했다는 이야기와 연결된 장소입니다. 전주 한옥마을을 내려다볼 수 있는 전망지이며, 조선 건국 서사의 상징적 무대입니다.
+
+역사적으로는 고려 말에서 조선 초로 넘어가는 전환기의 기억을 담고 있습니다. 오목대 자체는 작은 누각이지만, 그 의미는 전주의 도시 정체성과 조선 왕조 발상지 서사에 깊이 연결됩니다.
+
+교육적으로는 역사적 사건이 어떻게 장소로 기념되고, 장소가 어떻게 도시 브랜드가 되는지를 설명할 수 있습니다. 또한 전망을 통해 한옥마을의 공간 구조를 이해할 수 있습니다.
+
+방문해야 하는 이유는 전주의 풍경을 한눈에 볼 수 있고, 경기전과 함께 조선 건국 서사를 입체적으로 이해할 수 있기 때문입니다. 자전거는 아래쪽에 두고 도보로 오르는 것이 안전합니다.`,
+    nearbyText:
+      '이목대, 자만벽화마을, 서학동 예술마을, 크로싱게스트하우스와 함께 보면 전주 동남부 언덕길의 역사·전망·감성 골목이 입체적으로 연결됩니다.'
+  },
+  완산공원: {
+    intro: `완산공원은 완산칠봉 일대에 자리한 도심 산지공원입니다. 삼나무숲, 꽃동산, 전망대, 산책길이 어우러져 있으며, 봄과 가을에 특히 아름답습니다.
+
+역사적으로 완산 일대는 단순한 휴식공간만이 아니라 종교·순교·동학 관련 기억이 겹쳐 있는 산지입니다. 전주의 자연공간이 역사적 기억과 분리되어 있지 않다는 점을 보여줍니다.
+
+교육적으로는 도시숲, 시민참여 공원관리, 경관자원, 역사기억의 중첩을 설명하기 좋습니다. 특히 공원과 추모·역사 공간이 함께 존재하는 방식은 도시공간 연구에 의미가 있습니다.
+
+방문해야 하는 이유는 전주 도심에서 비교적 짧게 자연과 전망을 만날 수 있기 때문입니다. 다가공원, 남고사, 전라감영과 연결하면 남부권 역사·자연 코스로 만들 수 있습니다.`,
+    nearbyText:
+      '남고사, 치명자산, 다가공원과 묶으면 남부 산지공원의 숲길과 종교 기억, 구도심 하천 풍경까지 한 번에 설명할 수 있습니다.'
+  },
+  '우석대학교 부속 전주한방병원': {
+    intro: `우석대학교 부속 전주한방병원은 전주의 한의학과 통합의료 문화를 이해할 수 있는 의료기관입니다. 1991년 개원 이후 지역 한방의료의 중요한 거점 역할을 해왔습니다.
+
+시대적으로는 전통 한의학이 현대 의료 체계 안에서 어떻게 교육·연구·진료와 결합하는지를 보여줍니다. 단순한 병원이 아니라 전통 지식과 현대 의료가 만나는 기관입니다.
+
+교육적으로는 한의학, 통합의학, 지역 의료 접근성, 대학 부속병원의 역할을 설명할 수 있습니다. 의료·복지·돌봄에 관심 있는 사람에게는 전주의 사회 인프라를 이해하는 데 도움이 됩니다.
+
+방문해야 하는 이유는 전주의 관광자원만이 아니라 건강·돌봄·의료체계까지 도시를 구성한다는 점을 보여주기 때문입니다. 일반 관광지는 아니므로 방문 목적이 있을 때 사전 확인 후 찾는 것이 좋습니다.`,
+    nearbyText:
+      '전주의료생활협동조합, 전주시립도서관꽃심, 삼천동 생활권과 함께 보면 전주의 건강·돌봄·생활 인프라가 관광 바깥에서 어떻게 작동하는지 읽을 수 있습니다.'
+  },
+  이목대: {
+    intro: `이목대는 오목대와 함께 전주 한옥마을 뒤편에 있는 역사 전망지입니다. 오목대가 이성계의 승전 기억과 연결된다면, 이목대는 조선 왕실 선조의 기원 서사를 보완하는 장소입니다.
+
+역사적으로는 목조 이안사와 관련된 왕실 계보의 기억을 담고 있습니다. 이는 조선 왕조가 단순히 한 인물의 건국만이 아니라, 선조와 혈통을 통해 정통성을 강조했음을 보여줍니다.
+
+교육적으로는 왕조의 기원, 계보, 장소 기념, 역사 서사의 구성 방식을 설명하기 좋습니다. 오목대와 함께 방문하면 조선 건국 서사의 공간적 구조가 더 명확해집니다.
+
+방문해야 하는 이유는 비교적 조용하면서도 한옥마을과 자만벽화마을을 잇는 길목에 있어, 짧지만 의미 있는 역사 산책을 만들 수 있기 때문입니다.`,
+    nearbyText:
+      '오목대, 자만벽화마을, 서학동 예술마을과 함께 보면 조선 건국 서사와 언덕 골목의 현재 풍경이 자연스럽게 이어집니다.'
+  },
+  자만벽화마을: {
+    intro: `자만벽화마을은 한옥마을 맞은편 언덕에 자리한 벽화마을입니다. 계단과 좁은 골목, 벽화, 카페, 전망이 어우러져 젊은 방문객과 사진 여행자에게 인기가 많습니다.
+
+시대적으로는 낙후된 주거지에 예술을 입혀 관광자원으로 재해석한 도시재생 사례입니다. 그러나 여전히 주민이 거주하는 생활공간이므로 관광과 주거의 균형이 중요합니다.
+
+교육적으로는 공공미술, 도시재생, 관광화의 장단점, 주민 존중의 필요성을 설명할 수 있습니다. “예쁜 벽화”만 보는 것이 아니라, 누가 살고 있고 어떤 변화가 있었는지를 함께 읽어야 합니다.
+
+방문해야 하는 이유는 전주의 전통 한옥 풍경과 현대적 골목예술을 한 자리에서 비교할 수 있기 때문입니다. 자전거로는 언덕 접근이 다소 어려우므로 도보 관람을 권장합니다.`,
+    nearbyText:
+      '오목대, 이목대, 서학동 예술마을, 크로싱게스트하우스와 같이 보면 전통 풍경과 도시재생 골목, 촬영지 감성이 이어지는 전주 동남부 코스가 완성됩니다.'
+  },
+  전라감영: {
+    intro: `전라감영은 조선시대 전라도와 제주를 관할하던 지방 행정의 중심지였습니다. 오늘날 복원된 전라감영은 전주 구도심 안에서 조선시대 행정체계를 공간적으로 이해할 수 있게 해줍니다.
+
+역사적으로 감영은 단순한 관청이 아니라 지방 권력, 행정, 재판, 군사, 재정이 집중된 공간이었습니다. 전주가 호남의 중심도시였음을 가장 잘 보여주는 장소입니다.
+
+교육적으로는 조선 지방행정, 관아 건축, 관찰사의 역할, 지역 통치체계를 설명하기 좋습니다. 경기전이 왕조의 상징이라면, 전라감영은 행정의 실제 작동을 보여줍니다.
+
+방문해야 하는 이유는 복원 건물과 해설 프로그램을 통해 전주 구도심의 역사 구조를 쉽게 이해할 수 있기 때문입니다. 풍남문, 남부시장, 경기전과 함께 도보·자전거 연계가 뛰어납니다.`,
+    nearbyText:
+      '경기전, 풍남문, 남부시장, 전주시민기록관과 함께 보면 전주 중심부에서 왕실 상징과 지방 행정, 시민 생활이 어떻게 만나는지 이해하기 좋습니다.'
+  },
+  '전북대학교 자연사박물관': {
+    intro: `전북대학교 자연사박물관은 전북 지역의 지질, 생물, 생태 자료를 전시하는 대학 박물관입니다. 공룡, 화석, 암석, 식물, 동물 표본 등을 통해 자연의 역사를 학습할 수 있습니다.
+
+시대적으로는 대학이 연구자료를 시민교육 자원으로 개방하는 흐름을 보여줍니다. 학술자료가 교실과 연구실 안에 머무르지 않고 지역사회 학습공간으로 확장된 사례입니다.
+
+교육적으로는 어린이·청소년의 과학 체험, 생태교육, 지질학, 생물다양성 이해에 적합합니다. 특히 전주천, 건지산, 전주수목원 등 실제 야외공간과 연계하면 학습 효과가 커집니다.
+
+방문해야 하는 이유는 전주의 자연을 단순히 산책의 대상으로 보지 않고, 과학적으로 이해할 수 있게 해주기 때문입니다. 북부 녹지축 코스의 실내 학습 거점으로 적합합니다.`,
+    nearbyText:
+      '건지산 편백나무숲, 덕진공원, 전주동물원과 함께 북부 생태 코스를 꾸리면 야외 체험과 실내 학습을 한 번에 연결할 수 있습니다.'
+  },
+  '전북지역독립운동추념탑': {
+    intro: `전북지역독립운동추념탑은 전북 지역 독립운동가들을 기리기 위해 세워진 추모시설입니다. 전주와 전북의 항일운동을 기억하는 공식 기념공간입니다.
+
+역사적으로는 일제강점기 독립운동의 지역적 확산과 희생을 기리는 장소입니다. 중앙 중심의 독립운동 서사에서 벗어나, 지역 주민과 활동가들이 어떻게 독립운동에 참여했는지를 생각하게 합니다.
+
+교육적으로는 3·1운동, 학생운동, 의병, 독립운동가의 삶, 국가보훈의 의미를 설명하기 좋습니다. 전주 3·1운동 발상지와 함께 방문하면 장소 간 의미가 연결됩니다.
+
+방문해야 하는 이유는 전주가 왕조의 도시만이 아니라 항일과 독립의 기억을 품은 도시임을 확인할 수 있기 때문입니다. 조용한 추모 태도로 방문하는 것이 적절합니다.`,
+    nearbyText:
+      '전주 3·1운동 발상지, 다가공원, 남부시장과 연결하면 생활공간 속 독립운동 기억이 전주의 구도심 곳곳에 스며 있다는 점이 잘 드러납니다.'
+  },
+  전북환경운동연합: {
+    intro: `전북환경운동연합은 전북 지역의 환경문제를 다루는 시민단체입니다. 하천, 녹지, 새만금, 생태계, 기후위기 등 지역 환경 이슈에 대응해왔습니다.
+
+시대적으로는 1990년대 이후 한국 사회에서 시민환경운동이 성장한 흐름 속에 있습니다. 전주는 하천과 산, 농촌과 도시가 만나는 지역이기 때문에 환경운동의 의미가 큽니다.
+
+교육적으로는 시민운동, 환경정책, 지역 생태계, 공론장, 참여 민주주의를 설명할 수 있습니다. 학생이나 연구자에게는 “도시 환경은 행정만으로 관리되지 않고 시민 참여로 만들어진다”는 점을 보여줍니다.
+
+방문해야 하는 이유는 전주를 관광지로만 보지 않고, 환경문제를 함께 고민하는 시민도시로 이해하게 하기 때문입니다. 일반 방문보다는 프로그램, 강연, 캠페인 참여 형태가 적합합니다.`,
+    nearbyText:
+      '전주의료생활협동조합, 전주FM 같은 시민사회 거점과 엮으면 전주가 생활과 환경, 돌봄을 스스로 조직하는 도시라는 점이 더 잘 보입니다.'
+  },
+  '전주3.1운동 발상지': {
+    intro: `전주 3·1운동 발상지는 1919년 전주 만세운동의 시작을 기억하는 장소입니다. 남부시장과 매곡교 인근에 자리해, 상업공간과 항일운동의 기억이 함께 놓여 있습니다.
+
+역사적으로 3·1운동은 전국적 사건이지만, 각 지역에서 구체적인 장소와 사람을 통해 실현되었습니다. 전주의 만세운동도 시장과 거리, 교회와 학교, 시민의 이동 속에서 일어났습니다.
+
+교육적으로는 항일운동, 시민 저항, 시장 공간의 공공성, 지역 독립운동을 설명하기 좋습니다. 큰 기념관보다 작지만, 실제 생활공간 속에 기억이 남아 있다는 점이 중요합니다.
+
+방문해야 하는 이유는 전주의 구도심을 단순한 먹거리·쇼핑 공간이 아니라 역사적 현장으로 다시 보게 해주기 때문입니다. 남부시장 방문 시 반드시 함께 소개할 만한 장소입니다.`,
+    nearbyText:
+      '남부시장, 다가공원, 전북지역독립운동추념탑과 함께 둘러보면 구도심 상업권 안에서 시민 저항의 기억이 어떻게 이어졌는지 공간적으로 이해할 수 있습니다.'
+  },
+  '전주공동체라디오 전주FM': {
+    intro: `전주공동체라디오 전주FM은 지역 주민이 직접 콘텐츠를 만들고 방송하는 공동체 미디어입니다. 전주의 다양한 동네 이야기, 시민 목소리, 문화 활동을 전파합니다.
+
+시대적으로는 대형 방송 중심의 미디어 환경에서 지역성과 시민 참여를 회복하려는 흐름과 연결됩니다. 공동체라디오는 지역 주민이 자신의 이야기를 직접 말하는 미디어 민주주의의 사례입니다.
+
+교육적으로는 미디어 리터러시, 방송 제작, 지역 커뮤니케이션, 시민 참여를 배울 수 있습니다. 청소년과 시민이 직접 콘텐츠를 만드는 체험형 교육과도 잘 맞습니다.
+
+방문해야 하는 이유는 전주가 소비되는 도시가 아니라 스스로 말하고 기록하는 도시임을 보여주기 때문입니다. 전주시민기록관, 꽃심도서관과 함께 “도시가 자기 이야기를 만드는 방식”을 설명할 수 있습니다.`,
+    nearbyText:
+      '전주시민기록관, 전주시립도서관꽃심과 엮으면 전주가 기록과 방송, 시민학습을 통해 스스로 서사를 축적하는 도시라는 점이 선명해집니다.'
+  },
+  전주국립박물관: {
+    intro: `전주국립박물관은 전북 지역의 고고·역사·미술 자료를 수집·전시하는 대표 박물관입니다. 선사시대부터 고려·조선까지 전북의 문화유산을 종합적으로 볼 수 있습니다.
+
+역사적으로는 지역의 문화재를 체계적으로 보존하고 해석하기 위해 만들어진 국립기관입니다. 전주가 조선 왕조의 도시일 뿐 아니라, 더 넓은 전북 문화권의 중심임을 보여줍니다.
+
+교육적으로는 가족 관람, 학교 체험학습, 역사·미술·고고학 교육에 매우 적합합니다. 전주한옥마을보다 차분하고 체계적인 학습이 가능하다는 장점이 있습니다.
+
+방문해야 하는 이유는 전주의 역사와 전북의 문화를 넓은 시야에서 이해할 수 있기 때문입니다. 자전거 코스에서는 서학동·국립무형유산원 권역과 함께 문화교육축으로 묶기 좋습니다.`,
+    nearbyText:
+      '아태무형문화유산전당, 치명자산, 하얀양옥집과 함께 보면 전주의 박물관·무형유산·근현대 건축이 남부 문화교육축으로 연결됩니다.'
+  },
+  전주수목원: {
+    intro: `전주수목원은 한국도로공사가 운영하는 대규모 수목원입니다. 고속도로 건설로 훼손된 자연을 복원하고, 수목을 생산·보전하는 기능에서 출발했습니다.
+
+공간적으로는 계절별 꽃과 나무, 메타세쿼이아길, 연못, 정자, 다양한 식물 전시 구역이 특징입니다. 봄·가을에는 사진 명소로도 인기가 많습니다.
+
+교육적으로는 식물분류, 생태복원, 도시녹지, 환경보전, 기후변화와 식물 다양성을 설명하기 좋습니다. 무료 또는 저비용으로 접근 가능한 공공성도 큽니다.
+
+방문해야 하는 이유는 전주의 서북부에서 가장 풍성한 자연교육 공간이기 때문입니다. 기지제, 전주월드컵경기장, 팔복예술공장과 연결하면 서부권 자전거 코스의 핵심 자연 거점이 됩니다.`,
+    nearbyText:
+      '기지제, 전주월드컵경기장, 팔복예술공장과 함께 둘러보면 서북부의 자연·스포츠·문화재생이 한 권역 안에서 균형을 이루는 모습이 보입니다.'
+  },
+  전주시립도서관꽃심: {
+    intro: `전주시립도서관 꽃심은 전주의 대표 공공도서관입니다. 단순히 책을 빌리는 곳이 아니라, 강연·전시·청소년 공간·시민 프로그램이 이루어지는 복합문화공간입니다.
+
+시대적으로는 도서관이 조용한 학습실에서 시민문화 플랫폼으로 확장되는 흐름을 보여줍니다. 전주는 책과 기록, 시민학습을 도시 정체성의 일부로 삼고 있습니다.
+
+교육적으로는 평생학습, 독서문화, 어린이·청소년 교육, 지역 커뮤니티 형성에 큰 의미가 있습니다. 특히 청소년 전용 공간은 세대별 학습환경을 고민한 사례입니다.
+
+방문해야 하는 이유는 전주 시민의 지식문화 수준과 공공문화 인프라를 체감할 수 있기 때문입니다. 자전거 라이딩 중 쉬어가는 실내 문화공간으로도 좋습니다.`,
+    nearbyText:
+      '전주시민기록관, 전주FM, 전주의료생활협동조합과 함께 보면 전주가 기록·학습·돌봄을 공공 인프라와 시민 참여로 이어가는 도시라는 점이 드러납니다.'
+  },
+  전주시민기록관: {
+    intro: `전주시민기록관은 전주 시민의 일상 기록을 수집하고 보존하는 아카이브입니다. 공공기관 기록뿐 아니라 시민이 기증한 사진, 문서, 생활자료 등을 통해 도시 기억을 보존합니다.
+
+시대적으로는 거대 역사보다 생활사와 개인기록의 가치가 커진 흐름을 반영합니다. 도시의 역사는 왕과 관청, 전쟁만이 아니라 평범한 시민의 삶으로도 구성된다는 관점을 보여줍니다.
+
+교육적으로는 기록관리, 아카이브, 생활사, 도시기억, 시민참여를 설명하기 좋습니다. 학생들에게 “내 기록도 도시의 역사가 될 수 있다”는 메시지를 줄 수 있습니다.
+
+방문해야 하는 이유는 전주를 살아온 사람들의 시간과 흔적을 만날 수 있기 때문입니다. 전주FM, 꽃심도서관, 남부시장과 연결하면 시민기억 코스를 만들 수 있습니다.`,
+    nearbyText:
+      '전주FM, 전주시립도서관꽃심, 전라감영과 함께 소개하면 전주의 행정 기록과 시민 생활사가 어떻게 현재의 도시 서사로 이어지는지 설명하기 좋습니다.'
+  },
+  전주월드컵경기장: {
+    intro: `전주월드컵경기장은 2002년 FIFA 월드컵을 위해 조성된 현대 스포츠 시설입니다. 이후 전북현대모터스의 홈구장으로 활용되며, 전주의 축구문화와 지역 응원문화를 대표합니다.
+
+시대적으로는 2002 월드컵이 한국 도시의 인프라와 대중문화에 남긴 영향을 보여주는 공간입니다. 전주월드컵경기장은 전통도시 전주가 현대 스포츠도시의 얼굴도 갖고 있음을 보여줍니다.
+
+교육적으로는 스포츠 산업, 대형 이벤트, 도시브랜드, 경기장 건축, 대중문화와 지역경제를 설명할 수 있습니다.
+
+방문해야 하는 이유는 전주의 현대적 상징을 경험할 수 있기 때문입니다. 경기일에는 지역 팬 문화가 살아나고, 비경기일에는 넓은 외부공간과 건축적 형태를 관찰하기 좋습니다.`,
+    nearbyText:
+      '기지제, 전주수목원, 돈까스 현과 함께 보면 전주 서부권이 자연·스포츠·생활 상권으로 어떻게 확장되었는지 한눈에 읽을 수 있습니다.'
+  },
+  전주의료생활협동조합: {
+    intro: `전주의료생활협동조합은 주민들이 함께 출자하고 참여하는 의료·돌봄 기반 조직입니다. 병원 중심 의료를 넘어, 지역사회 안에서 건강과 돌봄을 함께 책임지려는 모델입니다.
+
+시대적으로는 고령화, 의료비 부담, 지역 돌봄의 필요성이 커지면서 의료협동조합의 의미가 부각되고 있습니다. 이는 전주가 관광도시이기 이전에 시민이 살아가는 생활도시임을 보여줍니다.
+
+교육적으로는 사회적경제, 협동조합, 보건의료, 지역 돌봄, 주민 참여를 설명하기 좋습니다. 전북환경운동연합이나 전주FM과 함께 시민사회 인프라 코스로 구성할 수 있습니다.
+
+방문해야 하는 이유는 전주의 공동체성과 돌봄 문화를 이해할 수 있기 때문입니다. 일반 관광지는 아니므로 견학이나 인터뷰, 프로그램 참여 방식이 적합합니다.`,
+    nearbyText:
+      '전북환경운동연합, 전주FM, 우석대학교 부속 전주한방병원과 함께 보면 전주의 시민사회가 환경·의료·돌봄을 어떻게 스스로 조직하는지 이해하기 쉽습니다.'
+  },
+  치명자산: {
+    intro: `치명자산은 전주 천주교 순교의 기억을 품은 성지입니다. 신유박해 등 천주교 박해 시기와 관련된 순교자들을 기리는 장소로, 산상성당과 순례길이 조성되어 있습니다.
+
+역사적으로는 조선 후기 종교 탄압과 신앙의 자유 문제를 보여주는 장소입니다. 전주가 조선 왕조의 발상지이면서 동시에 종교적 박해와 순교의 기억을 품은 도시라는 점을 드러냅니다.
+
+교육적으로는 종교 자유, 인권, 순교, 신앙 공동체, 박해의 역사를 설명하기 좋습니다. 종교적 장소이기 때문에 방문 시 조용한 태도와 예절이 필요합니다.
+
+방문해야 하는 이유는 전주 시내를 내려다보는 전망과 깊은 종교적 기억을 함께 경험할 수 있기 때문입니다. 서학동 예술마을, 한벽당, 자만벽화마을과 연결하면 동남부 언덕길 코스로 좋습니다.`,
+    nearbyText:
+      '완산공원, 하얀양옥집, 전주국립박물관과 연결하면 남부권의 종교 기억과 근현대 건축, 박물관 학습이 함께 이어집니다.'
+  },
+  팔복예술공장: {
+    intro: `팔복예술공장은 옛 카세트테이프 공장을 예술공간으로 재생한 복합문화공간입니다. 산업단지의 낡은 공장이 전시, 공연, 예술교육, 창작공간으로 전환된 대표 사례입니다.
+
+시대적으로는 제조업 쇠퇴 이후 산업유산을 철거하지 않고 문화자원으로 재활용하는 도시재생 흐름과 연결됩니다. 팔복동의 산업 이미지를 문화 이미지로 바꾼 상징적 공간입니다.
+
+교육적으로는 산업유산, 도시재생, 현대미술, 문화기획, 예술교육을 설명하기 좋습니다. 특히 학생들에게 “낡은 공간을 어떻게 새롭게 쓸 수 있는가”를 보여주는 사례입니다.
+
+방문해야 하는 이유는 전주의 현대적·실험적 문화공간을 체험할 수 있기 때문입니다. 자전거로 접근하기 좋고, 전주수목원·월드컵경기장과 서부권 코스로 묶을 수 있습니다.`,
+    nearbyText:
+      '전주수목원, 전주월드컵경기장, 서부 자전거길과 연결하면 전주의 서북부가 산업유산 재생과 현대 문화 실험의 공간으로 확장된 흐름을 읽을 수 있습니다.'
+  },
+  풍남문: {
+    intro: `풍남문은 전주읍성의 남문이자, 현재 남아 있는 전주성의 유일한 성문입니다. 구도심의 중심에 서 있으며, 남부시장과 한옥마을을 잇는 상징적 관문입니다.
+
+역사적으로 전주읍성은 도시 방어와 행정의 경계를 형성했습니다. 풍남문은 그중 남쪽 출입구로, 성 안과 성 밖을 나누는 공간적 기준점이었습니다.
+
+교육적으로는 성곽도시, 조선시대 방어체계, 도시구조, 시장 형성, 상징적 경계의 의미를 설명하기 좋습니다.
+
+방문해야 하는 이유는 전주 구도심을 이해하는 출발점이기 때문입니다. 풍남문 앞에 서면 전라감영, 남부시장, 경기전, 한옥마을의 관계가 공간적으로 읽히기 시작합니다.`,
+    nearbyText:
+      '경기전, 남부시장, 전라감영과 함께 보면 전주의 구도심이 성문을 기준으로 행정·상업·왕실 유산을 어떻게 배치했는지 자연스럽게 이해할 수 있습니다.'
+  },
+  '하얀양옥집(도지사관사)': {
+    name: '하얀양옥집',
+    aliases: ['하얀양옥집(도지사관사)', '도지사관사'],
+    intro: `하얀양옥집은 구 도지사관사로 사용되던 근현대 건축물입니다. 권위적 관사 공간이 시민에게 개방된 문화공간으로 전환되었다는 점에서 의미가 큽니다.
+
+시대적으로는 관료 권력의 사적 거주공간이 공공 문화공간으로 바뀐 사례입니다. 이는 도시공간의 민주화, 공공성 회복, 근대건축 활용이라는 흐름과 연결됩니다.
+
+교육적으로는 근현대 건축, 관사 문화, 행정권력과 공간, 문화재 재활용을 설명하기 좋습니다. 한옥마을 안팎의 전통 건축과 비교하면 전주의 건축 다양성이 보입니다.
+
+방문해야 하는 이유는 전주의 근현대 공간을 새롭게 만날 수 있기 때문입니다. 경기전·한옥마을과 가까워 짧은 도보 코스로 연결하기 좋습니다.`,
+    nearbyText:
+      '전주국립박물관, 치명자산, 완산공원과 함께 보면 전주 남부권에서 근현대 건축과 종교 기억, 자연공원이 서로 이어지는 구성이 드러납니다.'
+  },
+  효자공원묘지: {
+    intro: `효자공원묘지는 전주의 장례·추모 문화를 보여주는 공간입니다. 도시가 확장되면서 한때 외곽이던 묘지 공간이 점차 생활권 안으로 들어오게 된 도시 변화를 읽을 수 있습니다.
+
+역사적으로는 도시 외곽의 묘역이었지만, 전주의 서남부 개발과 함께 그 의미가 변했습니다. 장례 공간, 추모 공간, 도시계획 문제가 함께 얽힌 장소입니다.
+
+교육적으로는 도시 확장, 묘지와 도시계획, 추모문화, 죽음과 기억의 공간을 설명할 수 있습니다. 다만 방문 목적과 태도는 엄숙해야 합니다.
+
+방문해야 하는 이유는 전주가 밝고 아름다운 관광지만으로 구성된 도시가 아니라, 삶과 죽음, 기억과 추모가 함께 있는 도시임을 보여주기 때문입니다.`,
+    nearbyText:
+      '삼천동막걸리골목, 효자동 생활권, 완산공원과 연결하면 전주 서남부가 일상 생활과 추모 문화, 밤의 상권이 공존하는 권역임을 이해할 수 있습니다.'
+  },
+  혼불문학공원: {
+    intro: `혼불문학공원은 소설 『혼불』과 작가 최명희를 기리는 문학공간입니다. 전북의 언어, 삶, 역사, 여성 서사를 문학적으로 되살린 작품세계를 기억하는 장소입니다.
+
+시대적으로는 지역문학이 지역 정체성과 결합하는 사례입니다. 전주는 전통문화뿐 아니라 현대문학의 상상력으로도 자신을 설명할 수 있는 도시입니다.
+
+교육적으로는 문학작품과 장소, 지역어, 여성 서사, 전북 농촌문화, 현대소설 교육에 활용할 수 있습니다. 학생들에게 문학이 실제 공간과 어떻게 연결되는지 보여줍니다.
+
+방문해야 하는 이유는 전주를 문학적으로 느낄 수 있기 때문입니다. 건지산, 전북대학교, 자연사박물관과 연계하면 북부권 사색 코스로 좋습니다.`,
+    nearbyText:
+      '건지산 편백나무숲, 전북대학교 자연사박물관, 전주동물원과 함께 북부권의 숲길·문학·생태 교육 코스로 연결하기 좋습니다.'
+  },
+  플뢰르: {
+    name: '플뢰르 카페',
+    aliases: ['플뢰르'],
+    intro: `플뢰르는 전주 구도심권의 감성 카페·바로, 전통 유산이나 공공기관과는 다른 생활문화 공간입니다. 밤과 골목, 카페문화, 소규모 소비 공간을 보여줍니다.
+
+시대적으로는 전주 구도심에 감성 카페와 작은 가게들이 생기면서 관광의 방식이 변화한 흐름과 연결됩니다. 예전에는 명소를 보는 관광이 중심이었다면, 지금은 골목에 머무르고 분위기를 소비하는 관광도 중요해졌습니다.
+
+교육적으로는 상권 변화, 도시재생, 카페문화, SNS 기반 장소성, 소상공인 창업을 설명할 수 있습니다.
+
+방문해야 하는 이유는 전주의 밤과 골목 분위기를 느끼기 좋기 때문입니다. 전라감영, 풍남문, 남부시장 일대를 둘러본 뒤 쉬어가기 좋은 생활형 장소입니다.`,
+    nearbyText:
+      '전라감영, 전주시민기록관, 남부시장과 함께 보면 전주 구도심이 역사유산과 감성 상권, 시민 기록 공간이 겹치는 복합 생활권으로 보입니다.'
+  },
+  '한옥마을 학인당': {
+    intro: `학인당은 전주한옥마을 안에서도 보존 가치가 높은 근대기 한옥입니다. 1908년에 지어진 것으로 알려져 있으며, 궁궐식 건축 요소와 전통 한옥의 품격을 함께 보여줍니다.
+
+시대적으로는 조선 후기에서 근대로 넘어가는 시기의 상류 주거문화와 건축양식을 보여줍니다. 사대부 주택의 격식과 근대기 변화가 함께 드러납니다.
+
+교육적으로는 한옥 구조, 목조건축, 근대 주거문화, 전통건축 보존, 촬영지 관광을 설명하기 좋습니다. 드라마 『미스터 션샤인』, 『정년이』 촬영지로 알려져 있어 대중문화와 전통건축을 연결할 수 있습니다.
+
+방문해야 하는 이유는 단순히 드라마 촬영지라서가 아니라, 전주 한옥의 건축적 깊이를 실제 공간으로 느낄 수 있기 때문입니다. 방문 시 사유공간의 성격을 존중해야 합니다.`,
+    nearbyText:
+      '경기전, 오목대, 이목대와 묶으면 전주 한옥마을 안에서 왕실 서사와 조망, 주거 건축의 품격을 한 번에 설명할 수 있습니다.'
+  },
+  크로싱게스트하우스: {
+    intro: `크로싱게스트하우스는 한옥마을 언덕길 인근에 있는 숙박·촬영지형 공간입니다. 드라마 『스물다섯 스물하나』에서 나희도 집으로 알려지며 팬들의 방문지가 되었습니다.
+
+시대적으로는 드라마와 OTT 콘텐츠가 지역 장소의 인지도를 높이고, 작은 골목과 숙박시설까지 관광동선으로 끌어들이는 현상을 보여줍니다.
+
+교육적으로는 로케이션 관광, 대중문화와 도시공간, 한옥 숙박업, 팬덤 이동, 사유공간 존중 문제를 설명할 수 있습니다.
+
+방문해야 하는 이유는 전주가 전통유산뿐 아니라 현대 드라마와 청춘 서사의 배경으로도 기억되고 있음을 보여주기 때문입니다. 외관 중심의 짧은 방문이 적절하며, 숙박객과 주민의 사생활을 존중해야 합니다.`,
+    nearbyText:
+      '오목대, 자만벽화마을, 서학동 예술마을 27레코드와 함께 보면 전주의 언덕 골목이 전통유산과 현대 대중문화의 배경으로 동시에 소비되는 흐름을 이해하기 좋습니다.'
+  }
+};
+
+places.forEach((place) => {
+  const override = placeContentOverrides[place.name];
+
+  if (override) {
+    Object.assign(place, override);
+  }
+});
+
+const hiddenPlaceNames = new Set(['완산 벙커 더 스페이스']);
+
 const collator = new Intl.Collator('ko-KR', {
   numeric: true,
   sensitivity: 'base'
@@ -707,7 +1179,7 @@ const placeImages = {
   '치명자산': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176353381757141.jpg',
   '아태무형문화유산전당': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/172428853775507.jpg',
   '남고사': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171516222089096.jpg',
-  '삼천동막걸리골목': 'https://image.fnnews.com/resource/media/image/2020/10/20/202010201659218330_l.jpg',
+  '삼천동막걸리골목': 'https://image.thum.io/get/width/1200/crop/800/https://www.wikitree.co.kr/articles/582550',
   '플뢰르': 'https://image.thum.io/get/width/1200/crop/800/https://www.siksinhot.com/P/1394080',
   '전주공동체라디오 전주FM': 'https://contents.sixshop.com/uploadedFiles/207956/default/image_1690505965557.jpg',
   '전주시립도서관꽃심': 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/164394227638520.jpg',
@@ -717,10 +1189,10 @@ const placeImages = {
   '다가공원(호국 영렬탑)': 'https://cdn.jjan.kr/data2/content/image/2025/06/16/.cache/512/20250616580272.jpg',
   '전북지역독립운동추념탑': 'https://www.domin.co.kr/news/thumbnail/201908/1259224_377673_345_v150.jpg',
   '효자공원묘지': 'https://image.fnnews.com/resource/media/image/2025/09/22/202509221411137820_l.jpg',
-  '전북환경운동연합': 'https://image.thum.io/get/width/1200/crop/800/https://greenjeonbuk.org/',
+  '전북환경운동연합': 'https://image.thum.io/get/width/1200/crop/800/https://greenjeonbuk.org/?page_id=46',
   '전주의료생활협동조합': 'https://cdn.jjan.kr/data2/content/image/2004/08/11/.cache/512/20040811003590.jpg',
-  '우석대학교 부속 전주한방병원': 'https://image.fnnews.com/resource/media/image/2025/02/26/202502261339217097_l.jpg',
-  '바이크박스': 'https://image.thum.io/get/width/1200/crop/800/https://www.daangn.com/kr/local-profile/%EB%B0%94%EC%9D%B4%ED%81%AC%EB%B0%95%EC%8A%A4-vtfb9fam7fso/',
+  '우석대학교 부속 전주한방병원': 'https://image.thum.io/get/width/1200/crop/800/https://map.naver.com/p/search/%EC%9A%B0%EC%84%9D%EB%8C%80%ED%95%99%EA%B5%90%20%EB%B6%80%EC%86%8D%20%EC%A0%84%EC%A3%BC%ED%95%9C%EB%B0%A9%EB%B3%91%EC%9B%90',
+  '바이크박스': 'https://image.thum.io/get/width/1200/crop/800/https://map.naver.com/p/search/%EC%A0%84%EC%A3%BC%20%EB%B0%94%EC%9D%B4%ED%81%AC%EB%B0%95%EC%8A%A4',
   '돈까스 현': 'https://blogthumb.pstatic.net/MjAyNjAyMjdfMTg0/MDAxNzcyMTcyNjc5NzM4.CnLT_pY5EjlOhGLT0Po0o73ao6u99oZztKm2s-DH5bcg.wBergryvlkHaVOZcZ3_D0kq9TivUICCStNmpNGJGNJog.JPEG/900%A3%DF20260225%A3%DF121000.jpg?type=w2',
   '크로싱게스트하우스': 'https://image.thum.io/get/width/1200/crop/800/https://kr.trip.com/moments/detail/kunming-29-14691936/'
 };
@@ -770,12 +1242,28 @@ const placePositions = {
   '크로싱게스트하우스': [208, 136]
 };
 
+const placeMapKeywords = {
+  '완산 벙커 더 스페이스': '완산벙커 더스페이스',
+  '하얀양옥집(도지사관사)': '전북도지사관사',
+  '전주공동체라디오 전주FM': '전주FM',
+  '전주시립도서관꽃심': '전주시립도서관 꽃심',
+  '전주3.1운동 발상지': '전주 3.1운동 발상지',
+  '전북지역독립운동추념탑': '전북 독립운동 추념탑'
+};
+
 const mapGeoBounds = {
   north: 35.91,
   south: 35.74,
   west: 126.88,
   east: 127.23
 };
+
+const DEFAULT_KAKAO_MAPS_APP_KEY = '13eca9e7bcd70daffbc728ddce4553dc';
+const DEFAULT_VWORLD_API_KEY = '';
+const KAKAO_MAP_SDK_TIMEOUT_MS = 8000;
+const KAKAO_PLACE_SEARCH_TIMEOUT_MS = 4000;
+const KAKAO_FLOW_RESOLVE_TIMEOUT_MS = 3500;
+const VWORLD_TILE_TIMEOUT_MS = 8000;
 
 const allPlaces = derivePlaces();
 
@@ -793,6 +1281,13 @@ const kakaoMapState = {
   infoWindows: [],
   polyline: null
 };
+
+const vworldMapState = {
+  renderToken: 0,
+  map: null
+};
+
+const resolvedPlaceCache = new Map();
 
 const elements = {
   statCurrent: document.getElementById('statCurrent'),
@@ -856,12 +1351,25 @@ function focusDetailOnMobile() {
 }
 
 function derivePlaces() {
-  const sorted = [...places].sort((a, b) => collator.compare(a.name, b.name));
+  const sorted = [...places]
+    .filter((place) => !hiddenPlaceNames.has(place.name))
+    .sort((a, b) => collator.compare(a.name, b.name));
 
   sorted.forEach((place, index) => {
     place.alphaOrder = index + 1;
-    place.imageUrl = placeImages[place.name] || '';
-    place.position = placePositions[place.name] || [160, 110];
+    place.imageUrl =
+      placeImages[place.name] ||
+      (place.aliases || []).map((alias) => placeImages[alias]).find(Boolean) ||
+      '';
+    place.mapKeyword =
+      place.mapKeyword ||
+      placeMapKeywords[place.name] ||
+      (place.aliases || []).map((alias) => placeMapKeywords[alias]).find(Boolean) ||
+      '';
+    place.position =
+      placePositions[place.name] ||
+      (place.aliases || []).map((alias) => placePositions[alias]).find(Boolean) ||
+      [160, 110];
     place.latLng = projectPositionToLatLng(place.position);
     place.searchText = [
       place.name,
@@ -992,8 +1500,34 @@ function buildFlowPlaces(place) {
   return flowPlaces.slice(0, 5);
 }
 
+function buildMapPlaces(selectedPlace = null) {
+  if (!selectedPlace) {
+    return [];
+  }
+
+  const mapPlaces = [];
+  const pushPlace = (target, label) => {
+    if (!target || mapPlaces.some((item) => item.name === target.name)) {
+      return;
+    }
+
+    mapPlaces.push({
+      ...target,
+      flowLabel: label,
+      position: target.position || placePositions[target.name] || [160, 110]
+    });
+  };
+
+  pushPlace(selectedPlace, '현재');
+
+  (selectedPlace.nearby || [])
+    .map((name) => findPlaceByName(name))
+    .forEach((target) => pushPlace(target, '주변 볼거리'));
+
+  return mapPlaces;
+}
+
 function createAerialMap(place, flowPlaces = []) {
-  const route = flowPlaces.length > 1 ? buildPolyline(flowPlaces.map((item) => item.position)) : '';
   const markers = flowPlaces
     .map((item) => {
       const [x, y] = item.position;
@@ -1004,16 +1538,23 @@ function createAerialMap(place, flowPlaces = []) {
       const labelY = y < 68 ? 16 : -40;
       const labelRectX = alignRight ? -width : 0;
       const labelTextX = alignRight ? -(width / 2) : width / 2;
+      const showLabel = item.flowLabel === '현재';
 
       return `
         <g class="aerial-point${item.flowLabel === '현재' ? ' current' : ''}" transform="translate(${x} ${y})">
           <circle class="point-halo" r="${item.flowLabel === '현재' ? 18 : 13}"></circle>
           <path class="point-pin" d="M0 -12 C6.6 -12 12 -6.6 12 0 C12 8.8 0 20 0 20 C0 20 -12 8.8 -12 0 C-12 -6.6 -6.6 -12 0 -12 Z"></path>
           <circle class="point-core" r="${item.flowLabel === '현재' ? 4.8 : 3.8}"></circle>
-          <g class="point-label" transform="translate(${labelX} ${labelY})">
-            <rect x="${labelRectX}" y="0" width="${width}" height="26" rx="13"></rect>
-            <text x="${labelTextX}" y="17">${label}</text>
-          </g>
+          ${
+            showLabel
+              ? `
+                <g class="point-label" transform="translate(${labelX} ${labelY})">
+                  <rect x="${labelRectX}" y="0" width="${width}" height="26" rx="13"></rect>
+                  <text x="${labelTextX}" y="17">${label}</text>
+                </g>
+              `
+              : ''
+          }
         </g>
       `;
     })
@@ -1074,14 +1615,6 @@ function createAerialMap(place, flowPlaces = []) {
         <rect x="156" y="142" width="46" height="22" rx="6"></rect>
         <rect x="220" y="138" width="54" height="26" rx="6"></rect>
       </g>
-      ${
-        route
-          ? `
-            <polyline class="aerial-flow-base" points="${route}"></polyline>
-            <polyline class="aerial-flow-main" points="${route}"></polyline>
-          `
-          : ''
-      }
       ${focusCard}
       ${markers}
     </svg>
@@ -1125,7 +1658,7 @@ function createRouteMap(themeKey, stepIndex, totalCount) {
 }
 
 function buildRouteStops(place) {
-  return buildFlowPlaces(place).map((item) => ({
+  return buildMapPlaces(place).map((item) => ({
     label: item.flowLabel,
     name: item.name,
     district: item.district || '',
@@ -1176,18 +1709,262 @@ function renderRouteStops(place) {
 }
 
 function getKakaoMapsAppKey() {
-  return String(window.KAKAO_MAPS_APP_KEY || '').trim();
+  return String(window.KAKAO_MAPS_APP_KEY || DEFAULT_KAKAO_MAPS_APP_KEY || '').trim();
+}
+
+function getVWorldApiKey() {
+  return String(window.VWORLD_API_KEY || DEFAULT_VWORLD_API_KEY || '').trim();
+}
+
+function getCurrentOriginLabel() {
+  if (typeof window === 'undefined' || !window.location) {
+    return 'unknown';
+  }
+
+  if (window.location.origin && window.location.origin !== 'null') {
+    return window.location.origin;
+  }
+
+  return `${window.location.protocol}//${window.location.host}`;
+}
+
+function getMapFallbackStatusText(reason, place) {
+  if (!place) {
+    return '';
+  }
+
+  const origin = getCurrentOriginLabel();
+
+  if (!getKakaoMapsAppKey()) {
+    return '카카오 JavaScript 키를 읽지 못해 개략 항공 오버뷰로 표시 중입니다.';
+  }
+
+  if (reason === 'missing-key') {
+    return '카카오 JavaScript 키를 찾지 못했습니다. 현재 코드는 기본 키를 자동 사용하도록 수정돼 있습니다.';
+  }
+
+  if (reason === 'KAKAO_MAPS_SCRIPT_ERROR' || reason === 'KAKAO_MAPS_SDK_UNAVAILABLE') {
+    return `카카오 SDK 로딩에 실패했습니다. 현재 접속 주소는 ${origin} 입니다. Kakao Developers의 JavaScript SDK 도메인 등록과 [Kakao Map > Usage settings] 활성화를 다시 확인해 주세요.`;
+  }
+
+  if (reason === 'KAKAO_MAPS_LOAD_TIMEOUT') {
+    return `카카오 SDK 응답이 ${KAKAO_MAP_SDK_TIMEOUT_MS / 1000}초 안에 오지 않아 대체 보기를 표시 중입니다. 현재 접속 주소는 ${origin} 입니다. 브라우저 확장 프로그램, 네트워크 차단, Kakao Map 활성화 여부를 확인해 주세요.`;
+  }
+
+  if (reason === 'KAKAO_MAPS_SERVICES_UNAVAILABLE') {
+    return `카카오 지도는 로드됐지만 장소 검색 라이브러리를 읽지 못했습니다. 현재 접속 주소는 ${origin} 입니다. Kakao Developers에서 Kakao Map 활성화 여부와 SDK 도메인을 다시 확인해 주세요.`;
+  }
+
+  if (reason === 'load-error') {
+    return `카카오 지도를 불러오지 못해 대체 보기를 표시 중입니다. 현재 접속 주소는 ${origin} 입니다. SDK 도메인 등록과 Kakao Map 활성화 여부를 확인해 주세요.`;
+  }
+
+  return '선택한 장소의 대체 오버뷰를 표시 중입니다.';
 }
 
 function getFlowLatLng(item) {
   return item.latLng || projectPositionToLatLng(item.position || [160, 110]);
 }
 
+function normalizePlaceName(value) {
+  return String(value || '')
+    .replace(/\s+/g, '')
+    .replace(/[().,'"`·]/g, '')
+    .toLowerCase();
+}
+
+function getPlaceSearchCandidates(item) {
+  const district = String(item.district || '').trim();
+  const districtParts = district.split(/\s+/).filter(Boolean);
+  const shortDistrict = districtParts[districtParts.length - 1] || '';
+  const aliases = item.aliases || [];
+  const keywords = [
+    item.mapKeyword,
+    district ? `전주 ${item.name} ${district}` : '',
+    `전주 ${item.name}`,
+    district ? `${item.name} ${district}` : '',
+    item.name,
+    ...aliases.flatMap((alias) => [
+      district ? `전주 ${alias} ${district}` : '',
+      `전주 ${alias}`,
+      district ? `${alias} ${district}` : '',
+      alias
+    ]),
+    shortDistrict ? `전주 ${shortDistrict} ${item.name}` : ''
+  ];
+
+  return [...new Set(keywords.map((keyword) => String(keyword || '').trim()).filter(Boolean))];
+}
+
+function searchPlacesByKeyword(placesService, keyword) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (results) => {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      window.clearTimeout(timeoutId);
+      resolve(results);
+    };
+
+    const timeoutId = window.setTimeout(() => {
+      finish([]);
+    }, KAKAO_PLACE_SEARCH_TIMEOUT_MS);
+
+    placesService.keywordSearch(
+      keyword,
+      (results, status) => {
+        if (status === kakao.maps.services.Status.OK && Array.isArray(results) && results.length) {
+          finish(results);
+          return;
+        }
+
+        finish([]);
+      },
+      {
+        location: new kakao.maps.LatLng(35.824, 127.148),
+        radius: 20000,
+        size: 10,
+        sort: kakao.maps.services.SortBy.ACCURACY
+      }
+    );
+  });
+}
+
+function scorePlaceResult(item, candidate) {
+  const targetNames = [item.name, ...(item.aliases || [])].map(normalizePlaceName);
+  const candidateName = normalizePlaceName(candidate.place_name);
+  const addressText = `${candidate.address_name || ''} ${candidate.road_address_name || ''}`;
+  const districtParts = String(item.district || '')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  let score = 0;
+
+  if (targetNames.some((name) => candidateName === name)) {
+    score += 10;
+  } else if (
+    targetNames.some((name) => candidateName.includes(name) || name.includes(candidateName))
+  ) {
+    score += 6;
+  }
+
+  if (candidate.place_name.includes('전주')) {
+    score += 1;
+  }
+
+  if (districtParts.some((part) => addressText.includes(part))) {
+    score += 3;
+  }
+
+  if (candidate.category_group_code) {
+    score += 0.5;
+  }
+
+  return score;
+}
+
+function pickBestPlaceResult(item, results) {
+  return (
+    [...results].sort((left, right) => scorePlaceResult(item, right) - scorePlaceResult(item, left))[0] ||
+    results[0]
+  );
+}
+
+async function resolvePlacePosition(item) {
+  const cacheKey = `${item.name}::${item.district || ''}`;
+
+  if (resolvedPlaceCache.has(cacheKey)) {
+    return resolvedPlaceCache.get(cacheKey);
+  }
+
+  const placesService = new kakao.maps.services.Places();
+  const fallbackLatLng = getFlowLatLng(item);
+  const fallback = {
+    lat: fallbackLatLng.lat,
+    lng: fallbackLatLng.lng,
+    resolution: 'fallback',
+    keyword: ''
+  };
+
+  for (const keyword of getPlaceSearchCandidates(item)) {
+    const results = await searchPlacesByKeyword(placesService, keyword);
+
+    if (!results.length) {
+      continue;
+    }
+
+    const match = pickBestPlaceResult(item, results);
+    const resolved = {
+      lat: Number(match.y),
+      lng: Number(match.x),
+      resolution: 'search',
+      keyword
+    };
+
+    resolvedPlaceCache.set(cacheKey, resolved);
+    return resolved;
+  }
+
+  resolvedPlaceCache.set(cacheKey, fallback);
+  return fallback;
+}
+
+function getFallbackResolvedFlowPlaces(flowPlaces) {
+  return flowPlaces.map((item) => {
+    const fallbackLatLng = getFlowLatLng(item);
+    return {
+      ...item,
+      resolvedLatLng: {
+        lat: fallbackLatLng.lat,
+        lng: fallbackLatLng.lng,
+        resolution: 'fallback',
+        keyword: ''
+      }
+    };
+  });
+}
+
+function resolveFlowPlaces(flowPlaces) {
+  return Promise.all(
+    flowPlaces.map((item) =>
+      resolvePlacePosition(item).then((resolvedLatLng) => ({
+        ...item,
+        resolvedLatLng
+      }))
+    )
+  );
+}
+
+function resolveFlowPlacesWithTimeout(flowPlaces) {
+  const fallbackResolvedFlowPlaces = getFallbackResolvedFlowPlaces(flowPlaces);
+
+  return Promise.race([
+    resolveFlowPlaces(flowPlaces).then((resolvedFlowPlaces) => ({
+      resolvedFlowPlaces,
+      usedFallbackSearch: false
+    })),
+    new Promise((resolve) => {
+      window.setTimeout(() => {
+        resolve({
+          resolvedFlowPlaces: fallbackResolvedFlowPlaces,
+          usedFallbackSearch: true
+        });
+      }, KAKAO_FLOW_RESOLVE_TIMEOUT_MS);
+    })
+  ]).catch(() => ({
+    resolvedFlowPlaces: fallbackResolvedFlowPlaces,
+    usedFallbackSearch: true
+  }));
+}
+
 function createMapPinSvg(fill, innerFill) {
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" viewBox="0 0 34 44">
-      <path fill="${fill}" d="M17 0C7.61 0 0 7.61 0 17c0 11.92 14.79 25.55 15.42 26.12a2.3 2.3 0 0 0 3.16 0C19.21 42.55 34 28.92 34 17 34 7.61 26.39 0 17 0z"/>
-      <circle cx="17" cy="17" r="7.3" fill="${innerFill}"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 26 34">
+      <path fill="${fill}" d="M13 0C5.82 0 0 5.82 0 13c0 9.12 11.31 19.54 11.79 19.97a1.76 1.76 0 0 0 2.42 0C14.69 32.54 26 22.12 26 13 26 5.82 20.18 0 13 0z"/>
+      <circle cx="13" cy="13" r="5.5" fill="${innerFill}"/>
     </svg>
   `;
 
@@ -1200,18 +1977,20 @@ function createMapMarkerImage(isCurrent, color) {
 
   return new kakao.maps.MarkerImage(
     createMapPinSvg(fill, innerFill),
-    new kakao.maps.Size(34, 44),
+    new kakao.maps.Size(26, 34),
     {
-      offset: new kakao.maps.Point(17, 42)
+      offset: new kakao.maps.Point(13, 32)
     }
   );
 }
 
 function createInfoWindowContent(item) {
+  const subline = item.flowLabel || item.district || themeMeta[item.theme]?.label || '';
+
   return `
     <div class="kakao-info-window">
       <strong>${item.name}</strong>
-      <span>${item.flowLabel}</span>
+      <span>${subline}</span>
     </div>
   `;
 }
@@ -1229,6 +2008,70 @@ function createKakaoMapShell(statusText = '') {
   `;
 }
 
+function createFallbackMapShell(place, flowPlaces, statusText = '') {
+  return `
+    <div class="kakao-map-shell is-fallback">
+      ${createAerialMap(place, flowPlaces)}
+      ${
+        statusText
+          ? `<div class="kakao-map-status" id="kakaoMapStatus">${statusText}</div>`
+          : ''
+      }
+    </div>
+  `;
+}
+
+function createVWorldMapShell(statusText = '') {
+  return `
+    <div class="vworld-map-shell">
+      <div class="vworld-map-canvas" id="vworldMapCanvas"></div>
+      ${
+        statusText
+          ? `<div class="vworld-map-status" id="vworldMapStatus">${statusText}</div>`
+          : ''
+      }
+    </div>
+  `;
+}
+
+function createVWorldMarkerIcon(item, color) {
+  const isCurrent = item.flowLabel === '현재';
+  const markerColor = isCurrent ? '#ff8c42' : color;
+
+  return L.divIcon({
+    className: 'vworld-marker-wrapper',
+    iconSize: [40, 46],
+    iconAnchor: [20, 38],
+    popupAnchor: [0, -28],
+    html: `
+      <span class="vworld-marker${isCurrent ? ' is-current' : ''}" style="--marker-color:${markerColor}">
+        <span class="vworld-marker-label">${item.flowLabel}</span>
+      </span>
+    `
+  });
+}
+
+function createVWorldTileLayer(key, layerName, tileType) {
+  return L.tileLayer(
+    `https://api.vworld.kr/req/wmts/1.0.0/${encodeURIComponent(key)}/${layerName}/{z}/{y}/{x}.${tileType}`,
+    {
+      minZoom: 6,
+      maxZoom: 19,
+      crossOrigin: true
+    }
+  );
+}
+
+function clearVWorldMapObjects() {
+  if (!vworldMapState.map) {
+    return;
+  }
+
+  vworldMapState.map.off();
+  vworldMapState.map.remove();
+  vworldMapState.map = null;
+}
+
 function clearKakaoMapObjects() {
   kakaoMapState.markers.forEach((marker) => marker.setMap(null));
   kakaoMapState.infoWindows.forEach((infoWindow) => infoWindow.close());
@@ -1240,13 +2083,53 @@ function clearKakaoMapObjects() {
   kakaoMapState.markers = [];
   kakaoMapState.infoWindows = [];
   kakaoMapState.polyline = null;
+  kakaoMapState.map = null;
 }
 
 function loadKakaoMapsApi() {
-  if (window.kakao?.maps?.load) {
-    return new Promise((resolve) => {
-      window.kakao.maps.load(() => resolve(window.kakao.maps));
+  const waitForReady = () =>
+    new Promise((resolve, reject) => {
+      let settled = false;
+      const finishError = (message) => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        kakaoMapState.loadPromise = null;
+        window.clearTimeout(timeoutId);
+        reject(new Error(message));
+      };
+      const finishSuccess = () => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        window.clearTimeout(timeoutId);
+        resolve(window.kakao.maps);
+      };
+      const timeoutId = window.setTimeout(() => {
+        finishError('KAKAO_MAPS_LOAD_TIMEOUT');
+      }, KAKAO_MAP_SDK_TIMEOUT_MS);
+
+      if (!window.kakao?.maps?.load) {
+        finishError('KAKAO_MAPS_SDK_UNAVAILABLE');
+        return;
+      }
+
+      window.kakao.maps.load(() => {
+        if (!window.kakao?.maps?.services?.Places) {
+          finishError('KAKAO_MAPS_SERVICES_UNAVAILABLE');
+          return;
+        }
+
+        finishSuccess();
+      });
     });
+
+  if (window.kakao?.maps?.load) {
+    return waitForReady();
   }
 
   if (kakaoMapState.loadPromise) {
@@ -1260,14 +2143,19 @@ function loadKakaoMapsApi() {
   }
 
   kakaoMapState.loadPromise = new Promise((resolve, reject) => {
-    const finishLoading = () => {
-      if (!window.kakao?.maps?.load) {
-        kakaoMapState.loadPromise = null;
-        reject(new Error('KAKAO_MAPS_SDK_UNAVAILABLE'));
-        return;
-      }
+    const scriptLoadTimeoutId = window.setTimeout(() => {
+      kakaoMapState.loadPromise = null;
+      reject(new Error('KAKAO_MAPS_LOAD_TIMEOUT'));
+    }, KAKAO_MAP_SDK_TIMEOUT_MS);
 
-      window.kakao.maps.load(() => resolve(window.kakao.maps));
+    const finishLoading = () => {
+      window.clearTimeout(scriptLoadTimeoutId);
+      waitForReady().then(resolve).catch(reject);
+    };
+    const handleScriptError = () => {
+      window.clearTimeout(scriptLoadTimeoutId);
+      kakaoMapState.loadPromise = null;
+      reject(new Error('KAKAO_MAPS_SCRIPT_ERROR'));
     };
 
     const existingScript = document.getElementById('kakaoMapsApiScript');
@@ -1279,27 +2167,17 @@ function loadKakaoMapsApi() {
       }
 
       existingScript.addEventListener('load', finishLoading, { once: true });
-      existingScript.addEventListener(
-        'error',
-        () => {
-          kakaoMapState.loadPromise = null;
-          reject(new Error('KAKAO_MAPS_SCRIPT_ERROR'));
-        },
-        { once: true }
-      );
+      existingScript.addEventListener('error', handleScriptError, { once: true });
       return;
     }
 
     const script = document.createElement('script');
     script.id = 'kakaoMapsApiScript';
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(appKey)}&autoload=false`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(appKey)}&autoload=false&libraries=services`;
     script.async = true;
     script.defer = true;
     script.onload = finishLoading;
-    script.onerror = () => {
-      kakaoMapState.loadPromise = null;
-      reject(new Error('KAKAO_MAPS_SCRIPT_ERROR'));
-    };
+    script.onerror = handleScriptError;
     document.head.appendChild(script);
   });
 
@@ -1307,7 +2185,11 @@ function loadKakaoMapsApi() {
 }
 
 function renderMapFallback(place, flowPlaces, reason = '') {
-  elements.routeMap.innerHTML = createAerialMap(place, flowPlaces);
+  clearKakaoMapObjects();
+  clearVWorldMapObjects();
+  const statusText = getMapFallbackStatusText(reason, place);
+
+  elements.routeMap.innerHTML = createFallbackMapShell(place, flowPlaces, statusText);
 
   if (!place) {
     return;
@@ -1335,9 +2217,11 @@ function renderKakaoMap(place, flowPlaces) {
   }
 
   elements.routeMap.innerHTML = createKakaoMapShell(waitingText);
+  clearVWorldMapObjects();
 
   loadKakaoMapsApi()
-    .then(() => {
+    .then(() => resolveFlowPlacesWithTimeout(flowPlaces))
+    .then(({ resolvedFlowPlaces, usedFallbackSearch }) => {
       if (renderToken !== kakaoMapState.renderToken) {
         return;
       }
@@ -1349,7 +2233,10 @@ function renderKakaoMap(place, flowPlaces) {
 
       clearKakaoMapObjects();
 
-      const center = place ? getFlowLatLng(place) : { lat: 35.824, lng: 127.148 };
+      const currentPlace =
+        resolvedFlowPlaces.find((item) => item.flowLabel === '현재') || resolvedFlowPlaces[0] || null;
+      const center =
+        currentPlace?.resolvedLatLng || (place ? getFlowLatLng(place) : { lat: 35.824, lng: 127.148 });
       const map = new kakao.maps.Map(canvas, {
         center: new kakao.maps.LatLng(center.lat, center.lng),
         level: 5
@@ -1366,14 +2253,17 @@ function renderKakaoMap(place, flowPlaces) {
 
       const bounds = new kakao.maps.LatLngBounds();
 
-      flowPlaces.forEach((item) => {
-        const point = getFlowLatLng(item);
+      resolvedFlowPlaces.forEach((item) => {
+        const point = item.resolvedLatLng || getFlowLatLng(item);
         const position = new kakao.maps.LatLng(point.lat, point.lng);
         const marker = new kakao.maps.Marker({
           map,
           position,
-          title: `${item.flowLabel} · ${item.name}`,
-          image: createMapMarkerImage(item.flowLabel === '현재', themeMeta[place.theme].color)
+          title: item.flowLabel ? `${item.name} · ${item.flowLabel}` : item.name,
+          image: createMapMarkerImage(
+            item.flowLabel === '현재',
+            themeMeta[item.theme]?.color || themeMeta.all.color
+          )
         });
         const infoWindow = new kakao.maps.InfoWindow({
           content: createInfoWindowContent(item),
@@ -1394,37 +2284,49 @@ function renderKakaoMap(place, flowPlaces) {
         bounds.extend(position);
       });
 
-      if (flowPlaces.length > 1) {
-        kakaoMapState.polyline = new kakao.maps.Polyline({
-          map,
-          path: flowPlaces.map((item) => {
-            const point = getFlowLatLng(item);
-            return new kakao.maps.LatLng(point.lat, point.lng);
-          }),
-          strokeColor: themeMeta[place.theme].color,
-          strokeOpacity: 0.85,
-          strokeWeight: 5,
-          strokeStyle: 'solid'
-        });
-
+      if (resolvedFlowPlaces.length > 1) {
         map.setBounds(bounds);
-      } else {
+      } else if (resolvedFlowPlaces.length === 1) {
         map.setCenter(new kakao.maps.LatLng(center.lat, center.lng));
       }
+
+      window.requestAnimationFrame(() => {
+        if (kakaoMapState.map !== map) {
+          return;
+        }
+
+        map.relayout();
+
+        if (resolvedFlowPlaces.length > 1) {
+          map.setBounds(bounds);
+        } else if (resolvedFlowPlaces.length === 1) {
+          map.setCenter(new kakao.maps.LatLng(center.lat, center.lng));
+        }
+      });
 
       const status = document.getElementById('kakaoMapStatus');
       if (status) {
         status.remove();
       }
 
-      elements.routeChip.textContent = `실제 카카오 지도 · ${flowPlaces.length}곳`;
+      const exactCount = resolvedFlowPlaces.filter(
+        (item) => item.resolvedLatLng?.resolution === 'search'
+      ).length;
+
+      elements.routeChip.textContent = usedFallbackSearch
+        ? `실제 카카오 항공지도 · 기본 좌표 ${resolvedFlowPlaces.length}곳 표시 중`
+        : exactCount === resolvedFlowPlaces.length
+          ? `실제 카카오 항공지도 · ${resolvedFlowPlaces.length}곳`
+          : exactCount > 0
+            ? `실제 카카오 항공지도 · 검색 좌표 ${exactCount}/${resolvedFlowPlaces.length}곳`
+            : `실제 카카오 항공지도 · 기본 좌표 ${resolvedFlowPlaces.length}곳`;
     })
-    .catch(() => {
+    .catch((error) => {
       if (renderToken !== kakaoMapState.renderToken) {
         return;
       }
 
-      renderMapFallback(place, flowPlaces, 'load-error');
+      renderMapFallback(place, flowPlaces, error?.message || 'load-error');
     });
 }
 
@@ -1524,8 +2426,9 @@ function renderEmptyDetail() {
   elements.detailOrder.textContent = '0 / 0';
   elements.detailHero.className = 'detail-hero scene-park';
   renderHeroPhoto(null);
-  elements.detailHeroTitle.textContent = `전주의 숨은 보물 ${allPlaces.length}곳`;
-  elements.detailHeroText.textContent = '각 장소의 소개, 주변 볼거리, 추천 코스를 한 화면에서 볼 수 있도록 구성했습니다.';
+  elements.detailHeroTitle.textContent = '전주의 숨은 보물 30선';
+  elements.detailHeroText.textContent =
+    '41개 장소의 이야기, 주변 볼거리, 추천 코스를 한 화면에서 이어서 읽을 수 있도록 구성했습니다.';
   elements.detailDistrict.textContent = '-';
   elements.detailTheme.textContent = '-';
   elements.detailMood.textContent = themeMeta.all.mood;
@@ -1533,7 +2436,7 @@ function renderEmptyDetail() {
   elements.nearbyList.innerHTML = '';
   elements.detailNearbyText.textContent = '주변 권역 정보가 여기에 표시됩니다.';
   elements.detailCourse.textContent = '추천 코스 설명이 여기에 표시됩니다.';
-  elements.routeTitle.textContent = '카카오 하이브리드 지도 위치 흐름';
+  elements.routeTitle.textContent = '카카오 하이브리드 주변 볼거리 지도';
   elements.routeChip.textContent = '장소 선택 대기';
   renderKakaoMap(null, []);
   elements.routeStops.innerHTML = '';
@@ -1561,13 +2464,13 @@ function renderDetail(place) {
     .join('');
   elements.detailNearbyText.textContent = place.nearbyText;
   elements.detailCourse.textContent = place.course;
-  const flowPlaces = buildFlowPlaces(place);
+  const mapPlaces = buildMapPlaces(place);
 
-  elements.routeTitle.textContent = `${theme.label} 카카오 하이브리드 지도 위치 흐름`;
+  elements.routeTitle.textContent = '카카오 하이브리드 주변 볼거리 지도';
   elements.routeChip.textContent = getKakaoMapsAppKey()
-    ? `실제 카카오 지도 준비 중 · ${flowPlaces.length}곳`
-    : `API 키 필요 · ${flowPlaces.length}곳`;
-  renderKakaoMap(place, flowPlaces);
+    ? `선택 장소 강조 · 주변 볼거리 ${Math.max(mapPlaces.length - 1, 0)}곳`
+    : `API 키 필요 · 주변 볼거리 ${Math.max(mapPlaces.length - 1, 0)}곳`;
+  renderKakaoMap(place, mapPlaces);
   renderRouteStops(place);
 }
 
