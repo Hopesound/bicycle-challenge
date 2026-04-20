@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>탄소를 감축하는 자전거 챌린지 season2 - 전주의 숨은 보물 30선</title>
+    <title>탄소를 감축하는 자전거 챌린지 season2 - 전주와 인근 지역 숨은 보물 31선</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -11,7 +11,7 @@
       <header class="hero-panel">
         <div class="hero-copy">
           <h1>탄소를 감축하는 자전거 챌린지 season2</h1>
-          <p class="hero-subtitle">전주의 숨은 보물 30선</p>
+          <p class="hero-subtitle">전주와 인근 지역 숨은 보물 31선</p>
         </div>
       </header>
 
@@ -19,10 +19,10 @@
         <div class="toolbar-copy">
           <p class="toolbar-label">핵심 요약</p>
           <h2>
-            이 장소들이 함께 모였을 때 전주라는 도시가 실제로 어떻게 작동하는지를 잘 보여줍니다.
-            전주의 오랜 중심부에는 왕실과 조선 유산이 있고, 독립운동, 순교, 시민 기억의 장소가
-            있으며, 호수, 공원, 도심 산지를 따라 생태축이 이어지고, 서학동과 팔복동처럼 과거
-            산업지대나 쇠퇴한 주거지가 주민과 예술을 통해 재생된 공간도 있습니다.
+            이 장소들은 전주만이 아니라 완주와 익산까지 이어지는 생활권의 흐름을 함께 보여줍니다.
+            오래된 다리와 시장, 시민 기록과 공동체 공간, 호수와 저수지, 숲과 수목원, 예술 재생
+            공간이 자전거 이동 축 위에 놓이면서 도시와 인근 지역이 실제로 어떻게 연결되어
+            작동하는지를 직관적으로 읽을 수 있습니다.
           </h2>
         </div>
 
@@ -30,9 +30,26 @@
           <div class="theme-tabs" id="themeTabs"></div>
           <label class="search-box">
             <span>장소 검색</span>
-            <input id="searchInput" type="text" placeholder="예: 경기전, 덕진공원, 서학동 예술마을" />
+            <input id="searchInput" type="text" placeholder="예: 덕진공원, 비비정, 구이저수지" />
           </label>
         </div>
+      </section>
+
+      <section class="mission-board">
+        <div class="mission-board-copy">
+          <p class="toolbar-label">주차별 공개 미션</p>
+          <h2 id="missionBoardTitle">2026년 5월 1일 시작 · 4주차 공개 미션 준비 중</h2>
+          <p class="mission-board-text" id="missionBoardText">
+            2026년 5월 1일(금)부터 총 4주 동안 장소가 랜덤으로 나뉘어 공개되며, 1주차는 선공개되고 2주차부터 4주차까지는 해당 공개일에 자동으로 열립니다.
+          </p>
+        </div>
+
+        <div class="mission-board-current">
+          <span class="mission-current-range" id="missionCurrentRange">1주차 선공개</span>
+          <div class="mission-current-list" id="missionCurrentList"></div>
+        </div>
+
+        <div class="mission-week-grid" id="missionWeekGrid"></div>
       </section>
 
       <main class="content-grid">
@@ -43,7 +60,7 @@
               <h2>장소 선택</h2>
               <p class="panel-text">장소를 누르면 해당 장소의 소개, 주변 볼거리, 추천 코스가 바로 열립니다.</p>
             </div>
-            <span class="panel-count" id="filteredCount">41곳</span>
+            <span class="panel-count" id="filteredCount">31곳</span>
           </div>
 
           <div class="place-list" id="placeList"></div>
@@ -53,16 +70,16 @@
           <article class="detail-page">
             <div class="detail-top">
               <div class="detail-heading">
-                <p class="detail-label" id="detailThemeLabel">역사 · 기억</p>
-                <h2 id="detailTitle">경기전</h2>
+                <p class="detail-label" id="detailThemeLabel">장소를 선택하세요</p>
+                <h2 id="detailTitle">전주와 인근 지역 숨은 보물 31선</h2>
                 <p class="detail-subtitle" id="detailSubtitle">
-                  전주 역사문화축의 중심에서 전주의 시간을 차분하게 보여주는 공간
+                  목록에서 장소를 선택하면 소개, 주변 볼거리, 공개 미션, 지도 정보를 바로 확인할 수 있습니다.
                 </p>
               </div>
 
               <div class="detail-page-mark">
-                <span id="detailThemeBadge">역사 · 기억</span>
-                <strong id="detailOrder">01 / 09</strong>
+                <span id="detailThemeBadge">테마 선택 대기</span>
+                <strong id="detailOrder">00 / 31</strong>
               </div>
             </div>
 
@@ -71,9 +88,9 @@
                 <img class="detail-photo is-hidden" id="detailPhoto" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
                 <div class="detail-hero-overlay">
                   <div class="detail-hero-copy">
-                  <strong id="detailHeroTitle">전주의 시간을 가장 선명하게 보여주는 장소</strong>
+                  <strong id="detailHeroTitle">전주와 인근 지역을 자전거로 읽는 31개 포인트</strong>
                   <p id="detailHeroText">
-                    한옥 권역과 경기전, 풍남문, 전라감영을 함께 묶어 읽기 좋은 역사 코스의 중심점입니다.
+                    전주, 완주, 익산 생활권에 흩어진 다리와 호수, 기록과 돌봄, 예술과 생활 거점을 주차별 미션으로 이어 봅니다.
                   </p>
                   </div>
                 </div>
@@ -83,24 +100,48 @@
             <div class="meta-grid">
               <article class="meta-card">
                 <span>권역</span>
-                <strong id="detailDistrict">완산구 풍남동</strong>
+                <strong id="detailDistrict">장소 선택 전</strong>
+              </article>
+              <article class="meta-card">
+                <span>주소</span>
+                <strong id="detailAddress">주소 확인 전</strong>
               </article>
               <article class="meta-card">
                 <span>테마</span>
-                <strong id="detailTheme">역사 · 기억</strong>
+                <strong id="detailTheme">선택 대기</strong>
               </article>
               <article class="meta-card">
                 <span>추천 분위기</span>
-                <strong id="detailMood">차분하게 머물며 읽는 코스</strong>
+                <strong id="detailMood">가볍게 살펴보는 탐색형 코스</strong>
               </article>
             </div>
+
+            <article class="mission-detail-card">
+              <div class="mission-detail-head">
+                <div>
+                  <p class="story-label">주간 인증 미션</p>
+                  <h3 id="missionTitle">1주차 선공개 진행 중</h3>
+                </div>
+                <span class="mission-status-badge" id="missionStatus">선공개</span>
+              </div>
+              <p class="mission-detail-text" id="missionDescription">
+                2026년 5월 1일(금)부터 4주차 랜덤 공개 미션으로 운영되며, 공개된 주차의 장소만 방문 인증을 진행할 수 있습니다.
+              </p>
+              <div class="mission-detail-meta">
+                <span id="missionScheduleText">주차별 공개 일정이 여기에 표시됩니다.</span>
+                <span id="missionProofText">선택한 장소의 인증 상태가 여기에 표시됩니다.</span>
+              </div>
+              <button class="mission-verify-button" id="missionVerifyButton" type="button">
+                현장 인증 완료
+              </button>
+            </article>
 
             <div class="story-grid">
               <article class="story-card">
                 <p class="story-label">장소 소개</p>
                 <p id="detailIntro">
-                  전주의 시간감을 가장 안정적으로 느낄 수 있는 대표 장소로, 풍남문과 전동성당, 한옥마을
-                  권역을 함께 묶었을 때 흐름이 자연스럽습니다.
+                  전주와 인근 지역의 생활권을 따라 장소 소개가 이 영역에 표시됩니다. 다리, 숲, 저수지,
+                  기록 공간, 생활 거점이 어떤 맥락에서 연결되는지 읽을 수 있게 구성했습니다.
                 </p>
               </article>
 
@@ -108,7 +149,7 @@
                 <p class="story-label">주변 볼거리</p>
                 <div class="nearby-list" id="nearbyList"></div>
                 <p id="detailNearbyText">
-                  가까운 권역에서 함께 보기 좋은 장소들을 같이 제안해 코스의 이해를 높였습니다.
+                  선택한 장소 주변에서 함께 보기 좋은 포인트를 묶어 자전거 이동 흐름을 이해하기 쉽게 안내합니다.
                 </p>
               </article>
             </div>
@@ -116,16 +157,15 @@
             <article class="story-card full">
               <p class="story-label">코스 소개</p>
               <p id="detailCourse">
-                이 장소는 전주 역사문화축의 초반 흐름을 잡아 주는 출발 지점으로, 풍남문에서 출발해
-                경기전과 전라감영으로 이어지는 도심 순환 코스의 중심입니다.
+                코스 소개에는 각 장소를 중심으로 연결하기 좋은 이동 흐름과 추천 정차 포인트가 표시됩니다.
               </p>
             </article>
 
             <article class="route-card">
               <div class="route-head">
                 <div>
-                  <p class="story-label">카카오 하이브리드 지도 위치 흐름</p>
-                  <h3 id="routeTitle">역사 · 기억 테마 코스</h3>
+                  <p class="story-label">카카오 하이브리드 주변 볼거리 지도</p>
+                  <h3 id="routeTitle">선택 장소와 주변 볼거리 지도</h3>
                 </div>
                 <span class="route-chip" id="routeChip">현재 포인트</span>
               </div>
