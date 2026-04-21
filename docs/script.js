@@ -1256,6 +1256,10 @@ const DEFAULT_KAKAO_MAPS_APP_KEY = '13eca9e7bcd70daffbc728ddce4553dc';
 const MISSION_START_DATE = new Date(2026, 4, 1);
 const MISSION_WEEK_COUNT = 4;
 const MISSION_PREVIEW_WEEK_INDEX = 0;
+const MISSION_FORCE_RELEASE_ALL = true;
+const NEARBY_POI_RADIUS_METERS = 500;
+const NEARBY_POI_LIMIT = 6;
+const NEARBY_POI_CATEGORY_CODES = ['AT4', 'CT1'];
 const MISSION_SEED = 'jeonju-nearby-season2-2026-05-01-v2';
 const MISSION_STORAGE_KEY = 'jeonju-nearby-season2-verifications-v2';
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -1412,6 +1416,10 @@ function buildMissionPlaceLookup(schedule) {
 const missionPlaceLookup = buildMissionPlaceLookup(missionSchedule);
 
 function isMissionWeekReleased(weekIndex, today = new Date()) {
+  if (MISSION_FORCE_RELEASE_ALL) {
+    return true;
+  }
+
   if (weekIndex === MISSION_PREVIEW_WEEK_INDEX) {
     return true;
   }
@@ -1423,6 +1431,13 @@ function isMissionWeekReleased(weekIndex, today = new Date()) {
 }
 
 function getMissionWindowInfo(today = new Date()) {
+  if (MISSION_FORCE_RELEASE_ALL) {
+    return {
+      phase: 'after',
+      currentWeekIndex: missionSchedule.length - 1
+    };
+  }
+
   const currentDate = normalizeDate(today);
 
   if (currentDate < MISSION_START_DATE) {
@@ -1449,6 +1464,10 @@ function getMissionWindowInfo(today = new Date()) {
 }
 
 function getCurrentMissionPlaces(today = new Date()) {
+  if (MISSION_FORCE_RELEASE_ALL) {
+    return missionSchedule.flatMap((week) => week.places);
+  }
+
   const { currentWeekIndex } = getMissionWindowInfo(today);
   return missionSchedule[currentWeekIndex]?.places || [];
 }
@@ -1611,7 +1630,168 @@ function shortenPlaceLabel(name) {
   return name.length <= 9 ? name : `${name.slice(0, 9)}…`;
 }
 
-function buildMapPlaces(selectedPlace = null) {
+function calculateDistanceMeters(firstLatLng, secondLatLng) {
+  if (!firstLatLng || !secondLatLng) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const toRadians = (value) => (value * Math.PI) / 180;
+  const earthRadius = 6371000;
+  const deltaLat = toRadians(secondLatLng.lat - firstLatLng.lat);
+  const deltaLng = toRadians(secondLatLng.lng - firstLatLng.lng);
+  const firstLat = toRadians(firstLatLng.lat);
+  const secondLat = toRadians(secondLatLng.lat);
+  const a =
+    Math.sin(deltaLat / 2) ** 2 +
+    Math.cos(firstLat) * Math.cos(secondLat) * Math.sin(deltaLng / 2) ** 2;
+
+  return earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function normalizeNearbyKey(name = '') {
+  return String(name).replace(/\s+/g, '').toLowerCase();
+}
+
+function formatDistanceLabel(distanceMeters) {
+  if (!Number.isFinite(distanceMeters)) {
+    return '가까운 명소';
+  }
+
+  if (distanceMeters < 1000) {
+    return `${Math.max(1, Math.round(distanceMeters / 10) * 10)}m 거리`;
+  }
+
+  return `${(distanceMeters / 1000).toFixed(1)}km 거리`;
+}
+
+function summarizePoiCategory(categoryName = '') {
+  const segments = String(categoryName)
+    .split('>')
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+
+  return segments.at(-1) || '주변 명소';
+}
+
+function buildFallbackNearbyPlaces(selectedPlace = null) {
+  if (!selectedPlace) {
+    return [];
+  }
+
+  return (selectedPlace.nearby || [])
+    .map((name) => findPlaceByName(name))
+    .filter(Boolean)
+    .map((target) => ({
+      ...target,
+      flowLabel: '주변 명소',
+      distance: calculateDistanceMeters(selectedPlace.latLng, target.latLng),
+      position: target.position || projectLatLngToPosition(target.latLng)
+    }));
+}
+
+function buildCuratedRadiusNearbyPlaces(selectedPlace = null) {
+  if (!selectedPlace?.latLng) {
+    return [];
+  }
+
+  return allPlaces
+    .filter((candidate) => candidate.name !== selectedPlace.name && candidate.latLng)
+    .map((candidate) => ({
+      ...candidate,
+      flowLabel: '주변 명소',
+      distance: calculateDistanceMeters(selectedPlace.latLng, candidate.latLng),
+      position: candidate.position || projectLatLngToPosition(candidate.latLng)
+    }))
+    .filter((candidate) => candidate.distance <= NEARBY_POI_RADIUS_METERS)
+    .sort((first, second) => first.distance - second.distance)
+    .slice(0, NEARBY_POI_LIMIT);
+}
+
+function normalizeExternalNearbyPlace(selectedPlace, placeResult) {
+  const lat = Number(placeResult.y);
+  const lng = Number(placeResult.x);
+  const latLng = {
+    lat,
+    lng
+  };
+  const distance =
+    Number(placeResult.distance) || calculateDistanceMeters(selectedPlace.latLng, latLng);
+  const categoryLabel = summarizePoiCategory(placeResult.category_name);
+
+  return {
+    name: placeResult.place_name,
+    district:
+      placeResult.road_address_name?.trim() ||
+      placeResult.address_name?.trim() ||
+      selectedPlace.district,
+    tagline: `${formatDistanceLabel(distance)} · ${categoryLabel}`,
+    imageUrl: '',
+    imageFallbackUrl: previewImage(
+      `${placeResult.place_name} ${categoryLabel} ${selectedPlace.district || ''}`
+    ),
+    latLng,
+    position: projectLatLngToPosition(latLng),
+    flowLabel: '주변 명소',
+    distance,
+    categoryName: placeResult.category_name || '',
+    source: 'external'
+  };
+}
+
+function mergeNearbyPlaces(primaryPlaces = [], secondaryPlaces = []) {
+  const merged = [];
+  const seen = new Set();
+
+  [...primaryPlaces, ...secondaryPlaces].forEach((item) => {
+    if (!item?.name) {
+      return;
+    }
+
+    const key = normalizeNearbyKey(item.name);
+    if (seen.has(key)) {
+      return;
+    }
+
+    seen.add(key);
+    merged.push(item);
+  });
+
+  return merged
+    .sort((first, second) => {
+      const firstDistance = Number.isFinite(first.distance) ? first.distance : Number.POSITIVE_INFINITY;
+      const secondDistance = Number.isFinite(second.distance) ? second.distance : Number.POSITIVE_INFINITY;
+      return firstDistance - secondDistance;
+    })
+    .slice(0, NEARBY_POI_LIMIT);
+}
+
+function createNearbyPayload(items = [], source = 'fallback') {
+  return {
+    items,
+    source
+  };
+}
+
+function buildNearbyDescription(place, payload) {
+  const items = payload?.items || [];
+  const names = items.slice(0, 3).map((item) => item.name);
+
+  if (!items.length) {
+    return `${place.name} 기준 반경 ${NEARBY_POI_RADIUS_METERS}m 안에서 바로 제시할 명소를 찾지 못했습니다.`;
+  }
+
+  if (payload?.source === 'external') {
+    return `${place.name} 기준 반경 ${NEARBY_POI_RADIUS_METERS}m 안에서 바로 들르기 좋은 명소로 ${names.join(', ')} 등을 제시합니다.`;
+  }
+
+  if (payload?.source === 'mixed') {
+    return `${place.name} 주변 ${NEARBY_POI_RADIUS_METERS}m 안팎의 실제 명소와 내부 추천 장소를 함께 묶어 ${names.join(', ')} 등을 제시합니다.`;
+  }
+
+  return `${place.name} 주변에서 이어 보기 좋은 추천 장소로 ${names.join(', ')} 등을 안내합니다.`;
+}
+
+function buildMapPlaces(selectedPlace = null, nearbyItems = []) {
   if (!selectedPlace) {
     return [];
   }
@@ -1629,20 +1809,20 @@ function buildMapPlaces(selectedPlace = null) {
   };
 
   pushPlace(selectedPlace, '현재');
-  (selectedPlace.nearby || [])
-    .map((name) => findPlaceByName(name))
-    .forEach((target) => pushPlace(target, '주변 볼거리'));
+  nearbyItems.forEach((target) => pushPlace(target, target.flowLabel || '주변 명소'));
 
   return mapPlaces;
 }
 
-function buildRouteStops(place) {
-  return buildMapPlaces(place).map((item) => ({
+function buildRouteStops(place, nearbyItems = []) {
+  return buildMapPlaces(place, nearbyItems).map((item) => ({
     label: item.flowLabel,
     name: item.name,
     district: item.district,
-    tagline: item.tagline,
-    imageUrl: item.imageUrl,
+    tagline:
+      item.tagline ||
+      `${formatDistanceLabel(item.distance)} · ${summarizePoiCategory(item.categoryName)}`,
+    imageUrl: item.imageUrl || item.imageFallbackUrl || previewImage(item.mapKeyword || item.name),
     imageFallbackUrl: item.fallbackImageUrl || previewImage(item.mapKeyword || item.name)
   }));
 }
@@ -1753,6 +1933,11 @@ const addressState = {
   cache: new Map()
 };
 
+const nearbyPoiState = {
+  requestToken: 0,
+  cache: new Map()
+};
+
 function getKakaoMapsAppKey() {
   return window.KAKAO_MAPS_APP_KEY || DEFAULT_KAKAO_MAPS_APP_KEY || '';
 }
@@ -1798,6 +1983,93 @@ function loadKakaoMapsApi() {
   });
 
   return kakaoMapState.loadPromise;
+}
+
+function searchNearbyCategory(placesService, categoryCode, selectedPlace) {
+  return new Promise((resolve) => {
+    const location = new kakao.maps.LatLng(selectedPlace.latLng.lat, selectedPlace.latLng.lng);
+
+    placesService.categorySearch(
+      categoryCode,
+      (results, status) => {
+        if (status !== kakao.maps.services.Status.OK || !Array.isArray(results)) {
+          resolve([]);
+          return;
+        }
+
+        resolve(results);
+      },
+      {
+        location,
+        radius: NEARBY_POI_RADIUS_METERS,
+        sort: kakao.maps.services.SortBy.DISTANCE,
+        useMapBounds: false
+      }
+    );
+  });
+}
+
+function getNearbyCacheKey(selectedPlace) {
+  return `${selectedPlace.name}:${selectedPlace.latLng?.lat ?? ''},${selectedPlace.latLng?.lng ?? ''}`;
+}
+
+function fetchNearbyPlaces(selectedPlace) {
+  const fallbackPlaces = mergeNearbyPlaces(
+    buildCuratedRadiusNearbyPlaces(selectedPlace),
+    buildFallbackNearbyPlaces(selectedPlace)
+  );
+  const cacheKey = getNearbyCacheKey(selectedPlace);
+
+  if (nearbyPoiState.cache.has(cacheKey)) {
+    return Promise.resolve(nearbyPoiState.cache.get(cacheKey));
+  }
+
+  if (!selectedPlace?.latLng) {
+    const fallbackPayload = createNearbyPayload(fallbackPlaces, 'fallback');
+    nearbyPoiState.cache.set(cacheKey, fallbackPayload);
+    return Promise.resolve(fallbackPayload);
+  }
+
+  return loadKakaoMapsApi()
+    .then(() => {
+      if (!window.kakao?.maps?.services?.Places) {
+        throw new Error('KAKAO_PLACES_UNAVAILABLE');
+      }
+
+      const placesService = new kakao.maps.services.Places();
+      return Promise.all(
+        NEARBY_POI_CATEGORY_CODES.map((categoryCode) =>
+          searchNearbyCategory(placesService, categoryCode, selectedPlace)
+        )
+      );
+    })
+    .then((resultGroups) => {
+      const externalPlaces = resultGroups
+        .flat()
+        .map((placeResult) => normalizeExternalNearbyPlace(selectedPlace, placeResult))
+        .filter(
+          (item) =>
+            item.distance <= NEARBY_POI_RADIUS_METERS &&
+            normalizeNearbyKey(item.name) !== normalizeNearbyKey(selectedPlace.name)
+        );
+      const mergedPlaces = mergeNearbyPlaces(externalPlaces, fallbackPlaces);
+      const payload = createNearbyPayload(
+        mergedPlaces,
+        externalPlaces.length && fallbackPlaces.length
+          ? 'mixed'
+          : externalPlaces.length
+            ? 'external'
+            : 'fallback'
+      );
+
+      nearbyPoiState.cache.set(cacheKey, payload);
+      return payload;
+    })
+    .catch(() => {
+      const fallbackPayload = createNearbyPayload(fallbackPlaces, 'fallback');
+      nearbyPoiState.cache.set(cacheKey, fallbackPayload);
+      return fallbackPayload;
+    });
 }
 
 function clearKakaoMapObjects() {
@@ -2127,6 +2399,7 @@ function renderMissionBoard() {
   const today = new Date();
   const { phase, currentWeekIndex } = getMissionWindowInfo(today);
   const activeWeek = missionSchedule[currentWeekIndex] || missionSchedule.at(-1);
+  const currentPlaces = getCurrentMissionPlaces(today);
 
   if (!activeWeek) {
     return;
@@ -2138,10 +2411,10 @@ function renderMissionBoard() {
       `총 ${missionSchedule.length}주 운영으로 구성했고, 1주차는 지금 바로 공개했습니다. 2주차부터 4주차는 각 공개 시작일에 자동으로 열립니다.`;
     elements.missionCurrentRange.textContent = `1주차 선공개 · ${formatMissionDateRange(activeWeek.startDate, activeWeek.endDate)}`;
   } else if (phase === 'after') {
-    elements.missionBoardTitle.textContent = '전체 4주차 미션 공개가 완료되었습니다';
+    elements.missionBoardTitle.textContent = '1주차부터 4주차까지 전체 미션이 공개되었습니다';
     elements.missionBoardText.textContent =
-      '모든 주차 미션이 공개 완료된 상태입니다. 이미 공개된 장소를 다시 방문해 인증하거나 놓친 장소를 이어서 수행할 수 있습니다.';
-    elements.missionCurrentRange.textContent = `전체 공개 완료 · 총 ${missionSchedule.length}주차 운영`;
+      '모든 주차 미션이 한 번에 공개된 상태입니다. 원하는 순서대로 장소를 둘러보고 바로 인증을 진행할 수 있습니다.';
+    elements.missionCurrentRange.textContent = `전체 공개 · 총 ${missionSchedule.length}주차 / ${currentPlaces.length}곳`;
   } else {
     elements.missionBoardTitle.textContent = `${activeWeek.weekNumber}주차 미션이 공개되었습니다`;
     elements.missionBoardText.textContent =
@@ -2149,7 +2422,7 @@ function renderMissionBoard() {
     elements.missionCurrentRange.textContent = `${activeWeek.weekNumber}주차 진행 중 · ${formatMissionDateRange(activeWeek.startDate, activeWeek.endDate)}`;
   }
 
-  elements.missionCurrentList.innerHTML = activeWeek.places
+  elements.missionCurrentList.innerHTML = currentPlaces
     .map(
       (place) =>
         `<button type="button" class="mission-place-chip is-button" data-mission-place="${place.name}">${place.name}</button>`
@@ -2330,8 +2603,8 @@ function enhanceRouteStopImages() {
   });
 }
 
-function renderRouteStops(place) {
-  elements.routeStops.innerHTML = buildRouteStops(place)
+function renderRouteStops(place, nearbyItems = []) {
+  elements.routeStops.innerHTML = buildRouteStops(place, nearbyItems)
     .map(
       (stop) => `
         <article class="route-stop${stop.label === '현재' ? ' active' : ''}">
@@ -2356,6 +2629,49 @@ function renderRouteStops(place) {
   enhanceRouteStopImages();
 }
 
+function applyNearbyPayload(place, payload) {
+  const nearbyItems = payload?.items || [];
+
+  elements.nearbyList.innerHTML = nearbyItems.length
+    ? nearbyItems
+        .map(
+          (item) =>
+            `<span class="nearby-chip" title="${escapeHtmlAttribute(
+              item.tagline || item.district || item.name
+            )}">${item.name}</span>`
+        )
+        .join('')
+    : '<span class="nearby-chip">반경 500m 내 추천 명소 없음</span>';
+  elements.detailNearbyText.textContent = buildNearbyDescription(place, payload);
+
+  const mapPlaces = buildMapPlaces(place, nearbyItems);
+  elements.routeTitle.textContent = `선택 장소와 반경 ${NEARBY_POI_RADIUS_METERS}m 명소 지도`;
+  elements.routeChip.textContent = `선택 장소 강조 · 반경 ${NEARBY_POI_RADIUS_METERS}m 명소 ${Math.max(
+    mapPlaces.length - 1,
+    0
+  )}곳`;
+  renderKakaoMap(place, mapPlaces);
+  renderRouteStops(place, nearbyItems);
+}
+
+function renderNearbyPlaces(place) {
+  const requestToken = ++nearbyPoiState.requestToken;
+  const fallbackPayload = createNearbyPayload(
+    mergeNearbyPlaces(buildCuratedRadiusNearbyPlaces(place), buildFallbackNearbyPlaces(place)),
+    'fallback'
+  );
+
+  applyNearbyPayload(place, fallbackPayload);
+
+  fetchNearbyPlaces(place).then((payload) => {
+    if (requestToken !== nearbyPoiState.requestToken || state.selected !== place.name) {
+      return;
+    }
+
+    applyNearbyPayload(place, payload);
+  });
+}
+
 function renderEmptyDetail() {
   setThemeColors(state.theme);
   elements.detailThemeLabel.textContent = '전주·인근 시즌';
@@ -2369,6 +2685,7 @@ function renderEmptyDetail() {
   elements.detailHeroText.textContent =
     '전주, 완주, 익산, 김제·군산 경계까지 확장된 장소를 따라 생활권과 수변, 기록과 쉼을 함께 읽는 시즌형 챌린지입니다.';
   addressState.requestToken += 1;
+  nearbyPoiState.requestToken += 1;
   elements.detailDistrict.textContent = '-';
   elements.detailAddress.textContent = '-';
   elements.detailTheme.textContent = '-';
@@ -2402,18 +2719,9 @@ function renderDetail(place) {
   elements.detailTheme.textContent = theme.label;
   elements.detailMood.textContent = theme.mood;
   elements.detailIntro.textContent = place.intro;
-  elements.nearbyList.innerHTML = place.nearby
-    .map((item) => `<span class="nearby-chip">${item}</span>`)
-    .join('');
-  elements.detailNearbyText.textContent = place.nearbyText;
   elements.detailCourse.textContent = place.course;
   renderMissionDetail(place);
-
-  const mapPlaces = buildMapPlaces(place);
-  elements.routeTitle.textContent = '카카오 하이브리드 주변 볼거리 지도';
-  elements.routeChip.textContent = `선택 장소 강조 · 주변 볼거리 ${Math.max(mapPlaces.length - 1, 0)}곳`;
-  renderKakaoMap(place, mapPlaces);
-  renderRouteStops(place);
+  renderNearbyPlaces(place);
 }
 
 function syncHash() {
