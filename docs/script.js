@@ -36,132 +36,617 @@ const themeMeta = {
   }
 };
 
+const officialImages = {
+  '전주시 공영자전거 꽃싱이 송천대여소': {
+    imageUrl: 'https://tour.jeonju.go.kr/images/visitjj/contents/month/2405_spring/2405_jeonju_spring_23.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000023&dataSid=13494&menuCd=DOM_000000112001000000&paging=ok&startPage=2'
+  },
+  '추천대': {
+    imageUrl: 'https://daum.jeonju.go.kr/_data/sys_webzine_list/1774311735_kpoWholnAokOvrmcnplET9i2TzIQP0QtxCvODz7sy69c1d937.jpg',
+    sourceName: '전주다움',
+    sourceUrl: 'https://daum.jeonju.go.kr/main/menu?do=view&gc=WEBZINE2&webzine_code=vfsgoUqiY-_69c0ef0a&wgroup_code=wdpXktqquCY69c0ca1a'
+  },
+  '덕진공원': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/173165947742003.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&contentsSid=1&dataSid=9772'
+  },
+  '전북대 자연사박물관': {
+    imageUrl: 'https://daum.jeonju.go.kr/_data/sys_webzine_list/1758528078_C1mj1pzy4oIk6-iMFODw47rU-MdfdhM-xp3_PRuKG68d1024e.jpg',
+    sourceName: '전주다움',
+    sourceUrl: 'https://daum.jeonju.go.kr/main/menu?do=view&gc=WEBZINE7&page=1&webzine_code=EwrgMdb9hXd68d10302&wgroup_code=h2U9qzCN9zm68d0ebec'
+  },
+  '비비정': {
+    imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff8080818a49961a018a6cf30e81128b/board/ff8080818c5d9e6d018ca480691c6a56/original/1705659085119279813.jpg',
+    sourceName: '완주군 문화관광',
+    sourceUrl: 'https://www.wanju.go.kr/tour/planweb/board/view.9is?boardUid=ff8080818c5d9e6d018ca480691c6a56&categoryUid1=&contentUid=ff8080818c5d9e6d018ca465556768af&dataUid=335d11cc95be427286d09b5859cc2173&page=1&subPath=%2Ftour&tmpField14='
+  },
+  '기지제': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171521521467123.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&contentsSid=1&dataSid=9757&paging=ok&startPage=1'
+  },
+  '세병호': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/176215039084209.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&categoryCode1=A11&dataSid=13612&menuCd=DOM_000000101006002000&paging=ok&startPage=1'
+  },
+  '고산 미소시장': {
+    imageUrl: 'https://www.wanju.go.kr/www/images/contents/market_0301.jpg',
+    locationImageUrl: 'https://www.wanju.go.kr/www/images/contents/market_0302.jpg',
+    sourceName: '완주군청',
+    sourceUrl: 'https://www.wanju.go.kr/index.9is?contentUid=ff8080818b024d8e018b274f6bdf2c6d'
+  },
+  '완주군 송광사': {
+    imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff8080818a49961a018a6cf30e81128b/board/ff8080818c5d9e6d018ca480691c6a56/original/1705659085371279811.jpg',
+    sourceName: '완주군 문화관광',
+    sourceUrl: 'https://www.wanju.go.kr/tour/planweb/board/view.9is?boardUid=ff8080818c5d9e6d018ca480691c6a56&contentUid=ff8080818c5d9e6d018ca465556768af&dataUid=13b40824d7e94b309705e54227e7a283&page=1&subPath=%2Ftour&tmpField14='
+  },
+  '아중호수도서관': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/177218050397488.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&contentsSid=1&dataSid=16677&paging=ok&startPage=1'
+  },
+  '팔복예술공장': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175066192675612.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&contentsSid=1&dataSid=9769&paging=ok&startPage=1'
+  },
+  '전주시민기록관': {
+    imageUrl: 'https://daum.jeonju.go.kr/data/sys_webzine_list/3740062266_UIYRDToi_2364d0372ecbd9eed3ab1aab324a5f2d776780ba.jpg',
+    sourceName: '전주다움',
+    sourceUrl: 'https://daum.jeonju.go.kr/main/menu?do=view&gc=WEBZINE1&page=1&webzine_code=6h9fmh8yqi2fi7ss&wgroup_code=zi8033sr1ggpurr0'
+  },
+  '전주3.1운동발상지': {
+    imageUrl: 'https://daum.jeonju.go.kr/data/sys_webzine_list/2042236394_gEJcs62W_b5be3fa9363b7a57aa74fa4661242f83d7e58611.jpg',
+    sourceName: '전주다움',
+    sourceUrl: 'https://daum.jeonju.go.kr/main/menu?do=view&gc=WEBZINE2&page=1&webzine_code=qlxjc66mfk81rztb&wgroup_code=tv4ljucl5gjkmqjb'
+  },
+  '오목대': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/175317831898777.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&dataSid=9742&menuCd=DOM_000000101006001000'
+  },
+  '구이저수지': {
+    imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff808081898ba9ba0189f1b459a700af/board/ff8080818b024d8e018b1c99655f1226/original/7bec9297-2059-4214-961c-b3cbfd1939ca.jpg',
+    sourceName: '완주군 인터넷신문',
+    sourceUrl: 'https://www.wanju.go.kr/news/planweb/board/view.9is?boardUid=ff8080818b024d8e018b1c99655f1226&categoryUid1=ff8080818b024d8e018b1c9ae4f91243&contentUid=ff808081898ba9ba0189f1e5b90d01a8&dataUid=4028a6029bdaa74e019c1b7f42487b85'
+  },
+  '전주수목원': {
+    imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/171444352729634.jpg',
+    sourceName: '비짓전주',
+    sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&contentsSid=1&dataSid=9775&paging=ok&startPage=1'
+  },
+  '완주군 상관편백숲 관광안내소': {
+    imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff8080818a49961a018a6cf30e81128b/board/ff8080818c5d9e6d018ca480691c6a56/original/1705659039535265177.jpg',
+    sourceName: '완주군 문화관광',
+    sourceUrl: 'https://www.wanju.go.kr/tour/planweb/board/view.9is?boardUid=ff8080818c5d9e6d018ca480691c6a56&contentUid=ff8080818c5d9e6d018ca465556768af&dataUid=196cc2390b4b4acd9bb4b4eff2534391&page=2&subPath=%2Ftour&tmpField14='
+  },
+'대덕초등학교': {
+  imageUrl: 'https://school.jbedu.kr/hosts/daedeok/M01/tpl004/images/main_img.png',
+  sourceName: '대덕초등학교',
+  sourceUrl: 'https://school.jbedu.kr/daedeok/'
+},
+'무인카페여유(구이로1575)': {
+  imageUrl: previewImage('무인카페여유 구이로1575'),
+  sourceName: '완주군 위생업소 자료',
+  sourceUrl: 'https://www.wanju.go.kr/planweb/board/download.9is?boardUid=ff8080818ccd5216018cf71fcc692fc8&fileUid=4028a60291218d370191dfc269391f0b'
+},
+'바람쐬는길': {
+  imageUrl: 'https://tour.jeonju.go.kr/upload_data/board_data/BBS_0000003/thumbnail/176353381759802.jpg',
+  sourceName: '비짓전주',
+  sourceUrl: 'https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000003&dataSid=9738&menuCd=DOM_000000101006001000'
+},
+'바이크박스': {
+  imageUrl: previewImage('전주 바이크박스 자전거 정비'),
+  sourceName: '바이크박스',
+  sourceUrl: 'https://www.instagram.com/bikebox3/'
+},
+'봉동 상장기공원': {
+  imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff808081898ba9ba0189f1b459a700af/board/ff8080818b024d8e018b1c99655f1226/original/539749_432795.jpg',
+  sourceName: '완주군 인터넷신문',
+  sourceUrl: 'https://www.wanju.go.kr/planweb/board/view.9is?boardUid=ff8080818b024d8e018b1c99655f1226&categoryUid1=ff8080818b024d8e018b1c9ae4f91243&contentUid=ff808081898ba9ba0189f1e5b90d01a8&dataUid=26d79cb6e2a8428283e51f78fa06267d'
+},
+'새창이다리': {
+  imageUrl: 'https://cdn.jjan.kr/data2/content/image/2025/11/06/.cache/512/20251106500009.jpg',
+  sourceName: '전북일보',
+  sourceUrl: 'https://www.jjan.kr/article/20251106500012'
+},
+'어은 쌍다리': {
+  imageUrl: 'https://daum.jeonju.go.kr/data/sys_webzine_list/3232243990_OM8e1yrd_cc7007002eb1c1b9d9bd081ed5719938749616b9.jpg',
+  sourceName: '전주다움',
+  sourceUrl: 'https://daum.jeonju.go.kr/main/menu?do=view&gc=WEBZINE2&page=1&webzine_code=khwwb35i26gf8lme&wgroup_code=ir7kbsbzoob3rf5n'
+},
+'우석대학교 부속 전주한방병원': {
+  imageUrl: previewImage('우석대학교 부속 전주한방병원'),
+  sourceName: '우석대부속전주한방병원',
+  sourceUrl: 'https://www.woosukmed.co.kr/'
+},
+'익산 삼일교회(참새방앗간)': {
+  imageUrl: 'https://jangro.kr/wp-content/uploads/2021/10/07-%EC%B0%B8%EC%83%88%EB%B0%A9%EC%95%97%EA%B0%84-scaled.jpg',
+  sourceName: '한국장로신문',
+  sourceUrl: 'https://jangro.kr/2021/10/05/%EA%B5%90%ED%9A%8C%ED%83%90%EB%B0%A9-%EC%A7%84%EC%98%81%ED%9B%88-%EB%AA%A9%EC%82%AC%EC%9D%B5%EC%82%B0%EC%82%BC%EC%9D%BC%EA%B5%90%ED%9A%8C/'
+},
+'전주공동체라디오 전주FM': {
+  imageUrl: 'https://contents.sixshop.com/thumbnails/uploadedFiles/207956/default/image_1773660173986_1000.jpg',
+  sourceName: '전주공동체라디오 전주FM',
+  sourceUrl: 'https://jcfm.kr/'
+},
+'전주시 자원봉사센터': {
+  imageUrl: 'https://www.jeonjuvc.or.kr/upData/editor/NQg4MwgwCDEIMAgzCDEIOTMIODMINggeq0.JPG',
+  sourceName: '전주시자원봉사센터',
+  sourceUrl: 'https://www.jeonjuvc.or.kr/photo.html?bid=&code=1725524833&page=35&pmode=view&set=4&skey=&sword='
+},
+'전주의료사협빌딩': {
+  imageUrl: 'https://jlcc.or.kr/data/file/jsocial/20200910_044603_95002.jpg',
+  sourceName: '전주소통협력센터',
+  sourceUrl: 'https://jlcc.or.kr/jsocial/27?cate=&item=&page=9'
+},
+'하리교': {
+  imageUrl: 'https://www.wanju.go.kr/planweb/upload/ff808081898ba9ba0189f1b459a700af/board/ff8080818b024d8e018b1c99655f1226/original/468492_264452.jpg',
+  sourceName: '완주군 인터넷신문',
+  sourceUrl: 'https://www.wanju.go.kr/news/planweb/board/view.9is?boardUid=ff8080818b024d8e018b1c99655f1226&categoryUid1=ff8080818b024d8e018b1c9b78a7124c&contentUid=ff808081898ba9ba0189f1e5b91901ab&dataUid=9ce7f8a49362430d8dc118a4e13ecebe'
+},
+'전북환경운동연합': {
+  imageUrl: 'https://jeonbuk.ekfem.or.kr/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTA3Nzg1MiwicHVyIjoiYmxvYl9pZCJ9fQ==--7a35fab6a1a7a4ac95d284d80cbb4f3246f9d5eb/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxNzI4LG51bGxdfSwicHVyIjoidmFyaWF0aW9uIn19--b22ed4bd5759b38182b4766ea74146f7c2b3875d/%EA%B7%B8%EB%A6%BC21.jpg',
+  sourceName: '전북환경운동연합',
+  sourceUrl: 'https://jeonbuk.ekfem.or.kr/'
+},
+'환경운동연합': {
+  imageUrl: 'https://jeonbuk.ekfem.or.kr/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTA3Nzg1MiwicHVyIjoiYmxvYl9pZCJ9fQ==--7a35fab6a1a7a4ac95d284d80cbb4f3246f9d5eb/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxNzI4LG51bGxdfSwicHVyIjoidmFyaWF0aW9uIn19--b22ed4bd5759b38182b4766ea74146f7c2b3875d/%EA%B7%B8%EB%A6%BC21.jpg',
+  sourceName: '전북환경운동연합',
+  sourceUrl: 'https://jeonbuk.ekfem.or.kr/'
+}
+};
+
+function officialImage(name, fallbackQuery) {
+  return officialImages[name]?.imageUrl || previewImage(fallbackQuery || name);
+}
+
+function officialImageSource(name) {
+  return officialImages[name] || null;
+}
+
+function officialLocationImage(name) {
+  return officialImages[name]?.locationImageUrl || '';
+}
+
 function stableHash(text) {
   return Array.from(String(text || '')).reduce((accumulator, character) => {
     return (accumulator * 31 + character.charCodeAt(0)) % 100000;
   }, 7);
 }
 
-function getPhotoTags(query) {
+function escapeSvgText(text) {
+  return String(text || '').replace(/[&<>"']/g, (character) => {
+    const entityMap = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+
+    return entityMap[character] || character;
+  });
+}
+
+function escapeHtmlAttribute(text) {
+  return String(text || '').replace(/[&<>"']/g, (character) => {
+    const entityMap = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+
+    return entityMap[character] || character;
+  });
+}
+
+function splitPreviewTitle(query) {
+  const tokens = String(query || '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+  const titleTokens = tokens.length > 2 ? tokens.slice(0, -2) : tokens;
+  const caption = tokens.length > 2 ? tokens.slice(-2).join(' ') : '';
+  const lines = [];
+  let currentLine = '';
+
+  titleTokens.forEach((token) => {
+    if (!currentLine) {
+      currentLine = token;
+      return;
+    }
+
+    if (`${currentLine} ${token}`.length <= 14) {
+      currentLine = `${currentLine} ${token}`;
+      return;
+    }
+
+    if (lines.length < 2) {
+      lines.push(currentLine);
+    }
+
+    currentLine = token;
+  });
+
+  if (currentLine && lines.length < 2) {
+    lines.push(currentLine);
+  }
+
+  if (!lines.length) {
+    lines.push(String(query || '대표 장소'));
+  }
+
+  return {
+    lines,
+    caption
+  };
+}
+
+function getPreviewVisualMeta(query) {
   const normalized = String(query || '').replace(/\s+/g, '').toLowerCase();
 
   if (normalized.includes('다리') || normalized.endsWith('교')) {
-    return ['bridge', 'river', 'korea'];
+    return {
+      label: '교량·수변',
+      skyTop: '#9fd6ff',
+      skyBottom: '#eef8ff',
+      accent: '#2d76c8',
+      surface: '#6fb6de',
+      ground: '#315b78',
+      kind: 'bridge'
+    };
   }
 
-  if (normalized.includes('호수') || normalized.includes('저수지') || normalized.includes('기지제') || normalized.includes('세병호')) {
-    return ['lake', 'park', 'korea'];
+  if (
+    normalized.includes('호수') ||
+    normalized.includes('저수지') ||
+    normalized.includes('기지제') ||
+    normalized.includes('세병호') ||
+    normalized.includes('비비정') ||
+    normalized.includes('오목대') ||
+    normalized.includes('추천대')
+  ) {
+    return {
+      label: '호수·전망',
+      skyTop: '#8ad6df',
+      skyBottom: '#f0fbfb',
+      accent: '#2f8f57',
+      surface: '#67c3cb',
+      ground: '#2c6d5f',
+      kind: 'waterfront'
+    };
   }
 
-  if (normalized.includes('수목원') || normalized.includes('편백숲') || normalized.includes('숲')) {
-    return ['forest', 'trail', 'korea'];
-  }
-
-  if (normalized.includes('공원')) {
-    return ['park', 'trees', 'korea'];
-  }
-
-  if (normalized.includes('박물관')) {
-    return ['museum', 'building', 'korea'];
-  }
-
-  if (normalized.includes('도서관')) {
-    return ['library', 'building', 'korea'];
-  }
-
-  if (normalized.includes('예술공장')) {
-    return ['gallery', 'industrial', 'building'];
-  }
-
-  if (normalized.includes('시장')) {
-    return ['market', 'street', 'korea'];
-  }
-
-  if (normalized.includes('병원')) {
-    return ['hospital', 'building', 'korea'];
-  }
-
-  if (normalized.includes('교회')) {
-    return ['church', 'building', 'korea'];
-  }
-
-  if (normalized.includes('카페')) {
-    return ['cafe', 'building', 'korea'];
+  if (normalized.includes('수목원') || normalized.includes('편백숲') || normalized.includes('숲') || normalized.includes('바람쐬는길')) {
+    return {
+      label: '숲길·생태',
+      skyTop: '#b9edb9',
+      skyBottom: '#f5fdf4',
+      accent: '#3f9961',
+      surface: '#8ad09b',
+      ground: '#2b5f3a',
+      kind: 'forest'
+    };
   }
 
   if (normalized.includes('대여소') || normalized.includes('자전거') || normalized.includes('바이크')) {
-    return ['bicycle', 'shop', 'city'];
+    return {
+      label: '자전거 거점',
+      skyTop: '#ffd88f',
+      skyBottom: '#fff8ea',
+      accent: '#dd8a16',
+      surface: '#ffc861',
+      ground: '#6b4a1e',
+      kind: 'bike'
+    };
   }
 
-  if (normalized.includes('송광사') || normalized.endsWith('사')) {
-    return ['temple', 'architecture', 'korea'];
+  if (normalized.includes('시장')) {
+    return {
+      label: '시장·생활권',
+      skyTop: '#ffd0b5',
+      skyBottom: '#fff4ed',
+      accent: '#ca6842',
+      surface: '#ffbf95',
+      ground: '#7f3e28',
+      kind: 'market'
+    };
   }
 
-  if (normalized.includes('비비정') || normalized.includes('오목대') || normalized.includes('추천대')) {
-    return ['pavilion', 'river', 'korea'];
+  if (normalized.includes('송광사') || normalized.endsWith('사') || normalized.includes('한옥')) {
+    return {
+      label: '전통·유산',
+      skyTop: '#d7c3a7',
+      skyBottom: '#f8f1e8',
+      accent: '#91653d',
+      surface: '#b98d64',
+      ground: '#5a3d25',
+      kind: 'heritage'
+    };
   }
 
-  if (normalized.includes('자연사') || normalized.includes('미소시장') || normalized.includes('기록관') || normalized.includes('센터') || normalized.includes('연합') || normalized.includes('협빌딩')) {
-    return ['building', 'exterior', 'korea'];
+  if (normalized.includes('교회')) {
+    return {
+      label: '공동체 공간',
+      skyTop: '#c1d8ff',
+      skyBottom: '#f3f7ff',
+      accent: '#5676c8',
+      surface: '#9cb7eb',
+      ground: '#354d80',
+      kind: 'church'
+    };
   }
 
-  if (normalized.includes('초등학교')) {
-    return ['school', 'building', 'korea'];
+  if (normalized.includes('병원') || normalized.includes('의료')) {
+    return {
+      label: '의료·돌봄',
+      skyTop: '#a7e1dc',
+      skyBottom: '#f2fcfa',
+      accent: '#2d8f84',
+      surface: '#88d0c8',
+      ground: '#2c5b64',
+      kind: 'health'
+    };
   }
 
-  if (normalized.includes('바람쐬는길')) {
-    return ['mountain', 'viewpoint', 'road'];
+  if (normalized.includes('도서관') || normalized.includes('기록관') || normalized.includes('fm')) {
+    return {
+      label: '기록·문화',
+      skyTop: '#ffd89d',
+      skyBottom: '#fff6ea',
+      accent: '#d48825',
+      surface: '#ffc46a',
+      ground: '#75511c',
+      kind: 'archive'
+    };
   }
 
-  if (normalized.includes('fm')) {
-    return ['studio', 'building', 'korea'];
+  if (
+    normalized.includes('박물관') ||
+    normalized.includes('예술공장') ||
+    normalized.includes('센터') ||
+    normalized.includes('연합') ||
+    normalized.includes('협빌딩') ||
+    normalized.includes('초등학교')
+  ) {
+    return {
+      label: '도시 거점',
+      skyTop: '#d8dff2',
+      skyBottom: '#f7f9ff',
+      accent: '#556b95',
+      surface: '#b5c3e4',
+      ground: '#3b4f73',
+      kind: 'building'
+    };
   }
 
-  return ['landscape', 'korea', 'outdoor'];
+  if (normalized.includes('카페')) {
+    return {
+      label: '쉼터·카페',
+      skyTop: '#f1c8ad',
+      skyBottom: '#fff7f2',
+      accent: '#b46a3c',
+      surface: '#e5a977',
+      ground: '#6e4528',
+      kind: 'cafe'
+    };
+  }
+
+  return {
+    label: '대표 장소',
+    skyTop: '#bfd8f0',
+    skyBottom: '#f5f9fd',
+    accent: '#557d9f',
+    surface: '#a8c4de',
+    ground: '#39556d',
+    kind: 'building'
+  };
+}
+
+function getPreviewSceneMarkup(kind, palette) {
+  const artMap = {
+    bridge: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 590 C160 560 290 620 420 592 C560 562 690 622 820 594 C970 562 1090 620 1200 586 V800 H0 Z" fill="#8fd4f4" opacity="0.88" />
+      <path d="M730 500 H1030 V540 H730 Z" fill="${palette.ground}" />
+      <path d="M760 500 C800 430 860 430 900 500" fill="none" stroke="${palette.ground}" stroke-width="16" stroke-linecap="round" />
+      <path d="M890 500 C930 430 990 430 1030 500" fill="none" stroke="${palette.ground}" stroke-width="16" stroke-linecap="round" />
+      <path d="M780 540 V618 M900 540 V618 M1015 540 V618" stroke="${palette.ground}" stroke-width="14" stroke-linecap="round" />
+    `,
+    waterfront: `
+      <circle cx="910" cy="200" r="74" fill="#fff5b6" opacity="0.9" />
+      <path d="M0 540 C160 500 320 564 470 542 C630 520 780 584 920 548 C1035 520 1120 546 1200 528 V800 H0 Z" fill="${palette.surface}" />
+      <path d="M0 612 C190 576 380 650 560 618 C730 588 930 652 1200 606 V800 H0 Z" fill="#77d2df" opacity="0.92" />
+      <path d="M780 450 L870 362 L965 450 Z" fill="${palette.ground}" opacity="0.88" />
+      <rect x="850" y="450" width="48" height="108" rx="12" fill="${palette.ground}" />
+      <path d="M852 474 H896" stroke="#fff3d6" stroke-width="8" stroke-linecap="round" />
+    `,
+    forest: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 640 C150 598 310 680 440 632 C590 578 740 660 910 618 C1040 584 1120 628 1200 612 V800 H0 Z" fill="${palette.ground}" />
+      <g fill="#2f6d3a">
+        <path d="M790 546 L840 430 L890 546 Z" />
+        <rect x="832" y="546" width="16" height="88" rx="8" fill="#5a3d25" />
+        <path d="M900 564 L968 416 L1036 564 Z" />
+        <rect x="960" y="564" width="18" height="86" rx="9" fill="#5a3d25" />
+        <path d="M1006 542 L1060 436 L1114 542 Z" />
+        <rect x="1052" y="542" width="16" height="94" rx="8" fill="#5a3d25" />
+      </g>
+      <path d="M692 658 C744 624 790 602 864 586" fill="none" stroke="#ecf5de" stroke-width="16" stroke-linecap="round" />
+    `,
+    bike: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 654 C174 612 328 686 516 644 C664 612 850 684 1200 630 V800 H0 Z" fill="${palette.ground}" />
+      <circle cx="812" cy="576" r="84" fill="none" stroke="${palette.ground}" stroke-width="18" />
+      <circle cx="1048" cy="576" r="84" fill="none" stroke="${palette.ground}" stroke-width="18" />
+      <path d="M812 576 L910 510 L968 576 L894 576 L850 492 H910" fill="none" stroke="${palette.ground}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M968 576 L1048 576 L996 474" fill="none" stroke="${palette.ground}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M968 460 H1036" stroke="${palette.ground}" stroke-width="14" stroke-linecap="round" />
+    `,
+    market: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 660 C180 626 346 700 520 650 C690 602 898 694 1200 638 V800 H0 Z" fill="${palette.ground}" />
+      <rect x="778" y="344" width="280" height="196" rx="26" fill="#fff9f2" />
+      <path d="M778 344 H1058 V418 H778 Z" fill="${palette.accent}" />
+      <path d="M792 344 L844 418 L896 344 L948 418 L1000 344 L1052 418" fill="none" stroke="#fff1e3" stroke-width="22" stroke-linecap="round" />
+      <rect x="836" y="430" width="72" height="110" rx="16" fill="${palette.surface}" />
+      <rect x="930" y="430" width="88" height="64" rx="14" fill="${palette.surface}" />
+    `,
+    heritage: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 666 C150 624 336 698 500 650 C670 602 842 692 1200 640 V800 H0 Z" fill="${palette.ground}" />
+      <path d="M756 502 L920 388 L1084 502 Z" fill="${palette.ground}" />
+      <rect x="812" y="502" width="216" height="98" rx="14" fill="#8d6543" />
+      <path d="M782 532 H1058" stroke="#f0d5ba" stroke-width="12" stroke-linecap="round" />
+      <rect x="914" y="532" width="26" height="68" rx="12" fill="#f3dfca" />
+    `,
+    church: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 654 C170 614 330 688 526 646 C694 610 872 690 1200 638 V800 H0 Z" fill="${palette.ground}" />
+      <rect x="820" y="388" width="208" height="204" rx="22" fill="#f7fbff" />
+      <path d="M790 422 L924 316 L1058 422 Z" fill="${palette.ground}" />
+      <rect x="912" y="326" width="24" height="66" rx="10" fill="${palette.ground}" />
+      <path d="M882 356 H966 M924 328 V386" stroke="#f6f8ff" stroke-width="14" stroke-linecap="round" />
+    `,
+    health: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 656 C180 616 350 692 522 648 C682 608 900 688 1200 636 V800 H0 Z" fill="${palette.ground}" />
+      <rect x="782" y="352" width="284" height="220" rx="28" fill="#f3fffd" />
+      <rect x="900" y="392" width="48" height="142" rx="16" fill="${palette.accent}" />
+      <rect x="852" y="440" width="144" height="48" rx="16" fill="${palette.accent}" />
+      <rect x="822" y="604" width="208" height="20" rx="10" fill="#dbf7f3" opacity="0.85" />
+    `,
+    archive: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 652 C174 616 360 692 518 646 C700 598 900 688 1200 632 V800 H0 Z" fill="${palette.ground}" />
+      <rect x="794" y="370" width="250" height="184" rx="26" fill="#fffaf2" />
+      <rect x="826" y="402" width="184" height="18" rx="9" fill="${palette.accent}" opacity="0.92" />
+      <rect x="826" y="440" width="146" height="18" rx="9" fill="${palette.accent}" opacity="0.64" />
+      <rect x="826" y="478" width="172" height="18" rx="9" fill="${palette.accent}" opacity="0.78" />
+      <path d="M1062 334 C1090 362 1090 412 1062 440" fill="none" stroke="${palette.accent}" stroke-width="14" stroke-linecap="round" />
+      <path d="M1090 316 C1132 358 1132 418 1090 460" fill="none" stroke="${palette.accent}" stroke-width="12" stroke-linecap="round" opacity="0.72" />
+    `,
+    building: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 652 C172 618 346 692 522 646 C706 598 898 688 1200 636 V800 H0 Z" fill="${palette.ground}" />
+      <rect x="786" y="332" width="92" height="236" rx="20" fill="#f8fbff" />
+      <rect x="882" y="276" width="116" height="292" rx="24" fill="#f2f6ff" />
+      <rect x="1004" y="352" width="82" height="216" rx="18" fill="#fbfcff" />
+      <g fill="${palette.surface}">
+        <rect x="812" y="366" width="24" height="24" rx="8" />
+        <rect x="836" y="408" width="24" height="24" rx="8" />
+        <rect x="920" y="330" width="28" height="28" rx="8" />
+        <rect x="954" y="384" width="28" height="28" rx="8" />
+        <rect x="1018" y="392" width="24" height="24" rx="8" />
+      </g>
+    `,
+    cafe: `
+      <rect x="0" y="560" width="1200" height="240" fill="${palette.surface}" />
+      <path d="M0 660 C172 622 354 700 534 652 C692 610 888 694 1200 640 V800 H0 Z" fill="${palette.ground}" />
+      <path d="M810 426 H1018 C1026 510 994 570 914 570 C832 570 800 510 810 426 Z" fill="#fff8f2" />
+      <path d="M1008 450 C1058 450 1084 476 1084 520 C1084 558 1058 586 1018 586" fill="none" stroke="#fff8f2" stroke-width="22" stroke-linecap="round" />
+      <path d="M858 360 C840 328 860 300 886 282" fill="none" stroke="#ffe3cf" stroke-width="12" stroke-linecap="round" />
+      <path d="M930 354 C912 320 930 294 958 272" fill="none" stroke="#ffe3cf" stroke-width="12" stroke-linecap="round" />
+    `
+  };
+
+  return artMap[kind] || artMap.building;
 }
 
 function previewImage(query) {
-  const tags = getPhotoTags(query).join(',');
-  const lock = stableHash(query);
-  return `https://loremflickr.com/1200/800/${tags}?lock=${lock}`;
+  const palette = getPreviewVisualMeta(query);
+  const { lines, caption } = splitPreviewTitle(query);
+  const seed = stableHash(query);
+  const burstX = 780 + (seed % 170);
+  const burstY = 110 + ((seed * 3) % 120);
+  const chipWidth = Math.min(360, Math.max(180, palette.label.length * 22 + 80));
+  const titleText = lines
+    .map(
+      (line, index) =>
+        `<text x="72" y="${190 + index * 74}" font-size="58" font-weight="800" fill="#ffffff">${escapeSvgText(line)}</text>`
+    )
+    .join('');
+  const captionMarkup = caption
+    ? `<text x="72" y="${228 + lines.length * 74}" font-size="28" font-weight="600" fill="#ebf4ff">${escapeSvgText(caption)}</text>`
+    : '';
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="${escapeSvgText(query)} 대표 이미지" font-family="Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${palette.skyTop}" />
+          <stop offset="100%" stop-color="${palette.skyBottom}" />
+        </linearGradient>
+        <linearGradient id="glow" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="${palette.accent}" stop-opacity="0.28" />
+          <stop offset="100%" stop-color="${palette.accent}" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="800" rx="34" fill="url(#bg)" />
+      <circle cx="${burstX}" cy="${burstY}" r="126" fill="${palette.accent}" opacity="0.12" />
+      <circle cx="${burstX + 84}" cy="${burstY + 42}" r="56" fill="${palette.accent}" opacity="0.1" />
+      <path d="M0 0 H1200 V290 C1036 332 890 310 722 278 C532 242 338 260 0 348 Z" fill="url(#glow)" />
+      <rect x="58" y="54" width="${chipWidth}" height="52" rx="26" fill="rgba(16, 36, 24, 0.18)" />
+      <text x="84" y="88" font-size="28" font-weight="700" fill="#133421">${escapeSvgText(palette.label)}</text>
+      <rect x="48" y="126" width="522" height="${caption ? 206 : 172}" rx="34" fill="rgba(18, 38, 48, 0.46)" />
+      ${titleText}
+      ${captionMarkup}
+      ${getPreviewSceneMarkup(palette.kind, palette)}
+    </svg>
+  `;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
 const places = [
   {
-    name: '새창이다리',
-    theme: 'history',
-    district: '김제 청하면·군산 대야면 경계',
-    scene: 'scene-gate',
-    tagline: '만경강 하구와 들녘의 시간을 품은 근대 교량 유산',
-    intro:
-      '새창이다리는 1933년에 준공된 전북권의 오래된 근대 시멘트 다리로 알려져 있습니다. 김제와 군산 사이 만경강 물길과 넓은 평야를 함께 보여 주는 장소라서, 한강 이남의 산업·수탈·교통사를 자전거 답사 언어로 풀어내기 좋습니다.',
-    nearby: ['비비정', '하리교', '봉동 상장기공원'],
-    nearbyText:
-      '새창이다리, 비비정, 하리교, 봉동 상장기공원을 함께 보면 만경강을 따라 형성된 전북 서부 수변 이동축과 교량의 역할을 한 흐름으로 읽을 수 있습니다.',
-    course:
-      '새창이다리에서 만경강 하류의 분위기를 먼저 보고, 완주권 비비정과 하리교 방향으로 이어 가면 물길과 다리, 생활권 이동축을 비교하는 광역 라이딩 코스로 확장됩니다.',
-    mapKeyword: '새창이다리 김제 청하면',
-    imageUrl: previewImage('새창이다리 김제 청하면'),
-    latLng: { lat: 35.906, lng: 126.777 }
-  },
+  name: '새창이다리',
+  theme: 'history',
+  district: '김제시 청하면·군산시 대야면 경계',
+  scene: 'scene-gate',
+  tagline: '만경강과 평야의 기억을 품은 1930년대 근대 교량 유산',
+  intro:
+    '새창이다리는 김제시 청하면 동지산리와 군산시 대야면 복교리 사이를 잇는 옛 만경강 교량입니다. 1933년에 준공된 전북권의 대표적인 근대 시멘트 교량으로 알려져 있으며, 김제평야의 곡물 이동과 군산항으로 이어지는 물류·수탈의 역사를 함께 떠올리게 합니다. 지금은 단순 이동로보다 근대 교통사와 만경강 경관을 읽는 답사 지점으로 소개하는 것이 적절합니다.',
+  nearby: ['비비정', '하리교', '봉동 상장기공원'],
+  nearbyText:
+    '새창이다리에서 만경강 하류의 역사적 경관을 먼저 보고, 비비정·하리교·봉동 상장기공원으로 이어 가면 다리와 강변 공원이 완주·전주 생활권을 어떻게 잇는지 비교할 수 있습니다.',
+  course:
+    '새창이다리는 전주 도심권에서 거리가 있어 장거리 인증 코스의 확장 지점으로 두는 것이 좋습니다. 만경강 하류의 옛 교량을 본 뒤 완주 삼례·봉동권의 비비정과 하리교 방향으로 이어 달리면 근대 교량, 수변 경관, 생활 교통축을 함께 살피는 광역 코스가 됩니다.',
+  mapKeyword: '새창이다리 김제 청하면 군산 대야면',
+  officialAddress: '전북특별자치도 김제시 청하면 동지산리·군산시 대야면 복교리 일대',
+  officialInfo: '김제 청하면과 군산 대야면 사이 만경강을 잇는 1930년대 근대 교량 유산',
+  imageUrl: officialImage('새창이다리', '새창이다리 김제 청하면'),
+  imageSource: officialImageSource('새창이다리'),
+  fallbackImageUrl: previewImage('새창이다리 김제 청하면'),
+  latLng: { lat: 35.906, lng: 126.777 }
+},
   {
-    name: '어은 쌍다리',
-    aliases: ['어은쌍다리'],
-    theme: 'history',
-    district: '전주시 덕진구 진북동',
-    scene: 'scene-street',
-    tagline: '전주천 생활권을 잇는 오래된 보행 다리의 기억',
-    intro:
-      '어은 쌍다리는 전주천을 사이에 두고 주민 생활권을 이어 주던 낮은 보행 교량군의 기억을 담고 있습니다. 대형 명소는 아니지만, 전주 도심이 하천을 중심으로 어떻게 이어졌는지 보여 주는 생활형 근현대 공간이라는 점에서 의미가 큽니다.',
-    nearby: ['전주시민기록관', '전주3.1운동발상지', '전주공동체라디오 전주FM'],
-    nearbyText:
-      '전주시민기록관과 전주3.1운동발상지, 전주FM을 함께 보면 전주천 주변 생활권이 기억과 기록, 시민 미디어 공간으로 어떻게 이어지는지 자연스럽게 읽힙니다.',
-    course:
-      '어은 쌍다리에서 전주천을 따라 이동한 뒤 중앙동 기록 거점으로 들어가면, 하천 생활사와 시민 기록을 결합한 도심형 라이딩 코스를 만들 수 있습니다.',
-    mapKeyword: '어은 쌍다리 전주 진북동',
-    imageUrl: previewImage('어은 쌍다리 전주 진북동'),
-    latLng: { lat: 35.829, lng: 127.141 }
-  },
+  name: '어은 쌍다리',
+  aliases: ['어은쌍다리'],
+  theme: 'history',
+  district: '전주시 덕진구 진북동',
+  scene: 'scene-street',
+  tagline: '전주천 생활권을 잇는 전주 미래유산 보행·생활 교량',
+  intro:
+    '어은 쌍다리는 전주천을 사이에 둔 진북동 생활권을 이어 주던 낮은 교량의 기억을 담고 있습니다. 보행 다리와 차량 통행 다리가 나란히 붙어 있어 쌍다리로 불렸고, 전주 미래유산으로도 소개되는 장소입니다. 거대한 관광 명소는 아니지만 전주 도심이 하천과 다리를 통해 어떻게 연결되어 왔는지를 보여 주는 생활사 포인트입니다.',
+  nearby: ['전주시민기록관', '전주3.1운동발상지', '전주공동체라디오 전주FM'],
+  nearbyText:
+    '전주시민기록관과 전주3.1운동발상지, 전주FM을 함께 보면 전주천 주변 생활권이 기억과 기록, 시민 미디어 공간으로 어떻게 이어지는지 자연스럽게 읽힙니다.',
+  course:
+    '어은 쌍다리에서 전주천을 따라 이동한 뒤 중앙동 기록 거점으로 들어가면 하천 생활사와 시민 기록을 결합한 도심형 라이딩 코스를 만들 수 있습니다.',
+  mapKeyword: '어은쌍다리 전주 진북동',
+  officialAddress: '전북특별자치도 전주시 덕진구 진북동 전주천 일대',
+  officialInfo: '보행 다리와 차량 통행 다리가 나란히 붙어 있는 전주 미래유산 생활 교량',
+  imageUrl: officialImage('어은 쌍다리', '어은 쌍다리 전주 진북동'),
+  imageSource: officialImageSource('어은 쌍다리'),
+  fallbackImageUrl: previewImage('어은 쌍다리 전주 진북동'),
+  latLng: { lat: 35.829, lng: 127.141 }
+},
   {
     name: '전주시 공영자전거 꽃싱이 송천대여소',
     aliases: ['꽃싱이 송천대여소', '꽃싱이 송천'],
@@ -177,7 +662,9 @@ const places = [
     course:
       '송천대여소에서 출발해 세병호를 한 바퀴 돈 뒤 덕진공원과 전북대 자연사박물관 쪽으로 이동하면 초보자도 부담 적은 북부권 입문 코스가 됩니다.',
     mapKeyword: '꽃싱이 송천대여소 전주',
-    imageUrl: previewImage('전주시 공영자전거 꽃싱이 송천대여소'),
+    imageUrl: officialImage('전주시 공영자전거 꽃싱이 송천대여소', '전주시 공영자전거 꽃싱이 송천대여소'),
+    imageSource: officialImageSource('전주시 공영자전거 꽃싱이 송천대여소'),
+    fallbackImageUrl: previewImage('전주시 공영자전거 꽃싱이 송천대여소'),
     latLng: { lat: 35.874, lng: 127.122 }
   },
   {
@@ -194,80 +681,98 @@ const places = [
     course:
       '추천대에서 합수 지점을 조망한 뒤 팔복예술공장으로 내려가고, 여건이 되면 하리교와 비비정까지 확장하면 수변-산업-정자 풍경이 이어지는 코스가 완성됩니다.',
     mapKeyword: '전주 추천대',
-    imageUrl: previewImage('전주 추천대'),
+    imageUrl: officialImage('추천대', '전주 추천대'),
+    imageSource: officialImageSource('추천대'),
+    fallbackImageUrl: previewImage('전주 추천대'),
     latLng: { lat: 35.847, lng: 127.089 }
   },
   {
-    name: '익산 삼일교회(참새방앗간)',
-    aliases: ['익산 삼일교회', '참새방앗간'],
-    theme: 'history',
-    district: '익산시 석탄동',
-    scene: 'scene-church',
-    tagline: '쉼터와 나눔을 실천하는 지역 교회의 생활 선교 공간',
-    intro:
-      '익산 삼일교회 앞 참새방앗간은 마을 주민과 지나가는 사람을 위해 물과 책, 쉼을 제공하는 생활형 나눔 공간으로 알려져 있습니다. 거대한 종교 명소가 아니라 일상 속 환대가 어떻게 장소가 되는지를 보여 준다는 점에서 챌린지 코스에 색다른 결을 더해 줍니다.',
-    nearby: ['새창이다리', '비비정', '대덕초등학교'],
-    nearbyText:
-      '새창이다리, 비비정, 대덕초등학교와 묶으면 전북 서부권의 교회·교량·생활권 거점을 잇는 느슨한 광역 코스를 구성할 수 있습니다.',
-    course:
-      '익산권에서는 참새방앗간을 짧은 휴식 거점으로 삼고, 전주·완주권으로 넘어갈 때는 새창이다리나 비비정 축과 연결해 장거리 인증 코스로 설계하기 좋습니다.',
-    mapKeyword: '익산 삼일교회 참새방앗간',
-    imageUrl: previewImage('익산 삼일교회 참새방앗간'),
-    latLng: { lat: 35.954, lng: 126.945 }
-  },
+  name: '익산 삼일교회(참새방앗간)',
+  aliases: ['익산 삼일교회', '참새방앗간'],
+  theme: 'history',
+  district: '익산시 석탄동',
+  scene: 'scene-church',
+  tagline: '생수와 책, 쉼을 나누는 익산 삼일교회의 마을 환대 공간',
+  intro:
+    '익산 삼일교회 앞 참새방앗간은 교회가 컨테이너 공간을 활용해 주민과 지나가는 사람에게 생수, 도서, 음료, 잠시 머물 자리를 제공하는 생활형 나눔 공간입니다. 특히 주변 자전거 길 이용자에게도 쉬어 갈 수 있는 장소로 소개되어, 챌린지에서는 종교 시설 자체보다 지역사회 환대와 돌봄이 공간이 되는 사례로 읽는 것이 좋습니다.',
+  nearby: ['새창이다리', '비비정', '대덕초등학교'],
+  nearbyText:
+    '새창이다리, 비비정, 대덕초등학교와 묶으면 전북 서부권의 교회·교량·생활권 거점을 잇는 느슨한 광역 코스를 구성할 수 있습니다.',
+  course:
+    '익산권에서는 참새방앗간을 짧은 휴식 거점으로 삼고, 전주·완주권으로 넘어갈 때는 새창이다리나 비비정 축과 연결해 장거리 인증 코스로 설계하기 좋습니다.',
+  mapKeyword: '익산 삼일교회 참새방앗간',
+  officialAddress: '전북특별자치도 익산시 석탄동 삼일교회 앞 참새방앗간 일대',
+  officialInfo: '마을 주민과 자전거 이용자에게 생수와 책, 쉼을 제공하는 생활형 나눔 공간',
+  imageUrl: officialImage('익산 삼일교회(참새방앗간)', '익산 삼일교회 참새방앗간'),
+  imageSource: officialImageSource('익산 삼일교회(참새방앗간)'),
+  fallbackImageUrl: previewImage('익산 삼일교회 참새방앗간'),
+  latLng: { lat: 35.954, lng: 126.945 }
+},
   {
-    name: '하리교',
-    theme: 'history',
-    district: '완주군 삼례읍·전주시 전미동 축',
-    scene: 'scene-gate',
-    tagline: '전주와 완주를 실질적으로 연결하는 북서부 생활 교량',
-    intro:
-      '하리교는 전주와 완주 삼례·봉동 생활권을 잇는 핵심 교량입니다. 통근과 통학, 물류 이동의 압력을 받아 재가설된 장소라는 점에서, 행정구역을 넘어 실제 생활권이 어떻게 맞물리는지를 보여 줍니다.',
-    nearby: ['비비정', '봉동 상장기공원', '팔복예술공장'],
-    nearbyText:
-      '비비정과 봉동 상장기공원, 팔복예술공장을 함께 보면 만경강과 산업·생활권 이동이 전주와 완주 사이를 어떻게 묶는지 선명하게 드러납니다.',
-    course:
-      '하리교를 건너며 생활권 경계를 체감하고, 봉동 상장기공원 쪽으로 올라가거나 팔복예술공장으로 내려오면 광역형 인증 코스를 만들 수 있습니다.',
-    mapKeyword: '하리교 완주 삼례',
-    imageUrl: previewImage('하리교 완주 삼례'),
-    latLng: { lat: 35.876, lng: 127.053 }
-  },
+  name: '하리교',
+  theme: 'history',
+  district: '완주군 삼례읍 하리·전주시 덕진구 전미동 축',
+  scene: 'scene-gate',
+  tagline: '완주 삼례·봉동과 전주 북부권을 잇는 만경강 생활 교량',
+  intro:
+    '하리교는 완주군 하리와 전주시 전미동을 연결하는 만경강 주요 교량입니다. 기존 2차로 교량의 병목 문제를 해소하기 위해 재가설되어 총연장 404m, 폭 22m의 4차로 교량으로 다시 개통된 곳입니다. 행정구역은 다르지만 실제 통근, 통학, 생활 이동은 하나의 권역으로 이어진다는 점을 보여 주는 상생 교통 인프라로 소개하면 좋습니다.',
+  nearby: ['비비정', '봉동 상장기공원', '팔복예술공장'],
+  nearbyText:
+    '비비정과 봉동 상장기공원, 팔복예술공장을 함께 보면 만경강과 산업·생활권 이동이 전주와 완주 사이를 어떻게 묶는지 선명하게 드러납니다.',
+  course:
+    '하리교를 건너며 전주와 완주의 생활권 경계를 체감하고, 봉동 상장기공원 쪽으로 올라가거나 팔복예술공장으로 내려오면 광역형 인증 코스를 만들 수 있습니다.',
+  mapKeyword: '하리교 완주 삼례 전주 전미동',
+  officialAddress: '전북특별자치도 완주군 삼례읍 하리·전주시 덕진구 전미동 만경강 일대',
+  officialInfo: '완주군 하리와 전주시 전미동을 잇는 총연장 404m, 폭 22m 규모의 4차로 교량',
+  imageUrl: officialImage('하리교', '하리교 완주 삼례'),
+  imageSource: officialImageSource('하리교'),
+  fallbackImageUrl: previewImage('하리교 완주 삼례'),
+  latLng: { lat: 35.876, lng: 127.053 }
+},
   {
-    name: '전주공동체라디오 전주FM',
-    aliases: ['전주FM'],
-    theme: 'art',
-    district: '전주시 완산구 중앙동',
-    scene: 'scene-radio',
-    tagline: '도시의 목소리를 시민이 직접 만드는 공동체 미디어 거점',
-    intro:
-      '전주FM은 전주의 동네 이야기와 시민 목소리를 직접 방송으로 만드는 공동체 라디오입니다. 기록과 아카이브, 시민 참여라는 관점에서 전주를 설명하기에 좋은 장소라서, 단순 관광지를 넘어 살아 있는 도시 문화 인프라로 읽을 수 있습니다.',
-    nearby: ['전주시민기록관', '전주3.1운동발상지', '전주시 자원봉사센터'],
-    nearbyText:
-      '전주시민기록관과 전주3.1운동발상지, 자원봉사센터와 묶으면 시민 기록, 참여, 연대의 축을 하나의 이야기로 풀어 낼 수 있습니다.',
-    course:
-      '중앙동 기록 거점을 따라 전주FM과 시민기록관, 3.1운동발상지를 잇는 도심 코스는 도시가 스스로를 말하는 방식을 보여 주는 교육형 코스가 됩니다.',
-    mapKeyword: '전주공동체라디오 전주FM',
-    imageUrl: previewImage('전주공동체라디오 전주FM'),
-    latLng: { lat: 35.818, lng: 127.146 }
-  },
+  name: '전주공동체라디오 전주FM',
+  aliases: ['전주FM'],
+  theme: 'art',
+  district: '전주시 덕진구 우아동',
+  scene: 'scene-radio',
+  tagline: '지역의 목소리를 시민이 직접 만드는 FM 93.5MHz 공동체 미디어 거점',
+  intro:
+    '전주공동체라디오 전주FM은 지역 주민과 시민이 직접 전주의 동네 이야기, 생활 의제, 문화 활동을 방송으로 만들어 가는 공동체 미디어 거점입니다. 관광 명소는 아니지만 도시가 스스로를 기록하고 말하는 구조를 보여 주기 때문에 시민기록관, 3.1운동발상지와 함께 소개하면 교육적 맥락이 살아납니다.',
+  nearby: ['전주시민기록관', '전주3.1운동발상지', '전주시 자원봉사센터'],
+  nearbyText:
+    '전주시민기록관과 전주3.1운동발상지, 자원봉사센터와 묶으면 시민 기록, 참여, 연대의 축을 하나의 이야기로 풀어 낼 수 있습니다.',
+  course:
+    '전주FM과 시민기록관, 3.1운동발상지를 잇는 도심 코스는 전주가 스스로를 기록하고 말하는 방식을 보여 주는 시민 미디어·기록 교육형 코스가 됩니다.',
+  mapKeyword: '전주공동체라디오 전주FM 백제대로 825',
+  officialAddress: '전북특별자치도 전주시 덕진구 백제대로 825, 4층',
+  officialInfo: 'FM 93.5MHz로 지역민의 목소리와 동네 의제를 담는 전주 공동체 라디오 방송국',
+  imageUrl: officialImage('전주공동체라디오 전주FM', '전주공동체라디오 전주FM'),
+  imageSource: officialImageSource('전주공동체라디오 전주FM'),
+  fallbackImageUrl: previewImage('전주공동체라디오 전주FM'),
+  latLng: { lat: 35.8489557, lng: 127.1583223 }
+},
   {
-    name: '우석대학교 부속 전주한방병원',
-    aliases: ['우석대학교 부석 전주한방병원', '우석대학교 부속 전주한방병원'],
-    theme: 'local',
-    district: '전주시 완산구 중화산동',
-    scene: 'scene-health',
-    tagline: '전통의학과 지역 돌봄을 읽는 의료 기반 거점',
-    intro:
-      '우석대학교 부속 전주한방병원은 전통 한의학과 현대 의료 시스템이 만나는 지역 의료 거점입니다. 관광 장소는 아니지만, 도시를 움직이는 건강·돌봄 인프라라는 점에서 생활형 챌린지 코스의 중요한 결절점이 됩니다.',
-    nearby: ['전주의료사협빌딩', '전주시 자원봉사센터', '환경운동연합'],
-    nearbyText:
-      '전주의료사협빌딩, 자원봉사센터, 환경운동연합과 묶으면 의료·시민사회·공공참여가 어떻게 생활권 안에서 연결되는지 설명하기 좋습니다.',
-    course:
-      '중화산동 생활권을 천천히 훑으며 의료와 복지, 시민 거점을 연결하는 코스로 구성하면 관광지 중심 라이딩과 다른 전주의 실제 구조를 보여 줄 수 있습니다.',
-    mapKeyword: '우석대학교 부속 전주한방병원',
-    imageUrl: previewImage('우석대학교 부속 전주한방병원'),
-    latLng: { lat: 35.805, lng: 127.123 }
-  },
+  name: '우석대학교 부속 전주한방병원',
+  aliases: ['우석대학교 부석 전주한방병원', '우석대학교 부속 전주한방병원', '우석대전주한방병원'],
+  theme: 'local',
+  district: '전주시 완산구 중화산동',
+  scene: 'scene-health',
+  tagline: '전통 한의학과 지역 돌봄이 만나는 전주 의료 기반 거점',
+  intro:
+    '우석대학교 부속 전주한방병원은 어은로 일대에 자리한 한방 의료 거점입니다. 관광지라기보다 생활권을 유지하는 건강·돌봄 인프라로 보는 것이 맞고, 자전거 챌린지에서는 전주의 도시 기능이 공원, 하천, 의료기관, 시민사회 공간과 함께 작동한다는 점을 설명하는 지점으로 활용할 수 있습니다.',
+  nearby: ['전주의료사협빌딩', '전주시 자원봉사센터', '전북환경운동연합'],
+  nearbyText:
+    '전주의료사협빌딩, 자원봉사센터, 전북환경운동연합과 묶으면 의료·시민사회·공공참여가 생활권 안에서 어떻게 연결되는지 설명하기 좋습니다.',
+  course:
+    '중화산동과 평화동·서신동 생활권을 천천히 훑으며 의료와 복지, 시민 거점을 연결하는 코스로 구성하면 관광지 중심 라이딩과 다른 전주의 실제 구조를 보여 줄 수 있습니다.',
+  mapKeyword: '우석대학교 부속 전주한방병원 어은로 46',
+  officialAddress: '전북특별자치도 전주시 완산구 어은로 46',
+  officialInfo: '전통 한의학 진료와 지역 의료 서비스를 제공하는 우석대학교 부속 한방병원',
+  imageUrl: officialImage('우석대학교 부속 전주한방병원', '우석대학교 부속 전주한방병원'),
+  imageSource: officialImageSource('우석대학교 부속 전주한방병원'),
+  fallbackImageUrl: previewImage('우석대학교 부속 전주한방병원'),
+  latLng: { lat: 35.805, lng: 127.123 }
+},
   {
     name: '덕진공원',
     theme: 'nature',
@@ -282,7 +787,9 @@ const places = [
     course:
       '덕진공원을 기준점으로 세병호와 자연사박물관을 오가는 코스는 초보자도 부담 적고, 북부 생태·가족형 인증 미션으로 운영하기 좋습니다.',
     mapKeyword: '전주 덕진공원',
-    imageUrl: previewImage('전주 덕진공원'),
+    imageUrl: officialImage('덕진공원', '전주 덕진공원'),
+    imageSource: officialImageSource('덕진공원'),
+    fallbackImageUrl: previewImage('전주 덕진공원'),
     latLng: { lat: 35.849, lng: 127.123 }
   },
   {
@@ -300,7 +807,9 @@ const places = [
     course:
       '자연사박물관에서 전시를 본 뒤 덕진공원과 세병호로 이어 달리면 실내 학습과 야외 관찰을 결합한 북부권 코스가 완성됩니다.',
     mapKeyword: '전북대학교 자연사박물관',
-    imageUrl: previewImage('전북대학교 자연사박물관'),
+    imageUrl: officialImage('전북대 자연사박물관', '전북대학교 자연사박물관'),
+    imageSource: officialImageSource('전북대 자연사박물관'),
+    fallbackImageUrl: previewImage('전북대학교 자연사박물관'),
     latLng: { lat: 35.845, lng: 127.132 }
   },
   {
@@ -317,26 +826,33 @@ const places = [
     course:
       '비비정을 중심으로 하리교와 봉동 상장기공원까지 이어 달리면 완주 수변의 풍경과 생활권 확장을 함께 체감하는 코스가 됩니다.',
     mapKeyword: '완주 비비정',
-    imageUrl: previewImage('완주 비비정'),
+    imageUrl: officialImage('비비정', '완주 비비정'),
+    imageSource: officialImageSource('비비정'),
+    fallbackImageUrl: previewImage('완주 비비정'),
     latLng: { lat: 35.845, lng: 127.052 }
   },
   {
-    name: '전주시 자원봉사센터',
-    theme: 'local',
-    district: '전주시 완산구 서신동',
-    scene: 'scene-archive',
-    tagline: '도시의 참여와 연대를 실무로 움직이는 자원봉사 허브',
-    intro:
-      '전주시 자원봉사센터는 전주의 시민 참여와 연대가 실제 프로그램과 현장 활동으로 연결되는 실무 허브입니다. 관광성은 낮지만, 도시가 공동체성을 유지하는 방식 자체를 보여 주는 장소라는 점에서 챌린지의 의미를 넓혀 줍니다.',
-    nearby: ['전주공동체라디오 전주FM', '전주의료사협빌딩', '환경운동연합'],
-    nearbyText:
-      '전주FM, 전주의료사협빌딩, 환경운동연합과 묶으면 참여·돌봄·환경이라는 시민사회 인프라를 하나의 축으로 소개하기 좋습니다.',
-    course:
-      '서신·효자동 생활권을 따라 자원봉사센터와 시민사회 거점을 연결하면 전주가 실제로 어떻게 협력하며 움직이는지 보여 주는 생활형 코스가 됩니다.',
-    mapKeyword: '전주시 자원봉사센터',
-    imageUrl: previewImage('전주시 자원봉사센터'),
-    latLng: { lat: 35.821, lng: 127.119 }
-  },
+  name: '전주시 자원봉사센터',
+  aliases: ['전주시자원봉사센터'],
+  theme: 'local',
+  district: '전주시 덕진구 진북동',
+  scene: 'scene-archive',
+  tagline: '시민 참여와 나눔 활동을 연결하는 전주의 자원봉사 허브',
+  intro:
+    '전주시 자원봉사센터는 개인, 단체, 기관의 자원봉사 활동을 연결하고 지역의 나눔 프로그램을 운영하는 전주의 시민 참여 허브입니다. 관광 명소성은 낮지만 도시가 공동체성을 유지하고 재난·복지·생활 지원을 조직하는 방식을 보여 주는 장소라서 챌린지의 생활권 의미를 넓혀 줍니다.',
+  nearby: ['전주공동체라디오 전주FM', '전주의료사협빌딩', '전북환경운동연합'],
+  nearbyText:
+    '전주FM, 전주의료사협빌딩, 전북환경운동연합과 묶으면 미디어·봉사·의료·환경이라는 시민사회 인프라를 하나의 축으로 소개하기 좋습니다.',
+  course:
+    '진북동에서 중앙동·평화동·서신동 방향으로 시민사회 거점을 이어 가면 전주가 실제로 어떻게 협력하며 움직이는지 보여 주는 생활형 코스가 됩니다.',
+  mapKeyword: '전주시자원봉사센터 전주천동로 455',
+  officialAddress: '전북특별자치도 전주시 덕진구 전주천동로 455',
+  officialInfo: '전주시 자원봉사 활동을 연결하고 지원하는 시민 참여 거점',
+  imageUrl: officialImage('전주시 자원봉사센터', '전주시 자원봉사센터'),
+  imageSource: officialImageSource('전주시 자원봉사센터'),
+  fallbackImageUrl: previewImage('전주시 자원봉사센터'),
+  latLng: { lat: 35.832, lng: 127.137 }
+},
   {
     name: '기지제',
     theme: 'nature',
@@ -351,7 +867,9 @@ const places = [
     course:
       '기지제 순환길을 먼저 돌고 전주수목원 쪽으로 이어 달리면 서부권의 자연형 코스가 되고, 장거리 이용자는 세병호 축까지 확장할 수 있습니다.',
     mapKeyword: '전주 기지제',
-    imageUrl: previewImage('전주 기지제'),
+    imageUrl: officialImage('기지제', '전주 기지제'),
+    imageSource: officialImageSource('기지제'),
+    fallbackImageUrl: previewImage('전주 기지제'),
     latLng: { lat: 35.848, lng: 127.067 }
   },
   {
@@ -368,58 +886,73 @@ const places = [
     course:
       '세병호를 한 바퀴 돌아 에코시티 생활권을 체감한 뒤 덕진공원 쪽으로 이어 달리면 전주 북부의 새 풍경과 오래된 공원을 함께 경험할 수 있습니다.',
     mapKeyword: '전주 세병호',
-    imageUrl: previewImage('전주 세병호'),
+    imageUrl: officialImage('세병호', '전주 세병호'),
+    imageSource: officialImageSource('세병호'),
+    fallbackImageUrl: previewImage('전주 세병호'),
     latLng: { lat: 35.872, lng: 127.127 }
   },
   {
-    name: '대덕초등학교',
-    theme: 'local',
-    district: '완주군 봉동읍',
-    scene: 'scene-campus',
-    tagline: '지역 생활권의 중심을 보여 주는 학교 앞 자전거 동선 거점',
-    intro:
-      '대덕초등학교는 학교 자체보다도 봉동 생활권의 통학과 보행, 자전거 이동 흐름을 읽기 좋은 지점으로 볼 수 있습니다. 생활권 코스를 운영할 때 학교 주변의 안전한 속도와 지역 일상성을 함께 설명하기에 적합합니다.',
-    nearby: ['봉동 상장기공원', '비비정', '하리교'],
-    nearbyText:
-      '봉동 상장기공원과 비비정, 하리교가 가까워 봉동읍 생활권과 만경강 축을 함께 읽는 생활형 코스로 묶기 좋습니다.',
-    course:
-      '대덕초등학교 인근의 차분한 생활권 도로를 지나 상장기공원과 하리교 방향으로 이동하면 봉동 일상의 규모를 체감하는 코스가 됩니다.',
-    mapKeyword: '대덕초등학교 완주 봉동',
-    imageUrl: previewImage('대덕초등학교 완주 봉동'),
-    latLng: { lat: 35.939, lng: 127.141 }
-  },
+  name: '대덕초등학교',
+  theme: 'local',
+  district: '완주군 구이면',
+  scene: 'scene-campus',
+  tagline: '구이 생활권의 통학·마을 이동 흐름을 보여 주는 학교 거점',
+  intro:
+    '대덕초등학교는 완주군 구이면 구이로에 자리한 초등학교입니다. 학교 자체를 관광지처럼 소비하기보다, 구이 생활권의 통학길과 마을 이동, 자전거 안전 속도를 생각하게 하는 생활 거점으로 소개하는 것이 적절합니다. 구이저수지·무인카페여유·바람쐬는길과 함께 묶으면 남부권의 마을길과 쉼터, 수변 코스를 자연스럽게 설명할 수 있습니다.',
+  nearby: ['무인카페여유(구이로1575)', '구이저수지', '바람쐬는길'],
+  nearbyText:
+    '무인카페여유, 구이저수지, 바람쐬는길을 함께 보면 완주 구이 생활권의 통학로와 마을 쉼터, 전주 치명자산 방향의 바람쐬는 길이 연결되는 흐름을 볼 수 있습니다.',
+  course:
+    '대덕초등학교 인근에서는 학교 주변의 안전한 속도와 보행자 우선 원칙을 먼저 안내하고, 구이저수지와 무인카페여유 방향으로 이어 가는 완만한 생활권 코스로 구성하는 것이 좋습니다.',
+  mapKeyword: '대덕초등학교 완주 구이면 구이로 641',
+  officialAddress: '전북특별자치도 완주군 구이면 구이로 641',
+  officialInfo: '완주군 구이면 구이로에 위치한 초등학교이자 구이 생활권 통학 거점',
+  imageUrl: officialImage('대덕초등학교', '대덕초등학교 완주 구이면'),
+  imageSource: officialImageSource('대덕초등학교'),
+  fallbackImageUrl: previewImage('대덕초등학교 완주 구이면'),
+  latLng: { lat: 35.66076431, lng: 127.1106128 }
+},
   {
-    name: '봉동 상장기공원',
-    theme: 'nature',
-    district: '완주군 봉동읍',
-    scene: 'scene-park',
-    tagline: '만경강과 봉동의 풍경, 스토리가 벽면에 쌓이는 강변 공원',
-    intro:
-      '봉동 상장기공원은 만경강변 생활권 경관사업과 함께 정비된 공간으로, 봉상정과 스토리월, 강변 산책 요소가 함께 있는 공원입니다. 완주의 읍생활권과 강변 재생이 어떻게 결합하는지 보여 주는 사례로 읽기 좋습니다.',
-    nearby: ['하리교', '비비정', '대덕초등학교'],
-    nearbyText:
-      '하리교와 비비정, 대덕초등학교를 함께 보면 봉동읍 생활권과 만경강 수변축, 통학권이 어떻게 이어지는지 살펴볼 수 있습니다.',
-    course:
-      '상장기공원에서 만경강을 따라 달리며 비비정이나 하리교 방향으로 이어 가면 완주 북서부 수변 라이딩 코스가 자연스럽게 형성됩니다.',
-    mapKeyword: '봉동 상장기공원',
-    imageUrl: previewImage('봉동 상장기공원'),
-    latLng: { lat: 35.941, lng: 127.131 }
-  },
+  name: '봉동 상장기공원',
+  theme: 'nature',
+  district: '완주군 봉동읍',
+  scene: 'scene-park',
+  tagline: '만경강과 봉동 생활권의 이야기를 벽면과 산책로로 보여 주는 강변 공원',
+  intro:
+    '봉동 상장기공원은 만경강변 생활권 경관사업과 함께 정비된 공원으로, 봉상정과 스토리 가벽, 포토존, 강변 산책 요소가 함께 있는 공간입니다. 완주군이 만경강 역사와 봉동생강, 봉동씨름 같은 지역 이야기를 공원 경관으로 엮어 소개한 장소라서, 단순한 쉼터보다 봉동의 생활 문화와 수변 재생을 읽는 거점으로 적합합니다.',
+  nearby: ['하리교', '비비정', '대덕초등학교'],
+  nearbyText:
+    '하리교와 비비정, 대덕초등학교를 함께 보면 봉동읍 생활권과 만경강 수변축, 통학권이 어떻게 이어지는지 살펴볼 수 있습니다.',
+  course:
+    '상장기공원에서 만경강을 따라 달리며 비비정이나 하리교 방향으로 이어 가면 완주 북서부 수변 라이딩 코스가 자연스럽게 형성됩니다.',
+  mapKeyword: '봉동 상장기공원 완주',
+  officialAddress: '전북특별자치도 완주군 봉동읍 장기리 만경강변 일대',
+  officialInfo: '만경강 역사와 봉동 지역 이야기를 담은 스토리 가벽·포토존·강변 산책 공원',
+  imageUrl: officialImage('봉동 상장기공원', '봉동 상장기공원'),
+  imageSource: officialImageSource('봉동 상장기공원'),
+  fallbackImageUrl: previewImage('봉동 상장기공원'),
+  latLng: { lat: 35.941, lng: 127.131 }
+},
   {
     name: '고산 미소시장',
     theme: 'local',
     district: '완주군 고산면',
     scene: 'scene-market',
-    tagline: '완주 산간 생활권의 장터와 청년 거점이 공존하는 읍면 시장',
+    tagline: '완주 동부권 5일장과 로컬 상점이 모이는 문화관광형 전통시장',
     intro:
-      '고산 미소시장은 완주 고산권의 농산물과 생활 소비가 오가는 읍면 시장입니다. 곶감 직거래 장터나 청년 점포 같은 프로그램이 함께 언급될 만큼, 전통시장과 지역 재생 흐름을 함께 읽기 좋은 장소입니다.',
+      '완주군 홈페이지에 따르면 고산 미소시장은 1964년에 개설된 뒤 2013년에 현대화된 전통시장으로, 상설시장과 4일·9일 정기시장이 함께 운영됩니다. 고산면 중심 생활권 입구에 자리하고 있으며 한우, 지역 먹거리, 생활 점포가 모여 있어 완주 동부권의 일상 소비와 장날 풍경을 함께 보여 주는 대표 시장입니다.',
     nearby: ['완주군 송광사', '완주군 상관편백숲 관광안내소', '바람쐬는길'],
     nearbyText:
-      '송광사와 상관편백숲 관광안내소, 바람쐬는길을 묶으면 완주 동부·산간권의 장터, 숲길, 사찰 코스로 확장할 수 있습니다.',
+      '송광사와 상관편백숲 관광안내소, 바람쐬는길을 함께 묶으면 완주 동부 산간권의 장터, 숲길, 사찰 흐름을 한 코스로 이어 볼 수 있습니다.',
     course:
-      '고산 미소시장에서 간단히 쉬고 먹은 뒤 완주 동부 산간 방향으로 이어 달리면 시장과 자연, 사찰 풍경이 결합된 완주형 광역 코스가 됩니다.',
+      '고산 미소시장에서 장터 분위기와 먹거리 거점을 먼저 보고 난 뒤 송광사나 상관편백숲 방향으로 이어 달리면 시장과 자연, 사찰 풍경이 결합된 완주형 광역 코스를 만들기 좋습니다.',
     mapKeyword: '고산 미소시장 완주',
-    imageUrl: previewImage('고산 미소시장 완주'),
+    officialAddress: '전북특별자치도 완주군 고산면 남봉로 134, 135',
+    officialInfo: '상설시장과 4일·9일장이 함께 운영되는 완주군 고산면 전통시장',
+    imageUrl: officialImage('고산 미소시장', '고산 미소시장 완주'),
+    imageSource: officialImageSource('고산 미소시장'),
+    locationImageUrl: officialLocationImage('고산 미소시장'),
+    fallbackImageUrl: previewImage('고산 미소시장 완주'),
     latLng: { lat: 35.976, lng: 127.205 }
   },
   {
@@ -437,7 +970,9 @@ const places = [
     course:
       '송광사에서 시작해 상관편백숲과 구이저수지 방향으로 이동하면 숲과 수변, 사찰이 어우러진 완주 동남부 힐링 코스를 만들 수 있습니다.',
     mapKeyword: '완주 송광사',
-    imageUrl: previewImage('완주 송광사'),
+    imageUrl: officialImage('완주군 송광사', '완주 송광사'),
+    imageSource: officialImageSource('완주군 송광사'),
+    fallbackImageUrl: previewImage('완주 송광사'),
     latLng: { lat: 35.879, lng: 127.208 }
   },
   {
@@ -454,7 +989,9 @@ const places = [
     course:
       '아중호수도서관에서 물가를 따라 출발해 도심 방향으로 내려오면 동부 수변의 차분함과 구도심 기록·역사축을 함께 경험하는 코스가 됩니다.',
     mapKeyword: '아중호수도서관',
-    imageUrl: previewImage('아중호수도서관'),
+    imageUrl: officialImage('아중호수도서관', '아중호수도서관'),
+    imageSource: officialImageSource('아중호수도서관'),
+    fallbackImageUrl: previewImage('아중호수도서관'),
     latLng: { lat: 35.835, lng: 127.166 }
   },
   {
@@ -471,26 +1008,33 @@ const places = [
     course:
       '팔복예술공장에서 출발해 추천대와 하리교 방향으로 달리면 산업유산, 수변, 생활권 연결의 흐름을 느끼는 서북권 코스가 완성됩니다.',
     mapKeyword: '팔복예술공장',
-    imageUrl: previewImage('팔복예술공장'),
+    imageUrl: officialImage('팔복예술공장', '팔복예술공장'),
+    imageSource: officialImageSource('팔복예술공장'),
+    fallbackImageUrl: previewImage('팔복예술공장'),
     latLng: { lat: 35.861, lng: 127.094 }
   },
   {
-    name: '바람쐬는길',
-    theme: 'nature',
-    district: '완주군 구이면',
-    scene: 'scene-forest',
-    tagline: '호수와 산자락을 따라 완주 남부의 바람을 느끼는 전망 길',
-    intro:
-      '바람쐬는길은 구이권의 산지와 수변 풍경을 느리게 체감하기 좋은 드라이브·산책형 길로 알려져 있습니다. 자전거 코스에 넣으면 속도보다 풍경 전환과 휴식을 중심으로 한 감상형 구간을 만들 수 있습니다.',
-    nearby: ['구이저수지', '무인카페여유(구이로1575)', '완주군 상관편백숲 관광안내소'],
-    nearbyText:
-      '구이저수지와 무인카페여유, 상관편백숲 안내소와 함께 보면 구이·상관권의 물과 숲, 쉼터가 이어지는 완주 남부 코스가 완성됩니다.',
-    course:
-      '바람쐬는길을 따라 천천히 이동한 뒤 구이저수지와 무인카페여유에서 쉬고, 여건이 되면 상관편백숲까지 이어 가는 느린 라이딩 코스를 권합니다.',
-    mapKeyword: '완주 바람쐬는길',
-    imageUrl: previewImage('완주 바람쐬는길'),
-    latLng: { lat: 35.742, lng: 127.145 }
-  },
+  name: '바람쐬는길',
+  aliases: ['바람 쐬는 길', '바람쐬러가는길', '바람 쐬러 가는 길', '치명자산성지'],
+  theme: 'nature',
+  district: '전주시 완산구 대성동·바람쐬는길',
+  scene: 'scene-forest',
+  tagline: '치명자산성지와 전주천을 따라 바람과 전망을 만나는 전주 동남부 길',
+  intro:
+    '바람쐬는길은 완주 구이면이 아니라 전주 치명자산성지와 한벽루·색장동 방향의 전주 동남부 길로 잡는 것이 맞습니다. 전주천과 치명자산 산자락, 한옥마을에서 이어지는 산책·자전거 흐름을 함께 느낄 수 있어 “잠깐 바람 쐬러 가는 길”이라는 이름에 어울립니다. 챌린지에서는 구이저수지보다 오목대, 아중호수도서관, 치명자산성지와 함께 묶는 편이 공간 맥락이 정확합니다.',
+  nearby: ['오목대', '아중호수도서관', '전주3.1운동발상지'],
+  nearbyText:
+    '오목대와 아중호수도서관, 전주3.1운동발상지를 함께 보면 한옥마을 동남부 언덕길, 전주천, 동부 수변 문화축이 자연스럽게 이어집니다.',
+  course:
+    '오목대나 한옥마을에서 전주천을 따라 치명자산성지 방향으로 천천히 이동한 뒤 바람쐬는길을 지나 아중권 수변으로 연결하면 전주 동남부의 전망과 바람, 역사 경관을 함께 느낄 수 있습니다.',
+  mapKeyword: '전주 바람쐬는길 치명자산성지',
+  officialAddress: '전북특별자치도 전주시 완산구 바람쐬는길 87 일대',
+  officialInfo: '치명자산성지와 전주천, 한옥마을 동남부 경관을 잇는 전주 바람쐬는길',
+  imageUrl: officialImage('바람쐬는길', '전주 바람쐬는길 치명자산'),
+  imageSource: officialImageSource('바람쐬는길'),
+  fallbackImageUrl: previewImage('전주 바람쐬는길 치명자산'),
+  latLng: { lat: 35.805, lng: 127.166 }
+},
   {
     name: '전주시민기록관',
     theme: 'art',
@@ -505,7 +1049,9 @@ const places = [
     course:
       '중앙동 기록축을 따라 시민기록관과 전주FM, 3.1운동발상지를 잇는 코스는 전주를 살아 있는 기록 도시로 소개하기 좋습니다.',
     mapKeyword: '전주시민기록관',
-    imageUrl: previewImage('전주시민기록관'),
+    imageUrl: officialImage('전주시민기록관', '전주시민기록관'),
+    imageSource: officialImageSource('전주시민기록관'),
+    fallbackImageUrl: previewImage('전주시민기록관'),
     latLng: { lat: 35.817, lng: 127.147 }
   },
   {
@@ -523,7 +1069,9 @@ const places = [
     course:
       '전주3.1운동발상지에서 시민기록관과 전주FM을 거쳐 한옥마을 언덕의 오목대까지 이어 가면 기억과 상징, 도시의 현재가 함께 보이는 코스가 됩니다.',
     mapKeyword: '전주 3.1운동발상지',
-    imageUrl: previewImage('전주 3.1운동발상지'),
+    imageUrl: officialImage('전주3.1운동발상지', '전주 3.1운동발상지'),
+    imageSource: officialImageSource('전주3.1운동발상지'),
+    fallbackImageUrl: previewImage('전주 3.1운동발상지'),
     latLng: { lat: 35.816, lng: 127.145 }
   },
   {
@@ -540,27 +1088,33 @@ const places = [
     course:
       '오목대를 도보로 오른 뒤 도심 기록 거점이나 아중권 수변으로 내려오면 전통 상징과 현재의 생활 문화를 함께 체감하는 코스로 확장됩니다.',
     mapKeyword: '전주 오목대',
-    imageUrl: previewImage('전주 오목대'),
+    imageUrl: officialImage('오목대', '전주 오목대'),
+    imageSource: officialImageSource('오목대'),
+    fallbackImageUrl: previewImage('전주 오목대'),
     latLng: { lat: 35.812, lng: 127.153 }
   },
   {
-    name: '전주의료사협빌딩',
-    aliases: ['전주의료생활협동조합', '전주의료사협'],
-    theme: 'local',
-    district: '전주시 완산구 효자동',
-    scene: 'scene-health',
-    tagline: '생활 의료와 협동조합 실험이 머무는 지역 돌봄 거점',
-    intro:
-      '전주의료사협빌딩은 주민 출자와 참여를 바탕으로 한 지역 의료 협동조합의 활동 기반을 읽게 해 주는 장소입니다. 병원 건물 그 자체보다도, 건강과 돌봄을 공동체가 어떻게 조직하는지를 보여 준다는 데 의미가 있습니다.',
-    nearby: ['우석대학교 부속 전주한방병원', '전주시 자원봉사센터', '환경운동연합'],
-    nearbyText:
-      '우석 한방병원, 자원봉사센터, 환경운동연합과 함께 보면 의료·봉사·환경이 생활권 안에서 교차하는 전주의 시민사회 구조를 설명하기 좋습니다.',
-    course:
-      '효자동 생활권에서 전주의료사협빌딩과 의료·시민사회 거점을 잇는 코스는 관광지 중심이 아닌 실제 도시 운영 구조를 보여 주는 라이딩이 됩니다.',
-    mapKeyword: '전주의료사협빌딩 전주',
-    imageUrl: previewImage('전주의료사협빌딩 전주'),
-    latLng: { lat: 35.803, lng: 127.113 }
-  },
+  name: '전주의료사협빌딩',
+  aliases: ['전주의료생활협동조합', '전주의료사협', '전주의료복지사회적협동조합'],
+  theme: 'local',
+  district: '전주시 완산구 평화동1가',
+  scene: 'scene-health',
+  tagline: '주민 참여와 협동조합 방식으로 건강 돌봄을 실험하는 지역 의료 거점',
+  intro:
+    '전주의료사협빌딩은 전주의료복지사회적협동조합의 활동 기반으로, 주민과 의료인이 함께 지역의 건강과 돌봄을 조직하는 사회적경제 거점입니다. 건강한마을한의원·치과 등 생활 의료 활동과 연결되며, 관광 명소가 아닌 도시의 건강 안전망을 보여 주는 장소로 소개하는 것이 적절합니다.',
+  nearby: ['우석대학교 부속 전주한방병원', '전주시 자원봉사센터', '전북환경운동연합'],
+  nearbyText:
+    '우석 한방병원, 자원봉사센터, 전북환경운동연합과 함께 보면 의료·봉사·환경이 생활권 안에서 교차하는 전주의 시민사회 구조를 설명하기 좋습니다.',
+  course:
+    '평화동·중화산동·진북동 생활권에서 의료사협빌딩과 의료·시민사회 거점을 잇는 코스는 관광지 중심이 아닌 실제 도시 운영 구조를 보여 주는 라이딩이 됩니다.',
+  mapKeyword: '전주의료사협빌딩 장승배기로 168',
+  officialAddress: '전북특별자치도 전주시 완산구 장승배기로 168',
+  officialInfo: '전주의료복지사회적협동조합과 건강한마을 의료 활동이 자리한 지역 돌봄 거점',
+  imageUrl: officialImage('전주의료사협빌딩', '전주의료사협빌딩 전주'),
+  imageSource: officialImageSource('전주의료사협빌딩'),
+  fallbackImageUrl: previewImage('전주의료사협빌딩 전주'),
+  latLng: { lat: 35.792, lng: 127.131 }
+},
   {
     name: '구이저수지',
     theme: 'nature',
@@ -575,7 +1129,9 @@ const places = [
     course:
       '구이저수지를 중심으로 수변을 한 바퀴 돌고 카페와 전망길로 이어 가면 라이딩과 쉼, 인증 사진 포인트가 잘 결합된 코스가 됩니다.',
     mapKeyword: '구이저수지 완주',
-    imageUrl: previewImage('구이저수지 완주'),
+    imageUrl: officialImage('구이저수지', '구이저수지 완주'),
+    imageSource: officialImageSource('구이저수지'),
+    fallbackImageUrl: previewImage('구이저수지 완주'),
     latLng: { lat: 35.733, lng: 127.127 }
   },
   {
@@ -592,62 +1148,76 @@ const places = [
     course:
       '전주수목원에서 출발해 기지제 쪽 수변으로 이동하고, 여건이 되면 세병호까지 연결하는 코스는 녹지와 호수를 번갈아 경험하는 장거리형 코스가 됩니다.',
     mapKeyword: '전주수목원',
-    imageUrl: previewImage('전주수목원'),
+    imageUrl: officialImage('전주수목원', '전주수목원'),
+    imageSource: officialImageSource('전주수목원'),
+    fallbackImageUrl: previewImage('전주수목원'),
     latLng: { lat: 35.873, lng: 127.072 }
   },
   {
-    name: '바이크박스',
-    theme: 'local',
-    district: '전주시 덕진구 송천동',
-    scene: 'scene-bike',
-    tagline: '장거리 출발 전에 자전거 상태를 점검하는 실용 거점',
-    intro:
-      '바이크박스는 자전거 정비와 장비 구매, 점검 상담이 가능한 실용 거점입니다. 챌린지 코스가 실제 이용으로 이어지려면 이런 정비 거점이 필수이기 때문에, 명소와는 다른 방식으로 중요한 장소입니다.',
-    nearby: ['전주수목원', '전주시 공영자전거 꽃싱이 송천대여소', '기지제'],
-    nearbyText:
-      '전주수목원과 꽃싱이 송천대여소, 기지제를 연결하면 대여·정비·수변 라이딩이 이어지는 실사용형 자전거 코스를 설명하기 쉽습니다.',
-    course:
-      '바이크박스에서 간단한 정비를 마친 뒤 송천권이나 서북부 수목원·기지제 방향으로 나가면 실제 자전거 이용자에게 가장 현실적인 코스 운영이 가능합니다.',
-    mapKeyword: '전주 바이크박스',
-    imageUrl: previewImage('전주 바이크박스'),
-    latLng: { lat: 35.867, lng: 127.129 }
-  },
+  name: '바이크박스',
+  theme: 'local',
+  district: '전주시 완산구 효자동2가',
+  scene: 'scene-bike',
+  tagline: '장거리 라이딩 전 자전거 상태와 장비를 점검할 수 있는 전문 바이크샵',
+  intro:
+    '바이크박스는 전주권 자전거 이용자가 정비와 장비 상담을 위해 들를 수 있는 전문 바이크샵입니다. 공식 관광지나 공공시설은 아니지만 자전거 챌린지가 실제 이용으로 이어지려면 대여소와 함께 이런 정비 거점이 필요합니다. 대표 이미지는 외부 상업시설 사진을 안정적으로 확보하기 어려워, 파일 내부에서 자전거 정비 거점용 대체 이미지를 쓰도록 했습니다.',
+  nearby: ['전주수목원', '전주시 공영자전거 꽃싱이 송천대여소', '기지제'],
+  nearbyText:
+    '전주수목원과 꽃싱이 송천대여소, 기지제를 연결하면 대여·정비·수변 라이딩이 이어지는 실사용형 자전거 코스를 설명하기 쉽습니다.',
+  course:
+    '바이크박스에서 간단한 정비를 마친 뒤 서부권 수목원·기지제 방향으로 나가거나 송천 공영자전거 거점과 비교하면 실제 자전거 이용자에게 현실적인 코스 운영이 가능합니다.',
+  mapKeyword: '전주 바이크박스 세내로 253',
+  officialAddress: '전북특별자치도 전주시 완산구 세내로 253, 바이크박스 1층',
+  officialInfo: '전주권 자전거 정비·장비 상담 거점',
+  imageUrl: officialImage('바이크박스', '전주 바이크박스 자전거 정비'),
+  imageSource: officialImageSource('바이크박스'),
+  fallbackImageUrl: previewImage('전주 바이크박스 자전거 정비'),
+  latLng: { lat: 35.812, lng: 127.104 }
+},
   {
-    name: '환경운동연합',
-    aliases: ['전북환경운동연합'],
-    theme: 'local',
-    district: '전주시 완산구 서신동',
-    scene: 'scene-archive',
-    tagline: '하천과 녹지, 기후 의제를 시민 관점에서 읽게 하는 환경 거점',
-    intro:
-      '환경운동연합은 전북 지역의 하천과 녹지, 기후위기, 생활 환경문제를 시민의 언어로 풀어내는 활동 거점입니다. 관광지 중심 설명만으로는 보이지 않는 도시의 또 다른 축, 즉 공론장과 참여의 구조를 보여 줍니다.',
-    nearby: ['전주시 자원봉사센터', '전주의료사협빌딩', '전주공동체라디오 전주FM'],
-    nearbyText:
-      '자원봉사센터, 전주의료사협빌딩, 전주FM과 함께 보면 환경·의료·미디어가 시민사회 네트워크로 얽혀 있는 전주의 실제 작동 방식을 설명하기 좋습니다.',
-    course:
-      '서신동과 효자동 생활권을 따라 환경운동연합과 시민사회 거점을 잇는 코스는 참여형 도시 전주를 이해하는 대안적 챌린지 코스가 됩니다.',
-    mapKeyword: '전북환경운동연합 전주',
-    imageUrl: previewImage('전북환경운동연합 전주'),
-    latLng: { lat: 35.821, lng: 127.112 }
-  },
+  name: '전북환경운동연합',
+  aliases: ['환경운동연합', '전북환경운동연합'],
+  theme: 'local',
+  district: '전주시 완산구 중앙동',
+  scene: 'scene-archive',
+  tagline: '하천과 녹지, 기후 의제를 시민 관점에서 읽게 하는 전북 환경운동 거점',
+  intro:
+    '전북환경운동연합은 하천과 녹지, 기후위기, 생태 보전 같은 지역 환경 의제를 시민의 언어로 풀어내는 활동 거점입니다. 생태교육, 새만금 모니터링, 전주천 수달, 완산습지원 등 지역 생태계 보전 활동과 연결해 설명할 수 있어, 관광지 중심 설명만으로는 보이지 않는 도시의 공론장과 참여 구조를 보여 줍니다.',
+  nearby: ['전주시 자원봉사센터', '전주의료사협빌딩', '전주공동체라디오 전주FM'],
+  nearbyText:
+    '자원봉사센터, 전주의료사협빌딩, 전주FM과 함께 보면 환경·의료·미디어가 시민사회 네트워크로 얽혀 있는 전주의 실제 작동 방식을 설명하기 좋습니다.',
+  course:
+    '중앙동과 진북동, 평화동 생활권을 따라 전북환경운동연합과 시민사회 거점을 잇는 코스는 참여형 도시 전주를 이해하는 대안적 챌린지 코스가 됩니다.',
+  mapKeyword: '전북환경운동연합 전라감영2길 25-23',
+  officialAddress: '전북특별자치도 전주시 완산구 전라감영2길 25-23',
+  officialInfo: '1993년 창립한 전북 지역 환경운동 단체이자 시민 생태·기후 의제 활동 거점',
+  imageUrl: officialImage('전북환경운동연합', '전북환경운동연합 전주'),
+  imageSource: officialImageSource('전북환경운동연합'),
+  fallbackImageUrl: previewImage('전북환경운동연합 전주'),
+  latLng: { lat: 35.816, lng: 127.146 }
+},
   {
-    name: '무인카페여유(구이로1575)',
-    aliases: ['무인카페여유', '구이로1575'],
-    theme: 'local',
-    district: '완주군 구이면',
-    scene: 'scene-food',
-    tagline: '구이권 장거리 코스 중간에 들르기 좋은 무인 쉼터형 카페',
-    intro:
-      '무인카페여유는 구이권 라이딩 중 짧게 쉬어 가기 좋은 실용형 카페 거점입니다. 풍경 감상과 수분 보충, 간단한 휴식을 위한 장소로 넣어 두면 장거리 코스의 이용성이 훨씬 높아집니다.',
-    nearby: ['구이저수지', '바람쐬는길', '완주군 상관편백숲 관광안내소'],
-    nearbyText:
-      '구이저수지와 바람쐬는길, 상관편백숲 안내소와 함께 묶으면 완주 남부의 호수·숲·휴식형 코스를 안정적으로 운영할 수 있습니다.',
-    course:
-      '구이저수지와 바람쐬는길을 돈 뒤 무인카페여유에서 쉬고, 체력이 남으면 상관편백숲 방향으로 이어 가는 순환 코스를 추천합니다.',
-    mapKeyword: '무인카페여유 구이로1575',
-    imageUrl: previewImage('무인카페여유 구이로1575'),
-    latLng: { lat: 35.724, lng: 127.130 }
-  },
+  name: '무인카페여유(구이로1575)',
+  aliases: ['무인카페여유', '구이로1575', '무인카페 여유'],
+  theme: 'local',
+  district: '완주군 구이면 두현리',
+  scene: 'scene-food',
+  tagline: '구이로 1575 일대에서 장거리 라이딩 중 쉬어 가기 좋은 무인 쉼터형 카페',
+  intro:
+    '무인카페여유는 완주군 구이면 구이로 1575 일대에 있는 무인 쉼터형 카페 거점입니다. 대형 관광지라기보다 수분 보충, 잠깐의 휴식, 주변 마을길 확인을 위한 생활 편의 지점으로 넣는 것이 적절합니다. 공식 대표 사진을 안정적으로 확인하기 어려워, 파일 내부에서는 카페 쉼터 성격이 드러나는 대체 이미지를 사용하도록 했습니다.',
+  nearby: ['대덕초등학교', '구이저수지', '완주군 상관편백숲 관광안내소'],
+  nearbyText:
+    '대덕초등학교와 구이저수지, 상관편백숲 안내소와 함께 묶으면 완주 구이 생활권의 마을길, 수변, 숲길, 휴식형 거점이 안정적으로 이어집니다.',
+  course:
+    '구이저수지와 구이 생활권을 돈 뒤 무인카페여유에서 쉬고, 체력이 남으면 상관편백숲 방향으로 이어 가는 순환 코스를 추천합니다.',
+  mapKeyword: '무인카페여유 구이로1575 완주 구이면',
+  officialAddress: '전북특별자치도 완주군 구이면 구이로 1575 일대',
+  officialInfo: '완주군 구이면 구이로 1575 일대의 무인 쉼터형 카페 거점',
+  imageUrl: officialImage('무인카페여유(구이로1575)', '무인카페여유 구이로1575'),
+  imageSource: officialImageSource('무인카페여유(구이로1575)'),
+  fallbackImageUrl: previewImage('무인카페여유 구이로1575'),
+  latLng: { lat: 35.724, lng: 127.130 }
+},
   {
     name: '완주군 상관편백숲 관광안내소',
     aliases: ['상관편백숲 관광안내소', '상관편백숲'],
@@ -663,7 +1233,9 @@ const places = [
     course:
       '상관편백숲 안내소에서 출발해 숲길을 체험하고 구이권 수변과 카페로 이동하는 코스는 경사와 휴식의 균형이 좋아 미션형 운영에 적합합니다.',
     mapKeyword: '완주 상관편백숲 관광안내소',
-    imageUrl: previewImage('완주 상관편백숲 관광안내소'),
+    imageUrl: officialImage('완주군 상관편백숲 관광안내소', '완주 상관편백숲 관광안내소'),
+    imageSource: officialImageSource('완주군 상관편백숲 관광안내소'),
+    fallbackImageUrl: previewImage('완주 상관편백숲 관광안내소'),
     latLng: { lat: 35.774, lng: 127.166 }
   }
 ];
@@ -676,7 +1248,7 @@ const collator = new Intl.Collator('ko-KR', {
 const mapGeoBounds = {
   west: 126.72,
   east: 127.25,
-  south: 35.71,
+  south: 35.64,
   north: 35.99
 };
 
@@ -1070,7 +1642,8 @@ function buildRouteStops(place) {
     name: item.name,
     district: item.district,
     tagline: item.tagline,
-    imageUrl: item.imageUrl
+    imageUrl: item.imageUrl,
+    imageFallbackUrl: item.fallbackImageUrl || previewImage(item.mapKeyword || item.name)
   }));
 }
 
@@ -1236,6 +1809,10 @@ function clearKakaoMapObjects() {
 }
 
 function getFallbackAddress(place) {
+  if (place?.officialAddress) {
+    return place.officialAddress;
+  }
+
   return place?.district ? `${place.district} 일대` : '-';
 }
 
@@ -1256,6 +1833,11 @@ function resolveAddressText(result) {
 function resolvePlaceAddress(place) {
   if (!place) {
     return Promise.resolve('-');
+  }
+
+  if (place.officialAddress) {
+    addressState.cache.set(place.name, place.officialAddress);
+    return Promise.resolve(place.officialAddress);
   }
 
   if (addressState.cache.has(place.name)) {
@@ -1321,6 +1903,23 @@ function renderDetailAddress(place) {
   });
 }
 
+function createStaticLocationMap(place) {
+  if (!place?.locationImageUrl) {
+    return '';
+  }
+
+  return `
+    <img
+      class="route-static-map"
+      src="${place.locationImageUrl}"
+      alt="${place.name} 위치도"
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
+  `;
+}
+
 function createMapPinSvg(fill, innerFill) {
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 26 34">
@@ -1357,8 +1956,8 @@ function renderKakaoMap(place, mapPlaces) {
   if (!getKakaoMapsAppKey()) {
     elements.routeMap.innerHTML = `
       <div class="kakao-map-shell is-fallback">
-        ${createAerialMap(place, mapPlaces)}
-        <div class="kakao-map-status">카카오 지도 키가 없어서 항공 오버뷰만 표시합니다.</div>
+        ${createStaticLocationMap(place) || createAerialMap(place, mapPlaces)}
+        <div class="kakao-map-status">카카오 지도를 불러올 수 없어 기본 위치 이미지를 표시합니다.</div>
       </div>
     `;
     return;
@@ -1452,22 +2051,51 @@ function renderKakaoMap(place, mapPlaces) {
 
       elements.routeMap.innerHTML = `
         <div class="kakao-map-shell is-fallback">
-          ${createAerialMap(place, mapPlaces)}
-          <div class="kakao-map-status">지도를 불러오지 못해 항공 오버뷰로 대체했습니다.</div>
+          ${createStaticLocationMap(place) || createAerialMap(place, mapPlaces)}
+          <div class="kakao-map-status">지도를 불러오지 못해 기본 위치 이미지로 대체했습니다.</div>
         </div>
       `;
     });
 }
 
 function renderHeroPhoto(place) {
-  if (!place || !place.imageUrl) {
+  const hidePhoto = () => {
+    elements.detailHero?.classList.remove('has-photo');
     elements.detailPhoto.classList.add('is-hidden');
     elements.detailPhoto.removeAttribute('src');
     elements.detailPhoto.alt = '';
+    elements.detailPhoto.onload = null;
+    elements.detailPhoto.onerror = null;
+    delete elements.detailPhoto.dataset.fallbackUsed;
+  };
+
+  if (!place || (!place.imageUrl && !place.fallbackImageUrl)) {
+    hidePhoto();
     return;
   }
 
-  elements.detailPhoto.src = place.imageUrl;
+  const fallbackImageUrl = place.fallbackImageUrl || previewImage(place.mapKeyword || place.name);
+
+  elements.detailPhoto.dataset.fallbackUsed = 'false';
+  elements.detailPhoto.referrerPolicy = 'no-referrer';
+  elements.detailPhoto.onload = () => {
+    elements.detailHero?.classList.add('has-photo');
+    elements.detailPhoto.classList.remove('is-hidden');
+  };
+  elements.detailPhoto.onerror = () => {
+    if (fallbackImageUrl && elements.detailPhoto.dataset.fallbackUsed !== 'true') {
+      elements.detailPhoto.dataset.fallbackUsed = 'true';
+      elements.detailPhoto.onerror = hidePhoto;
+      elements.detailPhoto.src = fallbackImageUrl;
+      elements.detailPhoto.alt = `${place.name} 대표 이미지 대체 이미지`;
+      elements.detailPhoto.classList.remove('is-hidden');
+      return;
+    }
+
+    hidePhoto();
+  };
+  elements.detailHero?.classList.remove('has-photo');
+  elements.detailPhoto.src = place.imageUrl || fallbackImageUrl;
   elements.detailPhoto.alt = `${place.name} 대표 이미지`;
   elements.detailPhoto.classList.remove('is-hidden');
 }
@@ -1684,7 +2312,16 @@ function renderPlaceList(list) {
 
 function enhanceRouteStopImages() {
   elements.routeStops.querySelectorAll('.route-stop-image').forEach((image) => {
+    image.dataset.fallbackUsed = 'false';
     image.onerror = () => {
+      const fallbackSrc = image.dataset.fallbackSrc;
+
+      if (fallbackSrc && image.dataset.fallbackUsed !== 'true') {
+        image.dataset.fallbackUsed = 'true';
+        image.src = fallbackSrc;
+        return;
+      }
+
       image.closest('.route-stop')?.classList.add('is-fallback');
       image.removeAttribute('src');
       image.alt = '';
@@ -1701,7 +2338,7 @@ function renderRouteStops(place) {
           <div class="route-stop-media">
             ${
               stop.imageUrl
-                ? `<img class="route-stop-image" src="${stop.imageUrl}" alt="${stop.name} 대표 이미지" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`
+                ? `<img class="route-stop-image" src="${escapeHtmlAttribute(stop.imageUrl)}" data-fallback-src="${escapeHtmlAttribute(stop.imageFallbackUrl || '')}" alt="${escapeHtmlAttribute(stop.name)} 대표 이미지" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`
                 : ''
             }
             <span class="route-stop-label">${stop.label}</span>
